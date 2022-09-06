@@ -1,15 +1,15 @@
 ---
 title: "Lewis White"
-image: headshot2.jpeg
+image: headshot2.JPEG
 about: 
   template: trestles 
   image-shape: rounded
   image-width: 15em
 links:
-  text: GitHub
-  href: https://github.com/lewis-r-white
-  text: Email
-  href: mailto:lewiswhite@ucsb.edu
+  - text: GitHub
+    href: https://github.com/lewis-r-white
+  - text: Email
+    href: mailto:lewiswhite@ucsb.edu
 ---
 
 ## Welcome!
