@@ -1,11 +1,35 @@
 ---
-title: "lewis-r-white.github.io"
+title: "Lewis White"
+image: headshot2.jpeg
+about: 
+  template: trestles 
+  image-shape: rounded
+  image-width: 15em
+links:
+  text: GitHub
+  href: https://github.com/lewis-r-white
+  text: Email
+  href: mailto:lewiswhite@ucsb.edu
 ---
 
-This is my website!
+## Welcome!
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+Thanks for visiting my website.
 
 ```{r}
 1 + 1
 ```
+
+\-\--
+
+## Education
+
+UCSB
+
+Carleton
+
+\-\--
+
+## Experience
+
+\-\--
