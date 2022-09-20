@@ -1,9 +1,7 @@
 ---
-title: "About"
+title: "Bio"
 ---
 
-Hi there!
+After graduating from Carleton College in 2020 with a degree in Statistics and Psychology, Lewis took a position in the UX space as a research advisor at dscout, a software company with a qualitative research platform. For two years, he primarily collaborated on research design with innovative companies such as Nike, Microsoft, and Sonos, and also conducted analysis to help optimize dscout\'s platform. While Lewis enjoyed the collaboration and curiosity that existed within the research world, he wanted to apply the breadth of skills acquired from both college and this dscout experience toward a cause he cares deeply about.
 
-```{r}
-1 + 1
-```
+Lewis is now pursuing a Master\'s Degree in Environmental Data Science from the Bren School of Science & Management at UC Santa Barbara. Growing up with Scottish parents, Lewis spent many summers on the west coast of Scotland where he developed a keen interest in the natural world, spending many hours exploring and understanding life in the tide pools. A watercolor enthusiast, Lewis is drawn toward data visualization because of its ability to communicate important information in an engaging way. Upon completion of this master\'s program, Lewis hopes to use data modeling, data visualization, and scientific communication skills to tackle aspects of the many problems that climate change is bringing to our world. He is particularly interested in extreme weather events and the effect of climate change on human health.

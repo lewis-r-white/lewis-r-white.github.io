@@ -12,24 +12,30 @@ links:
     href: mailto:lewiswhite@ucsb.edu
 ---
 
-## Welcome!
+## Hi there!
 
-Thanks for visiting my website.
-
-```{r}
-1 + 1
-```
+Welcome to my website \~ my name is Lewis White.
 
 \-\--
 
 ## Education
 
-UCSB
+**MS in Environmental Data Science (anticipated 2023)**
 
-Carleton
+University of California, Santa Barbara \| The Bren School of Environemntal Science and Management
+
+**BA in Statistics and Psychology (2020)**
+
+Carleton College \| Northfield, MN
 
 \-\--
 
 ## Experience
+
+**Qualitative Research Advisor \|** dscout **\|** July 2020 - July 2022
+
+**Account Management Intern \|** BBDO Worldwide \| June 2019 - Aug 2019
+
+**Statistical Consultant \|** Northfield City Council \| Jan 2018 - March 2018
 
 \-\--
