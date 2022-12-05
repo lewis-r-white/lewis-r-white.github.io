@@ -1,0 +1,54 @@
+/*-- scss:defaults --*/
+
+// Colors
+
+$steal-blue: #78adc9;
+$light-purple: #8e90d2;
+$light-green: #a1d28e;
+$brown: #90511d;
+$pale_avocado_green: #8ea879;
+$super_light_green: #e8ede1;
+$black: #000000;
+$white: #ffffff;
+
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+
+
+// Base Document Colors 
+
+$navbar-bg: $pale_avocado_green; //navbar
+$navbar-fg: $black; // navbar foreground elements
+$navbar-hl: $white; // highlight color when hovering over navbar links
+$body-bg: $super_light_green; // page background 
+$body-color: $black; // page text 
+$footer-bg: $light-purple; // footer 
+$link-color: $black; // hyperlinks 
+
+
+// Inline code
+$code-bg: $white; // inline code background color
+$code-color: $black; // inline code text color
+
+// Code blocks
+$code-block-bg: $white; // code block background color
+
+/*-- scss:rules --*/
+
+h1, h2, h3 {
+  letter-spacing: 5px;
+  font-weight: 700;
+  color: $black;
+}
+
+.title {
+  color: $black;
+}
+
+.custom-subtitle {
+  font-size: 22px;
+  font-style: italic;
+  color: $light-green;
+}
+

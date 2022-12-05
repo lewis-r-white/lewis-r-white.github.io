@@ -9,13 +9,17 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
+      - href: posts.qmd
+        text: Blog Posts
 
 format:
   html:
     theme:
-      light: minty
-      dark: slate
-    css: styles.css
+      - mystyles.scss
+    mainfont: Montserrat
+      #light: minty
+      #dark: slate
+    #css: styles.css
     toc: true
 
 editor: visual
