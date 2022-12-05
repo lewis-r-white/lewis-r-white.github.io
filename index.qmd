@@ -5,37 +5,43 @@ about:
   template: trestles 
   image-shape: rounded
   image-width: 15em
-links:
-  - text: GitHub
-    href: https://github.com/lewis-r-white
-  - text: Email
-    href: mailto:lewiswhite@ucsb.edu
+  links:
+    - text: GitHub
+      href: https://github.com/lewis-r-white
+    - text: Email
+      href: mailto:lewiswhite@ucsb.edu
+    - text: LinkedIn
+      href: https://www.linkedin.com/in/lewis-white-382269146/
 ---
 
-## Hi there!
+## Hello!
 
-Welcome to my website \~ my name is Lewis White.
+I'm Lewis \~ welcome to my website!
 
-\-\--
+I'm currently pursuing a Master's Degree in Environmental Data Science from the Bren School of Science & Management at UCSB.
+
+In my spare time, you can find me hiking in the beautiful Santa Barbara hills or practicing my dinks on the pickleball court.
+
+------------------------------------------------------------------------
 
 ## Education
 
 **MS in Environmental Data Science (anticipated 2023)**
 
-University of California, Santa Barbara \| The Bren School of Environemntal Science and Management
+University of California, Santa Barbara **\|** The Bren School of Environemntal Science and Management
 
 **BA in Statistics and Psychology (2020)**
 
-Carleton College \| Northfield, MN
+Carleton College **\|** Northfield, MN
 
-\-\--
+------------------------------------------------------------------------
 
 ## Experience
 
-**Qualitative Research Advisor \|** dscout **\|** July 2020 - July 2022
+**Qualitative Research Advisor \|** dscout **\|** 07/2020 - 07/2022
 
-**Account Management Intern \|** BBDO Worldwide \| June 2019 - Aug 2019
+**Account Management Intern \|** BBDO Worldwide **\|** 06/2019 - 08/2019
 
-**Statistical Consultant \|** Northfield City Council \| Jan 2018 - March 2018
+**Statistical Consultant \|** Northfield City Council **\|** 01/2018 - 03/2018
 
-\-\--
+------------------------------------------------------------------------

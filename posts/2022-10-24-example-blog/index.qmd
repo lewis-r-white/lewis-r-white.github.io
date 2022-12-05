@@ -1,0 +1,39 @@
+---
+title: "blog post title"
+description: "this is a description"
+author: 
+  - name: Lewis White
+    url: https://lewis-r-white.github.io
+    #orcid : if you create orcid id, put it here
+    affiliation: MEDS
+    affiliation-url: https://uscsb-meds.github.io
+date: 2022-10-24
+categories: [MEDS, test, R]
+citation:
+  url: https://lewis-r-white.github.io/posts/2022-10-24-example-blog
+bibliography: references.bib
+image: download.jpg
+draft: true
+---
+
+Hi this is my class example[^1] blog post.
+
+[^1]: Here is my footnote
+
+
+Here is an example of another^[footnote number2] footnoot.
+
+
+here's[^3] somemore text [-@provost2013; @ingman2022]
+
+[^3]: here is my first paragraph
+
+    here is my second paragraph
+    
+    hereis my third paeragraph
+
+This is not part of my footnote
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Sends shivers down my spine! 👻💀🎃 <a href="https://t.co/NMJk6oWBnj">https://t.co/NMJk6oWBnj</a></p>&mdash; Samantha Csik (@SamanthaCsik) <a href="https://twitter.com/SamanthaCsik/status/1584620851689033728?ref_src=twsrc%5Etfw">October 24, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+Here i'm going to cite sam's blog post [@csik2022].

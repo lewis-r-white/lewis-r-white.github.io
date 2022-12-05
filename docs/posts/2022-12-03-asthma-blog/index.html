@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Lewis White">
+<meta name="dcterms.date" content="2022-12-03">
+<meta name="description" content="Exploring factors that effect the hospitalization rate due to asthma in California counties.">
+
+<title>lewis-r-white.github.io - Modeling Asthma Hospitalizations</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">lewis-r-white.github.io</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">Bio</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../Posts.html">Blog Posts</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Modeling Asthma Hospitalizations</h1>
+                  <div>
+        <div class="description">
+          Exploring factors that effect the hospitalization rate due to asthma in California counties.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">MEDS</div>
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">Asthma</div>
+              </div>
+                  </div>
+  </div>
+    
+  <div class="quarto-title-meta-author">
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      <a href="https://lewis-r-white.github.io/">Lewis White</a> 
+    </div>
+      <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              Master of Environmental Data Science @ The Bren School of Environmental Science at UCSB
+            </p>
+        </div>
+      </div>
+
+  <div class="quarto-title-meta">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 3, 2022</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
+  <li><a href="#results-discussion" id="toc-results-discussion" class="nav-link" data-scroll-target="#results-discussion">Results + Discussion</a></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a>
+  <ul class="collapse">
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Asthma is a chronic disease that affects the respiratory system. During an asthma attack, an individual’s airways constrict and swell, causing a combination of coughing, wheezing, shortness of breath, and chest tightness <a href="https://www.zotero.org/google-docs/?7hsvD5">[1]</a>. For some individuals, symptoms can be quite mild and handled easily with preventative medication. For others, asthma can be a life threatening disease that severely reduces their quality of life.&nbsp;</p>
+<p>Globally, asthma affected roughly 262 million people and caused over 450,000 deaths in 2019 <a href="https://www.zotero.org/google-docs/?TwOcYC">[2]</a>. While not quite as severe in the United States, it's estimated that 25 million Americans have asthma and over 4,000 die from asthma each year. It is important to note that asthma does not affect all groups equally: statistics provided by the CDC demonstrate that asthma is more common among women, individuals living in poverty, and Black and indigenous people <a href="https://www.zotero.org/google-docs/?8q8Phr">[3]</a>.&nbsp;</p>
+<p>As someone with asthma, I'm generally pretty cognizant of things that trigger my asthma flare ups. For example, I've noticed that I am particularly sensitive to poor air quality. In 2020, I was living in Minnesota during a particularly severe period of Canadian wildfires—the smoke from these fires affected both the air quality and my severity of asthma. During this time, I frequently looked at a variety of weather apps to check the air quality before doing any activity that required me to be outside for an extended period of time.&nbsp;</p>
+<p>It's fairly intuitive that air quality would have an impact on asthma, an upper respiratory disease, and this idea is supported by research <a href="https://www.zotero.org/google-docs/?Nkscsr">[4]</a>. However, it is not as clear just how strong this impact is, as well as what other factors are at play in determining asthma attack prevalence. In this study, I will explore how a variety of factors affect the rate of hospitalizations caused by asthma for each county in California. I will also test a hypothesis that there are more asthma related hospitalizations in years when more acres of land burned due to wildfire. As drought continues in California and wildfires seem likely to worsen, it's prudent that we examine how air quality and wildfire smoke impact asthma.</p>
+</section>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
+<p>In order to answer the above questions, I obtained data from a variety of sources.</p>
+<ul>
+<li><p>County level Air Quality Index (AQI) data was retrieved from the EPA <a href="https://www.zotero.org/google-docs/?MnV3tv">[5]</a>.</p></li>
+<li><p>Bi-yearly asthma prevalence <a href="https://www.zotero.org/google-docs/?T1C5Vi">[6]</a> and yearly hospitalization counts <a href="https://www.zotero.org/google-docs/?zOwH37">[7]</a> were obtained from the California Health and Human Services (CHHS) Open Data Portal .</p></li>
+<li><p>A shapefile containing county level geographic information was obtained from the California Open Data Portal <a href="https://www.zotero.org/google-docs/?lec53v">[8]</a>.&nbsp;</p></li>
+<li><p>Smoke data, measured in daily PM 2.5 estimates, was retrieved from the Environmental Change and Human Outcomes (ECHO) lab at Stanford <a href="https://www.zotero.org/google-docs/?Rt55oc">[9]</a>.&nbsp;</p></li>
+</ul>
+<p>County level demographic information was collected by the United States Census Bureau <a href="https://www.zotero.org/google-docs/?OPW2yC">[10]</a>.</p>
+</section>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">Methods</h2>
+<p>Once I read in each of the datasets, I cleaned them to follow the 'Tidy Data' format, selected desired columns and rows, and joined the datasets <a href="https://www.zotero.org/google-docs/?d1umii">[11]</a>. New columns, such as the mean smoke (measured in PM 2.5) per year for each county were created. High levels of PM 2.5, fine particles typically smaller than 2.5 µm in diameter, are a great concern to public health from wildfire smoke because PM 2.5 can travel deeper into the lungs than larger particulate matter. I also adjusted the maximum AQI values to not exceed 500—the EPA's highest level of healthy concern, "Hazardous," ranges from index values of 301–500 so any value above that is functionally equivalent.&nbsp;</p>
+<p>All analyses, specifically an Ordinary Linear Regression (OLS) model and a Welch t-test (α &lt; 0.05) were conducted in Rstudio.</p>
+<p>For the outcome variable in the regression, I wanted to focus on hospitalizations due to asthma. Hospitalizations, used as a proxy for measuring the severity of asthma attacks, seem particularly sensitive to climate related triggers that could vary over the years for which my data was collected. Since hospitalizations per county vary significantly with the population of the county, I normalized the variable by calculating the hospitalization rate per 100,000 people.&nbsp;</p>
+<p>Before jumping into modeling, each variable of interest was examined to ensure that it adhered to the assumptions required for OLS. The max AQI and population density explanatory variables were log transformed to normalize outliers and linearize the distribution, and I took the square root of the mean smoke variable for a similar effect. For each of these variables, there was still some minor heteroskedasticity shown in residual plots. There were also more extreme positive residuals than negative residuals; however, the relationships all appeared mostly linear and histograms of the residuals were fairly normal, so I concluded that proceeding with caution would be acceptable.&nbsp;</p>
+<p>For the Welch t-test, I wanted to examine whether there is a difference in the hospitalization rate during more severe wildfire years. To do this, I compared the mean hospitalization rate in 2016 (669,534 acres burnt due to wildfire) and 2018 (1,975,086 acres burnt due to wildfire).</p>
+</section>
+<section id="results-discussion" class="level2">
+<h2 class="anchored" data-anchor-id="results-discussion">Results + Discussion</h2>
+<p>To determine the magnitude and significance at which various explanatory variables relate to hospitalizations, I conducted an OLS multiple regression.&nbsp;</p>
+<p>For model selection, I utilized two different approaches. First, I completed the model selection manually by choosing variables/interactions that I thought could be meaningful and then eventually removing ones that were insignificant and didn't have as strong of a theoretical rationale for why they should be included in the model. Then, I included a backward stepwise model selection process by using the `stepAIC()` function in the MASS package—this allowed me to automate the process of selecting which variables should be included to optimize the model. With backwards steps, we start the stepwise process with all predictors and remove the least statistically significant one until we find the model with the lowest AIC (a measure of goodness of fit) value <a href="https://www.zotero.org/google-docs/?LYOtuR">[12]</a>. Both approaches led me to the same predictor variables of interest: log(max AQI), sqrt(mean PM from smoke), log(population density), and median income.&nbsp;</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#CREATING A MAP OF THE HOSPITALIZATION RATE</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>hosp_ggplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> hosp_year_summaries, </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>          <span class="fu">aes</span>(<span class="at">fill =</span> mean_hosp), <span class="at">col =</span> <span class="st">'black'</span>, <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span>  <span class="co">#fill color is the mean hospitalization rate from asthma, borders are black</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Hospitalization Rate from Asthma between </span><span class="sc">\n</span><span class="st"> 2015–2019 for California Counties"</span>) <span class="sc">+</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(), <span class="co">#creating a blank background</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.border =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.direction =</span> <span class="st">"vertical"</span>,  <span class="co">#specifying legend characteristics</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.75</span>),</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.key.height =</span> <span class="fu">unit</span>(<span class="fl">0.3</span>, <span class="st">"cm"</span>),</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.key.width =</span> <span class="fu">unit</span>(<span class="fl">0.3</span>, <span class="st">"cm"</span>)) <span class="sc">+</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_stepsn</span>(<span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"#fff0d6"</span>,  <span class="co">#specifying the color scheme </span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"#ffffb2"</span>, </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"#fecc5c"</span>, </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"#fd8d3c"</span>, </span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"#f03b20"</span>, </span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"#bd0026"</span>),</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>                    <span class="at">na.value =</span> <span class="st">"grey50"</span>,</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>                    <span class="at">guide =</span> <span class="fu">guide_colorbar</span>(<span class="at">title =</span> <span class="st">"Hospitalization Rate </span><span class="sc">\n</span><span class="st"> (per 100,000)"</span>)) <span class="co">#specifying the legend title </span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co">#I then create 4 more plots for each of my explanatory variables. To see this code, checkout my full repository. </span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co">#SAVING THE IMAGE AND READING IT BACK INTO R</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">"hosp_map.png"</span>, <span class="at">plot=</span>hosp_ggplot, </span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">width=</span><span class="dv">6</span>, <span class="at">height=</span><span class="dv">4</span>, <span class="at">units =</span> <span class="st">"in"</span>) <span class="co">#save the plot as a png</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>hosp_map_png <span class="ot">&lt;-</span> <span class="fu">image_read</span>(<span class="st">"hosp_map.png"</span>)  <span class="co">#read the png into R</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co">#MAKING THE ANIMATION</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>gif_images <span class="ot">&lt;-</span> <span class="fu">c</span>(hosp_map_png, income_map_png, density_map_png, aqi_map_png, smoke_map_png)  <span class="co">#Creating a vector of images</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>asthma_animation <span class="ot">&lt;-</span> <span class="fu">image_animate</span>(<span class="fu">image_scale</span>(gif_images, <span class="st">"400x400"</span>), <span class="at">fps =</span> <span class="fl">0.5</span>, <span class="at">dispose =</span> <span class="st">"previous"</span>) <span class="co">#creating the animation</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="fu">image_write</span>(asthma_animation, <span class="st">"asthma_vars.gif"</span>) </span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="co">#if you want to save your gif to your computer, image_write() allows you to do so!</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>asthma_animation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.gif" class="img-fluid"></p>
+</div>
+</div>
+<p>Through spatial visualization of the data, we can get an initial sense of how a couple of the model's explanatory variables correlate with the county level hospitalization rate. Southern California and the Central Valley appear to have higher mean AQI values and a higher hospitalization rate. Fine particulate matter from wildfires, meanwhile, appears to have an opposite effect with higher values in Northern California as well as the northern section of the Central Valley. Looking at the population density and median income maps, it is harder to see how they correlate with the hospitalization rate. Below, we examine how each predictor relates to the hospitalization rate in more detail.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>asthma_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(hosp_per_100k <span class="sc">~</span> <span class="fu">log</span>(max_aqi) <span class="sc">+</span> <span class="fu">sqrt</span>(mean_smokePM) <span class="sc">+</span> <span class="fu">log</span>(pop_density_sq_m) <span class="sc">+</span> median_income_in_thousands, <span class="at">data =</span> hosp_full)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>asthma_hosp_table <span class="ot">&lt;-</span> <span class="fu">tab_model</span>(asthma_mod,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                               <span class="at">pred.labels =</span> <span class="fu">c</span>(<span class="st">"Intercept"</span>, </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"Log Max AQI"</span>, </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"SQRT Mean Smoke"</span>, </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"Log Pop Density"</span>, </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"Median Income (in $1000s)"</span>),</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                               <span class="at">dv.labels =</span> <span class="fu">c</span>(<span class="st">"Hospitalization Rate (per 100k)"</span>),</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                               <span class="at">string.ci =</span> <span class="st">"Conf. Int (95%)"</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                               <span class="at">string.p =</span> <span class="st">"P-value"</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                               <span class="at">title =</span> <span class="st">"Table 1. Linear Model Results"</span>,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                               <span class="at">digits =</span> <span class="dv">3</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>asthma_hosp_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+
+<table style="border-collapse:collapse; border:none;">
+<caption style="font-weight: bold; text-align:left;">Table 1. Linear Model Results</caption>
+<tbody><tr>
+<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">&nbsp;</th>
+<th colspan="3" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">Hospitalization Rate (per 100k)</th>
+</tr>
+<tr>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">Predictors</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">Estimates</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">Conf. Int (95%)</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">P-value</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Intercept</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.362</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">-23.806&nbsp;–&nbsp;24.530</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.976</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Log Max AQI</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">11.037</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">6.467&nbsp;–&nbsp;15.608</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">SQRT Mean Smoke</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">-3.422</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">-5.544&nbsp;–&nbsp;-1.300</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.002</strong></td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Log Pop Density</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">4.293</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">2.839&nbsp;–&nbsp;5.747</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Median Income (in $1000s)</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">-0.408</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">-0.535&nbsp;–&nbsp;-0.281</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">Observations</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="3">249</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">R<sup>2</sup> / R<sup>2</sup> adjusted</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">0.250 / 0.238</td>
+</tr>
+
+</tbody></table>
+
+</div>
+</div>
+<p>Results from the model indicate that air quality (measured through AQI and particulate matter from smoke), population density, and median income are all statistically significant predictors of the hospitalization rate.&nbsp;</p>
+<p>Before diving into each predictor variable, it's important to emphasize the difference between AQI measurements and PM 2.5. The AQI is typically calculated using hourly measurements of 5 pollutants: fine particles (PM 2.5 and PM 10), ground-level ozone, sulfur dioxide, nitrogen dioxide, and carbon monoxide. This means that smoke from wildfires, measured in PM 2.5, is one of the factors that impacts the AQI. By including smoke from wildfires as a separate variable, I am able to examine that separately.&nbsp;</p>
+<p>Starting with the air quality index, there is a positive trend between the log of the maximum AQI and the hospitalization rate (<span class="math inline">\(p &lt; 0.001\)</span>, <span class="math inline">\(\beta = 11.037\)</span>) . Intuitively, this makes sense, as it seems more likely that severe asthma flare-ups could result from dangerous air quality values.&nbsp;</p>
+<p>Previous studies have indicated that particular matter from wildfires can actually be more harmful for individuals with asthma than from other sources, so it was surprising that the square root of the PM 2.5 caused by wildfire smoke was negatively associated with the hospitalizations (<span class="math inline">\(p = 0.002\)</span>, <span class="math inline">\(\beta = -3.422\)</span>) <a href="https://www.zotero.org/google-docs/?DfqCJz">[13]</a>. One possible explanation for this result is that individuals with asthma were much less likely to go outside during times when wildfire smoke was particularly severe. Compared to the other measures of air quality, wildfire smoke is much more noticeable, so individuals with asthma who have the ability to avoid interacting with the smoke would likely choose to do so.&nbsp;</p>
+<p>There was a positive trend between the log of the population density per square mile and the county level hospitalization rate (<span class="math inline">\(p &lt; 0.001\)</span>, <span class="math inline">\(\beta = 4.293\)</span>). It makes sense that asthma may be worse in urban areas due to increased pollution, but this <span class="math inline">\(\beta\)</span> value is the slope for the population density while holding the other variables constant. It's possible that there are other factors, such as different forms of pollution, increased proximity to hospitals, or other demographic information that could be influencing the effect of population density. Median income, unsurprisingly, had a negative relationship with the hospitalization rate (<span class="math inline">\(p &lt; 0.001\)</span>, <span class="math inline">\(\beta = -0.408\)</span>). Higher income individuals are more likely to be able to afford asthma prevention and likely have access to cleaner indoor air.&nbsp;</p>
+<p>Overall, the model's predictive power is not too strong. With an R^2 of 0.250, just 25% of variability in the per county hospitalization rate can be explained using the explanatory variables. To further test the model's predictive power, I used it to predict hospitalization rates for my existing data and then compared the predictions to the true observed hospitalization rates in the graph below. The graph demonstrates that the predictions trend in the right direction but vary a fair amount in their accuracy, especially for observations when the true hospitalization rate was above 60 people per 100,000.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>asthma_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(hosp_per_100k <span class="sc">~</span> <span class="fu">log</span>(max_aqi) <span class="sc">+</span> <span class="fu">sqrt</span>(mean_smokePM) <span class="sc">+</span> <span class="fu">log</span>(pop_density_sq_m) <span class="sc">+</span> median_income_in_thousands, <span class="at">data =</span> hosp_full) <span class="co">#the final model</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> <span class="fu">augment</span>(asthma_mod) <span class="co">#create predictions </span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#plot the hospitalization rate predictions compared to the true observed value</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>prediction_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> predictions, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> .fitted, <span class="at">y =</span> hosp_per_100k)) <span class="sc">+</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="co">#adds red line that follows what the graph would look like if my predictions perfectly matched the observed values.</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">20</span>, <span class="dv">70</span>) <span class="sc">+</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="dv">67</span>, </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> <span class="dv">83</span>, </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="st">"Line of perfect </span><span class="sc">\n</span><span class="st"> predictions"</span>,</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> <span class="st">"red"</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>           <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Predicted Hospitalizations (per 100k)"</span>,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"True Hospitalizations (per 100k)"</span>,</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Comparing our model predictions to the true value of hospitalizations"</span>,</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"The model trends in the right direction, but tends to over predict low hospitalization rates and underpredict low hospitalization rates. A perfect model would follow the line in red."</span>) <span class="sc">+</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>prediction_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1 rows containing missing values (geom_point).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>In order to further test the effect of wildfires on asthma, I performed a t-test (alpha &lt; 0.05) to compare the mean hospitalization rate caused by asthma in 2016 and 2018. For context, 2016 was a relatively light year for wildfires, with 669,534 acres burnt; in comparison, almost three times as many acres (1,975,086) burned in 2018 <a href="https://www.zotero.org/google-docs/?JCT5De">[14]</a>. Seeing if there is a difference in the hospitalization rate between these two years could demonstrate the effect of wildfires on asthma hospitalizations.&nbsp;</p>
+<p>The null hypothesis: There is no difference in the mean hospitalization rate between 2016 and 2018.&nbsp;</p>
+<p>The alternative hypothesis: This is a difference in the mean hospitalization rate between 2016 and 2018.&nbsp;</p>
+<p>My t-test concluded that there is not enough evidence to reject the null hypothesis (t = -0.18629, p = 0.8526). This indicates that, if there was a true difference in the mean hospitalization rate, we'd expect to find a difference in means as extreme as ours 85% of the time. This aligns with the regression model conducted above, but does not align with previous research that smoke from wildfires increases cases of severe asthma <a href="https://www.zotero.org/google-docs/?yYHvM8">[13]</a>.&nbsp;</p>
+<p>However, it is important to note that this result does not mean that the total acreage of wildfires burnt has no effect on asthma hospitalizations. It’s possible that the location of the fire and other factors, such as wind patterns and population density near the fire, are affecting the result. Further research could look into the spatial relationship between fires and where asthma related hospitalizations occur.<br>
+</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Hypothesis test that hospitalizations would be different (likely higher) in 2018 than in 2016 due to increased fire acreage burnt. </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#2016: 669,534 burnt</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#2018:  1,975,086 burnt</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>hosp_2016_2018 <span class="ot">&lt;-</span> hosp_full <span class="sc">%&gt;%</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2016</span> <span class="sc">|</span> year <span class="sc">==</span> <span class="dv">2018</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">as.factor</span>(year))</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>fire_test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(hosp_per_100k <span class="sc">~</span> year, <span class="at">data =</span> hosp_2016_2018)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>fire_test_table <span class="ot">&lt;-</span> <span class="fu">tab_model</span>(fire_test,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>          <span class="at">string.ci =</span> <span class="fu">c</span>(<span class="st">"Conf. Int (95%)"</span>),</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>          <span class="at">string.p =</span> <span class="st">"P-value"</span>,</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>          <span class="at">dv.labels =</span> <span class="fu">c</span>(<span class="st">"Hospitalization Rate"</span>),</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>          <span class="at">pred.labels =</span> <span class="st">"2016 – 2018"</span>,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>          <span class="at">title =</span> <span class="st">"Table 2: Hospitalization Rate and Wildfires: Welch Two Sample t-test"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Converting into numeric values currently not possible for variables of
+  class 'NULL'.</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fire_test_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+
+<table style="border-collapse:collapse; border:none;">
+<caption style="font-weight: bold; text-align:left;">Table 2: Hospitalization Rate and Wildfires: Welch Two Sample t-test</caption>
+<tbody><tr>
+<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">&nbsp;</th>
+<th colspan="3" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">Hospitalization Rate</th>
+</tr>
+<tr>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">Predictors</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">Estimates</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">Conf. Int (95%)</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">P-value</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">2016 – 2018</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">-0.51</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">-5.94&nbsp;–&nbsp;4.92</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.853</td>
+</tr>
+
+</tbody></table>
+
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Creating a beeswarm plot with boxplot overlay to show distribution of county level mean hospitalization rates for 2016 and 2018. </span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>beeswarm_boxplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> hosp_2016_2018, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> hosp_per_100k)) <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_beeswarm</span>(<span class="at">color =</span> <span class="st">"red"</span>, <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span> </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Hospitalizations (per 100k)"</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"California County Hospitalization Rate from Asthma in 2016 and 2018"</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"The distribution of hospitalization rates appear similar from 2016 and 2018"</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#add in t-test and p value to the plot</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>beeswarm_boxplot_t_test <span class="ot">&lt;-</span> beeswarm_boxplot <span class="sc">+</span> </span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_compare_means</span>(<span class="at">method =</span> <span class="st">"t.test"</span>, <span class="at">label.x =</span> <span class="fl">1.35</span>, <span class="at">label.y =</span> <span class="dv">65</span>)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>beeswarm_boxplot_t_test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 8 rows containing non-finite values (stat_boxplot).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 8 rows containing non-finite values (stat_compare_means).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 8 rows containing missing values (position_beeswarm).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="conclusions" class="level2">
+<h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
+<p>While this research is an important step in exploring the effect of air quality on hospitalizations from asthma in California counties, there are a number of limitations of this analysis that could be addressed in future research.&nbsp;</p>
+<p>If possible, further analysis should explore the temporal relation between air quality and hospitalizations from asthma on a more granular scale. I was only able to obtain hospitalization data at an annual scale, which made it harder to see how shorter spikes in poor air quality affected asthma related hospitalizations, if at all.&nbsp;</p>
+<p>It would also be worth exploring a similar analysis but at the census tract, rather than county level. Counties are sufficiently large that the air quality is likely not uniformly distributed throughout. Furthermore, focusing on census tracts could open up the possibility of exploring income in more detail. Our results indicated that higher income averages were associated with lower hospitalization rates from asthma. It's possible that this finding would be even more pronounced at the census tract, rather than county level.&nbsp;</p>
+<p>This analysis also has important implications for environmental justice. As mentioned in the introduction, asthma is a disease that affects humans across the globe but more acutely in developing countries. Looking at the World Health Organization's data for the death rate per 100,000 due to asthma, Kiribati, New Guinea, and Lesotho have rates of 75.4, 47.6, and 45.3, respectively (compared to the US rate of 0.84) <a href="https://www.zotero.org/google-docs/?D7gBTo">[15]</a>. While much of this inequality can likely be attributed to a difference in access to medicine, it is worth exploring what other factors, including air pollution, could be causing such high rates of severe asthma in certain countries. Partnering with researchers in nations where asthma is particularly severe could help address the disparity in prevalence, hospitalization, and death rates across the globe.&nbsp;</p>
+<p>To summarize, this research examines a number of factors that relate to hospitalizations from severe asthma. From this analysis, it's clear that clean air is pertinent to preventing severe asthma flare-ups. Given the potential severity of asthma and its prevalence in the US and across the globe, further research should examine this topic to better understand the primary factors that lead to the most severe cases of asthma.</p>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<p>[1] "Asthma - Symptoms and causes," Mayo Clinic. https://www.mayoclinic.org/diseases-conditions/asthma/symptoms-causes/syc-20369653 (accessed Dec.&nbsp;03, 2022).</p>
+<p>[2] "Asthma." https://www.who.int/news-room/fact-sheets/detail/asthma (accessed Dec.&nbsp;02, 2022).</p>
+<p>[3] "Most Recent National Asthma Data | CDC," May 26, 2022. https://www.cdc.gov/asthma/most_recent_national_asthma_data.htm (accessed Dec.&nbsp;02, 2022).</p>
+<p>[4] O. US EPA, "The Links Between Air Pollution and Childhood Asthma," Oct.&nbsp;22, 2018. https://www.epa.gov/sciencematters/links-between-air-pollution-and-childhood-asthma (accessed Dec.&nbsp;04, 2022).</p>
+<p>[5] "AirData website File Download page," United States Environmental Protection Agency. https://aqs.epa.gov/aqsweb/airdata/download_files.html (accessed Dec.&nbsp;02, 2022).</p>
+<p>[6] "Asthma Prevalence - California Health and Human Services Open Data Portal," CHHS Open Data. https://data.chhs.ca.gov/dataset/asthma-prevalence (accessed Dec.&nbsp;02, 2022).</p>
+<p>[7] "Asthma Hospitalization Rates by County - California Health and Human Services Open Data Portal," CHHS Open Data. https://data.chhs.ca.gov/dataset/asthma-hospitalization-rates-by-county (accessed Dec.&nbsp;02, 2022).</p>
+<p>[8] "CA Geographic Boundaries - California Open Data," California Open Data Portal. https://data.ca.gov/dataset/ca-geographic-boundaries (accessed Dec.&nbsp;02, 2022).</p>
+<p>[9] "wildfire_smoke — ECHO: Environmental Change and Human Outcomes Lab | Stanford University," ECHO:&nbsp; Environmental Change and Human Outcomes Lab&nbsp; &nbsp; |&nbsp; &nbsp; Stanford University. https://www.stanfordecholab.com/wildfire_smoke (accessed Dec.&nbsp;02, 2022).</p>
+<p>[10] R. Whitcomb, J. M. Choi, and B. Guan, "CORGIS Datasets Project," County Demographics CSV File. https://corgis-edu.github.io/corgis/csv/county_demographics/ (accessed Dec.&nbsp;02, 2022).</p>
+<p>[11] "Data tidying." Accessed: Dec.&nbsp;04, 2022. [Online]. Available: https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html</p>
+<p>[12] R. statistics for P. Science, "Choose model variables by AIC in a stepwise algorithm with the MASS package in R," R Functions and Packages for Political Science Analysis, Oct.&nbsp;22, 2020. https://rforpoliticalscience.com/2020/10/23/choose-model-variables-by-aic-in-a-stepwise-algorithm-with-the-mass-package-in-r/ (accessed Dec.&nbsp;04, 2022).</p>
+<p>[13] D. Kiser et al., "Particulate matter and emergency visits for asthma: a time-series study of their association in the presence and absence of wildfire smoke in Reno, Nevada, 2013–2018," Environ. Health, vol.&nbsp;19, no. 1, p.&nbsp;92, Aug.&nbsp;2020, doi: 10.1186/s12940-020-00646-2.</p>
+<p>[14] "California Wildfires History &amp; Statistics | Frontline Wildfire Defense," Frontline, Sep.&nbsp;30, 2020. https://www.frontlinewildfire.com/wildfire-news-and-resources/california-wildfires-history-statistics/ (accessed Dec.&nbsp;04, 2022).</p>
+<p>[15] "ASTHMA DEATH RATE BY COUNTRY," World Life Expectancy. https://www.worldlifeexpectancy.com/cause-of-death/asthma/by-country/ (accessed Dec.&nbsp;05, 2022).</p>
+<p><br>
+</p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{white2022,
+  author = {Lewis White},
+  title = {Modeling {Asthma} {Hospitalizations}},
+  date = {12/03/2022},
+  url = {/Users/lewiswhite/MEDS/lewis-r-white.github.io/posts/2022-12-03-asthma-blog/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-white2022" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
+Lewis White. 12AD–3AD. <span>“Modeling Asthma Hospitalizations.”</span>
+12AD–3AD. <a href="https:///Users/lewiswhite/MEDS/lewis-r-white.github.io/posts/2022-12-03-asthma-blog/">/Users/lewiswhite/MEDS/lewis-r-white.github.io/posts/2022-12-03-asthma-blog/</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
