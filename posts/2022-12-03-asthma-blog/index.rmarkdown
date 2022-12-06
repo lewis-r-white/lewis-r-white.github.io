@@ -25,6 +25,7 @@ source("/Users/lewiswhite/MEDS/eds_222/asthma_environment_project/R/asthma_scrip
 source("/Users/lewiswhite/MEDS/eds_222/asthma_environment_project/R/asthma_spatial.R")
 ```
 
+
 ## Introduction 
 
 Asthma is a chronic disease that affects the respiratory system. During an asthma attack, an individual's airways constrict and swell, causing a combination of coughing, wheezing, shortness of breath, and chest tightness [\[1\]](https://www.zotero.org/google-docs/?7hsvD5). For some individuals, symptoms can be quite mild and handled easily with preventative medication. For others, asthma can be a life threatening disease that severely reduces their quality of life. 
@@ -66,6 +67,7 @@ For the Welch t-test, I wanted to examine whether there is a difference in the h
 To determine the magnitude and significance at which various explanatory variables relate to hospitalizations, I conducted an OLS multiple regression. 
 
 For model selection, I utilized two different approaches. First, I completed the model selection manually by choosing variables/interactions that I thought could be meaningful and then eventually removing ones that were insignificant and didn\'t have as strong of a theoretical rationale for why they should be included in the model. Then, I included a backward stepwise model selection process by using the \`stepAIC()\` function in the MASS package---this allowed me to automate the process of selecting which variables should be included to optimize the model. With backwards steps, we start the stepwise process with all predictors and remove the least statistically significant one until we find the model with the lowest AIC (a measure of goodness of fit) value [\[12\]](https://www.zotero.org/google-docs/?LYOtuR). Both approaches led me to the same predictor variables of interest: log(max AQI), sqrt(mean PM from smoke), log(population density), and median income. 
+
 
 ```{r}
 #CREATING A MAP OF THE HOSPITALIZATION RATE
@@ -117,7 +119,9 @@ image_write(asthma_animation, "asthma_vars.gif")
 asthma_animation
 ```
 
+
 Through spatial visualization of the data, we can get an initial sense of how a couple of the model\'s explanatory variables correlate with the county level hospitalization rate. Southern California and the Central Valley appear to have higher mean AQI values and a higher hospitalization rate. Fine particulate matter from wildfires, meanwhile, appears to have an opposite effect with higher values in Northern California as well as the northern section of the Central Valley. Looking at the population density and median income maps, it is harder to see how they correlate with the hospitalization rate. Below, we examine how each predictor relates to the hospitalization rate in more detail.
+
 
 ```{r}
 asthma_mod <- lm(hosp_per_100k ~ log(max_aqi) + sqrt(mean_smokePM) + log(pop_density_sq_m) + median_income_in_thousands, data = hosp_full)
@@ -137,6 +141,7 @@ asthma_hosp_table <- tab_model(asthma_mod,
 asthma_hosp_table
 ```
 
+
 Results from the model indicate that air quality (measured through AQI and particulate matter from smoke), population density, and median income are all statistically significant predictors of the hospitalization rate. 
 
 Before diving into each predictor variable, it\'s important to emphasize the difference between AQI measurements and PM 2.5. The AQI is typically calculated using hourly measurements of 5 pollutants: fine particles (PM 2.5 and PM 10), ground-level ozone, sulfur dioxide, nitrogen dioxide, and carbon monoxide. This means that smoke from wildfires, measured in PM 2.5, is one of the factors that impacts the AQI. By including smoke from wildfires as a separate variable, I am able to examine that separately. 
@@ -148,6 +153,7 @@ Previous studies have indicated that particular matter from wildfires can actual
 There was a positive trend between the log of the population density per square mile and the county level hospitalization rate ($p < 0.001$, $\beta = 4.293$). It makes sense that asthma may be worse in urban areas due to increased pollution, but this $\beta$ value is the slope for the population density while holding the other variables constant. It\'s possible that there are other factors, such as different forms of pollution, increased proximity to hospitals, or other demographic information that could be influencing the effect of population density. Median income, unsurprisingly, had a negative relationship with the hospitalization rate ($p < 0.001$, $\beta = -0.408$). Higher income individuals are more likely to be able to afford asthma prevention and likely have access to cleaner indoor air. 
 
 Overall, the model\'s predictive power is not too strong. With an R\^2 of 0.250, just 25% of variability in the per county hospitalization rate can be explained using the explanatory variables. To further test the model\'s predictive power, I used it to predict hospitalization rates for my existing data and then compared the predictions to the true observed hospitalization rates in the graph below. The graph demonstrates that the predictions trend in the right direction but vary a fair amount in their accuracy, especially for observations when the true hospitalization rate was above 60 people per 100,000.
+
 
 ```{r}
 asthma_mod <- lm(hosp_per_100k ~ log(max_aqi) + sqrt(mean_smokePM) + log(pop_density_sq_m) + median_income_in_thousands, data = hosp_full) #the final model
@@ -174,6 +180,7 @@ prediction_plot <- ggplot(data = predictions, mapping = aes(x = .fitted, y = hos
 prediction_plot
 ```
 
+
 In order to further test the effect of wildfires on asthma, I performed a t-test (alpha \< 0.05) to compare the mean hospitalization rate caused by asthma in 2016 and 2018. For context, 2016 was a relatively light year for wildfires, with 669,534 acres burnt; in comparison, almost three times as many acres (1,975,086) burned in 2018 [\[14\]](https://www.zotero.org/google-docs/?JCT5De). Seeing if there is a difference in the hospitalization rate between these two years could demonstrate the effect of wildfires on asthma hospitalizations. 
 
 The null hypothesis: There is no difference in the mean hospitalization rate between 2016 and 2018. 
@@ -183,6 +190,7 @@ The alternative hypothesis: This is a difference in the mean hospitalization rat
 My t-test concluded that there is not enough evidence to reject the null hypothesis (t = -0.18629, p = 0.8526). This indicates that, if there was a true difference in the mean hospitalization rate, we\'d expect to find a difference in means as extreme as ours 85% of the time. This aligns with the regression model conducted above, but does not align with previous research that smoke from wildfires increases cases of severe asthma [\[13\]](https://www.zotero.org/google-docs/?yYHvM8). 
 
 However, it is important to note that this result does not mean that the total acreage of wildfires burnt has no effect on asthma hospitalizations. It's possible that the location of the fire and other factors, such as wind patterns and population density near the fire, are affecting the result. Further research could look into the spatial relationship between fires and where asthma related hospitalizations occur.\
+
 
 ```{r}
 ## Hypothesis test that hospitalizations would be different (likely higher) in 2018 than in 2016 due to increased fire acreage burnt. 
@@ -224,6 +232,7 @@ beeswarm_boxplot_t_test <- beeswarm_boxplot +
 
 beeswarm_boxplot_t_test
 ```
+
 
 ## Conclusions 
 
@@ -270,3 +279,4 @@ To summarize, this research examines a number of factors that relate to hospital
 \[15\]	\"ASTHMA DEATH RATE BY COUNTRY,\" World Life Expectancy. https://www.worldlifeexpectancy.com/cause-of-death/asthma/by-country/ (accessed Dec. 05, 2022).
 
 \
+
