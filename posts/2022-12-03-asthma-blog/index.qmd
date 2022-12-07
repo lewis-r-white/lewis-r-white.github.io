@@ -7,10 +7,10 @@ author:
     affiliation: Master of Environmental Data Science @ The Bren School of Environmental Science at UCSB
 date: 12-03-2022
 categories: [MEDS, R, Asthma]
-image: lewis_inhaler.jpg
 citation:
-  url: /Users/lewiswhite/MEDS/lewis-r-white.github.io/posts/2022-12-03-asthma-blog/
+  url: https://lewis-r-white.github.io/posts/2022-12-03-asthma-blog/
 editor: visual
+image: smog.jpg
 draft: false 
 format:
   html:
