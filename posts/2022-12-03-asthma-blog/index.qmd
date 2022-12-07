@@ -25,15 +25,15 @@ source("/Users/lewiswhite/MEDS/eds_222/asthma_environment_project/R/asthma_scrip
 source("/Users/lewiswhite/MEDS/eds_222/asthma_environment_project/R/asthma_spatial.R")
 ```
 
-## Introduction 
+## Introduction
 
 Asthma is a chronic disease that affects the respiratory system. During an asthma attack, an individual's airways constrict and swell, causing a combination of coughing, wheezing, shortness of breath, and chest tightness [\[1\]](https://www.zotero.org/google-docs/?7hsvD5). For some individuals, symptoms can be quite mild and handled easily with preventative medication. For others, asthma can be a life threatening disease that severely reduces their quality of life. 
 
-Globally, asthma affected roughly 262 million people and caused over 450,000 deaths in 2019 [\[2\]](https://www.zotero.org/google-docs/?TwOcYC). While not quite as severe in the United States, it\'s estimated that 25 million Americans have asthma and over 4,000 die from asthma each year. It is important to note that asthma does not affect all groups equally: statistics provided by the CDC demonstrate that asthma is more common among women, individuals living in poverty, and Black and indigenous people [\[3\]](https://www.zotero.org/google-docs/?8q8Phr). 
+Globally, asthma affected roughly 262 million people and caused over 450,000 deaths in 2019 [\[2\]](https://www.zotero.org/google-docs/?TwOcYC). While not quite as severe in the United States, it's estimated that 25 million Americans have asthma and over 4,000 die from asthma each year. It is important to note that asthma does not affect all groups equally: statistics provided by the CDC demonstrate that asthma is more common among women, individuals living in poverty, and Black and indigenous people [\[3\]](https://www.zotero.org/google-docs/?8q8Phr). 
 
-As someone with asthma, I\'m generally pretty cognizant of things that trigger my asthma flare ups. For example, I\'ve noticed that I am particularly sensitive to poor air quality. In 2020, I was living in Minnesota during a particularly severe period of Canadian wildfires---the smoke from these fires affected both the air quality and my severity of asthma. During this time, I frequently looked at a variety of weather apps to check the air quality before doing any activity that required me to be outside for an extended period of time. 
+As someone with asthma, I'm generally pretty cognizant of things that trigger my asthma flare ups. For example, I've noticed that I am particularly sensitive to poor air quality. In 2020, I was living in Minnesota during a particularly severe period of Canadian wildfires---the smoke from these fires affected both the air quality and my severity of asthma. During this time, I frequently looked at a variety of weather apps to check the air quality before doing any activity that required me to be outside for an extended period of time. 
 
-It\'s fairly intuitive that air quality would have an impact on asthma, an upper respiratory disease, and this idea is supported by research [\[4\]](https://www.zotero.org/google-docs/?Nkscsr). However, it is not as clear just how strong this impact is, as well as what other factors are at play in determining asthma attack prevalence. In this study, I will explore how a variety of factors affect the rate of hospitalizations caused by asthma for each county in California. I will also test a hypothesis that there are more asthma related hospitalizations in years when more acres of land burned due to wildfire. As drought continues in California and wildfires seem likely to worsen, it\'s prudent that we examine how air quality and wildfire smoke impact asthma.
+It's fairly intuitive that air quality would have an impact on asthma, an upper respiratory disease, and this idea is supported by research [\[4\]](https://www.zotero.org/google-docs/?Nkscsr). However, it is not as clear just how strong this impact is, as well as what other factors are at play in determining asthma attack prevalence. In this study, I will explore how a variety of factors affect the rate of hospitalizations caused by asthma for each county in California. I will also test a hypothesis that there are more asthma related hospitalizations in years when more acres of land burned due to wildfire. As drought continues in California and wildfires seem likely to worsen, it's prudent that we examine how air quality and wildfire smoke impact asthma.
 
 ## Data
 
@@ -47,11 +47,11 @@ In order to answer the above questions, I obtained data from a variety of source
 
 -   Smoke data, measured in daily PM 2.5 estimates, was retrieved from the Environmental Change and Human Outcomes (ECHO) lab at Stanford [\[9\]](https://www.zotero.org/google-docs/?Rt55oc). 
 
-County level demographic information was collected by the United States Census Bureau [\[10\]](https://www.zotero.org/google-docs/?OPW2yC).
+-   County level demographic information was collected by the United States Census Bureau [\[10\]](https://www.zotero.org/google-docs/?OPW2yC).
 
 ## Methods
 
-Once I read in each of the datasets, I cleaned them to follow the \'Tidy Data\' format, selected desired columns and rows, and joined the datasets [\[11\]](https://www.zotero.org/google-docs/?d1umii). New columns, such as the mean smoke (measured in PM 2.5) per year for each county were created. High levels of PM 2.5, fine particles typically smaller than 2.5 µm in diameter, are a great concern to public health from wildfire smoke because PM 2.5 can travel deeper into the lungs than larger particulate matter. I also adjusted the maximum AQI values to not exceed 500---the EPA\'s highest level of healthy concern, \"Hazardous,\" ranges from index values of 301--500 so any value above that is functionally equivalent. 
+Once I read in each of the datasets, I cleaned them to follow the 'Tidy Data' format, selected desired columns and rows, and joined the datasets [\[11\]](https://www.zotero.org/google-docs/?d1umii). New columns, such as the mean smoke (measured in PM 2.5) per year for each county were created. High levels of PM 2.5, fine particles typically smaller than 2.5 µm in diameter, are a great concern to public health because PM 2.5 can travel deeper into the lungs than larger particulate matter. I also adjusted the maximum AQI values to not exceed 500---the EPA's highest level of healthy concern, "Hazardous," ranges from index values of 301--500 so any value above that is functionally equivalent. 
 
 All analyses, specifically an Ordinary Linear Regression (OLS) model and a Welch t-test (α \< 0.05) were conducted in Rstudio.
 
@@ -65,7 +65,7 @@ For the Welch t-test, I wanted to examine whether there is a difference in the h
 
 To determine the magnitude and significance at which various explanatory variables relate to hospitalizations, I conducted an OLS multiple regression. 
 
-For model selection, I utilized two different approaches. First, I completed the model selection manually by choosing variables/interactions that I thought could be meaningful and then eventually removing ones that were insignificant and didn\'t have as strong of a theoretical rationale for why they should be included in the model. Then, I included a backward stepwise model selection process by using the \`stepAIC()\` function in the MASS package---this allowed me to automate the process of selecting which variables should be included to optimize the model. With backwards steps, we start the stepwise process with all predictors and remove the least statistically significant one until we find the model with the lowest AIC (a measure of goodness of fit) value [\[12\]](https://www.zotero.org/google-docs/?LYOtuR). Both approaches led me to the same predictor variables of interest: log(max AQI), sqrt(mean PM from smoke), log(population density), and median income. 
+For model selection, I utilized two different approaches. First, I completed the model selection manually by choosing variables/interactions that I thought could be meaningful and then eventually removing ones that were insignificant and didn't have as strong of a theoretical rationale for why they should be included in the model. Then, I included a backward stepwise model selection process by using the \`stepAIC()\` function in the MASS package---this allowed me to automate the process of selecting which variables should be included to optimize the model. With backwards steps, we start the stepwise process with all predictors and remove the least statistically significant one until we find the model with the lowest AIC (a measure of goodness of fit) value [\[12\]](https://www.zotero.org/google-docs/?LYOtuR). Both approaches led me to the same predictor variables of interest: log(max AQI), sqrt(mean PM from smoke), log(population density), and median income. 
 
 ```{r}
 #CREATING A MAP OF THE HOSPITALIZATION RATE
@@ -117,7 +117,7 @@ image_write(asthma_animation, "asthma_vars.gif")
 asthma_animation
 ```
 
-Through spatial visualization of the data, we can get an initial sense of how a couple of the model\'s explanatory variables correlate with the county level hospitalization rate. Southern California and the Central Valley appear to have higher mean AQI values and a higher hospitalization rate. Fine particulate matter from wildfires, meanwhile, appears to have an opposite effect with higher values in Northern California as well as the northern section of the Central Valley. Looking at the population density and median income maps, it is harder to see how they correlate with the hospitalization rate. Below, we examine how each predictor relates to the hospitalization rate in more detail.
+Through spatial visualization of the data, we can get an initial sense of how a couple of the model's explanatory variables correlate with the county level hospitalization rate. Southern California and the Central Valley appear to have higher mean AQI values and a higher hospitalization rate. Fine particulate matter from wildfires, meanwhile, appears to have an opposite effect with higher values in Northern California as well as the northern section of the Central Valley. Looking at the population density and median income maps, it is harder to see how they correlate with the hospitalization rate. Below, we examine how each predictor relates to the hospitalization rate in more detail.
 
 ```{r}
 asthma_mod <- lm(hosp_per_100k ~ log(max_aqi) + sqrt(mean_smokePM) + log(pop_density_sq_m) + median_income_in_thousands, data = hosp_full)
@@ -139,17 +139,17 @@ asthma_hosp_table
 
 Results from the model indicate that air quality (measured through AQI and particulate matter from smoke), population density, and median income are all statistically significant predictors of the hospitalization rate. 
 
-Before diving into each predictor variable, it\'s important to emphasize the difference between AQI measurements and PM 2.5. The AQI is typically calculated using hourly measurements of 5 pollutants: fine particles (PM 2.5 and PM 10), ground-level ozone, sulfur dioxide, nitrogen dioxide, and carbon monoxide. This means that smoke from wildfires, measured in PM 2.5, is one of the factors that impacts the AQI. By including smoke from wildfires as a separate variable, I am able to examine that separately. 
+Before diving into each predictor variable, it's important to emphasize the difference between AQI measurements and PM 2.5. The AQI is typically calculated using hourly measurements of 5 pollutants: fine particles (PM 2.5 and PM 10), ground-level ozone, sulfur dioxide, nitrogen dioxide, and carbon monoxide. This means that smoke from wildfires, measured in PM 2.5, is one of the factors that impacts the AQI. By including smoke from wildfires as a separate variable, I am able to examine that separately. 
 
 Starting with the air quality index, there is a positive trend between the log of the maximum AQI and the hospitalization rate ($p < 0.001$, $\beta = 11.037$) . Intuitively, this makes sense, as it seems more likely that severe asthma flare-ups could result from dangerous air quality values. 
 
 Previous studies have indicated that particular matter from wildfires can actually be more harmful for individuals with asthma than from other sources, so it was surprising that the square root of the PM 2.5 caused by wildfire smoke was negatively associated with the hospitalizations ($p = 0.002$, $\beta = -3.422$) [\[13\]](https://www.zotero.org/google-docs/?DfqCJz). One possible explanation for this result is that individuals with asthma were much less likely to go outside during times when wildfire smoke was particularly severe. Compared to the other measures of air quality, wildfire smoke is much more noticeable, so individuals with asthma who have the ability to avoid interacting with the smoke would likely choose to do so. 
 
-There was a positive trend between the log of the population density per square mile and the county level hospitalization rate ($p < 0.001$, $\beta = 4.293$). It makes sense that asthma may be worse in urban areas due to increased pollution, but this $\beta$ value is the slope for the population density while holding the other variables constant. It\'s possible that there are other factors, such as different forms of pollution, increased proximity to hospitals, or other demographic information that could be influencing the effect of population density. Median income, unsurprisingly, had a negative relationship with the hospitalization rate ($p < 0.001$, $\beta = -0.408$). Higher income individuals are more likely to be able to afford asthma prevention and likely have access to cleaner indoor air. 
+There was a positive trend between the log of the population density per square mile and the county level hospitalization rate ($p < 0.001$, $\beta = 4.293$). It makes sense that asthma may be worse in urban areas due to increased pollution, but this $\beta$ value is the slope for the population density while holding the other variables constant. It's possible that there are other factors, such as different forms of pollution, increased proximity to hospitals, or other demographic information that could be influencing the effect of population density. Median income, unsurprisingly, had a negative relationship with the hospitalization rate ($p < 0.001$, $\beta = -0.408$). Higher income individuals are more likely to be able to afford asthma prevention and likely have access to cleaner indoor air. 
 
-Overall, the model\'s predictive power is not too strong. With an R\^2 of 0.250, just 25% of variability in the per county hospitalization rate can be explained using the explanatory variables. To further test the model\'s predictive power, I used it to predict hospitalization rates for my existing data and then compared the predictions to the true observed hospitalization rates in the graph below. The graph demonstrates that the predictions trend in the right direction but vary a fair amount in their accuracy, especially for observations when the true hospitalization rate was above 60 people per 100,000.
+Overall, the model's predictive power is not too strong. With an $R^2$ of 0.250, just 25% of variability in the per county hospitalization rate can be explained using the explanatory variables. To further test the model's predictive power, I used it to predict hospitalization rates for my existing data and then compared the predictions to the true observed hospitalization rates in the graph below. The graph demonstrates that the predictions trend in the right direction but vary a fair amount in their accuracy, especially for observations when the true hospitalization rate was above 60 people per 100,000.
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 asthma_mod <- lm(hosp_per_100k ~ log(max_aqi) + sqrt(mean_smokePM) + log(pop_density_sq_m) + median_income_in_thousands, data = hosp_full) #the final model
 
 predictions <- augment(asthma_mod) #create predictions 
@@ -178,13 +178,17 @@ In order to further test the effect of wildfires on asthma, I performed a t-test
 
 The null hypothesis: There is no difference in the mean hospitalization rate between 2016 and 2018. 
 
-The alternative hypothesis: This is a difference in the mean hospitalization rate between 2016 and 2018. 
+-   $H_0:\mu_{hosp2016} - \mu_{hosp2018} = 0$
 
-My t-test concluded that there is not enough evidence to reject the null hypothesis (t = -0.18629, p = 0.8526). This indicates that, if there was a true difference in the mean hospitalization rate, we\'d expect to find a difference in means as extreme as ours 85% of the time. This aligns with the regression model conducted above, but does not align with previous research that smoke from wildfires increases cases of severe asthma [\[13\]](https://www.zotero.org/google-docs/?yYHvM8). 
+The alternative hypothesis: This is a difference in the mean hospitalization rate between 2016 and 2018.
+
+-   $H_A:\mu_{hosp2016} - \mu_{hosp2018} \neq 0$ 
+
+My t-test concluded that there is not enough evidence to reject the null hypothesis (t = -0.18629, p = 0.8526). This indicates that, if there was a true difference in the mean hospitalization rate, we'd expect to find a difference in means as extreme as ours 85% of the time. This aligns with the regression model conducted above, but does not align with previous research that smoke from wildfires increases cases of severe asthma [\[13\]](https://www.zotero.org/google-docs/?yYHvM8). 
 
 However, it is important to note that this result does not mean that the total acreage of wildfires burnt has no effect on asthma hospitalizations. It's possible that the location of the fire and other factors, such as wind patterns and population density near the fire, are affecting the result. Further research could look into the spatial relationship between fires and where asthma related hospitalizations occur.\
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 ## Hypothesis test that hospitalizations would be different (likely higher) in 2018 than in 2016 due to increased fire acreage burnt. 
 
 #2016: 669,534 burnt
@@ -206,7 +210,7 @@ fire_test_table <- tab_model(fire_test,
 fire_test_table
 ```
 
-```{r}
+```{r, warning=FALSE, message=FALSE}
 #Creating a beeswarm plot with boxplot overlay to show distribution of county level mean hospitalization rates for 2016 and 2018. 
 
 beeswarm_boxplot <- ggplot(data = hosp_2016_2018, mapping = aes(x = year, y = hosp_per_100k)) +
@@ -225,48 +229,48 @@ beeswarm_boxplot_t_test <- beeswarm_boxplot +
 beeswarm_boxplot_t_test
 ```
 
-## Conclusions 
+## Conclusions
 
 While this research is an important step in exploring the effect of air quality on hospitalizations from asthma in California counties, there are a number of limitations of this analysis that could be addressed in future research. 
 
 If possible, further analysis should explore the temporal relation between air quality and hospitalizations from asthma on a more granular scale. I was only able to obtain hospitalization data at an annual scale, which made it harder to see how shorter spikes in poor air quality affected asthma related hospitalizations, if at all. 
 
-It would also be worth exploring a similar analysis but at the census tract, rather than county level. Counties are sufficiently large that the air quality is likely not uniformly distributed throughout. Furthermore, focusing on census tracts could open up the possibility of exploring income in more detail. Our results indicated that higher income averages were associated with lower hospitalization rates from asthma. It\'s possible that this finding would be even more pronounced at the census tract, rather than county level. 
+It would also be worth exploring a similar analysis but at the census tract, rather than county level. Counties are sufficiently large that the air quality is likely not uniformly distributed throughout. Furthermore, focusing on census tracts could open up the possibility of exploring income in more detail. Our results indicated that higher income averages were associated with lower hospitalization rates from asthma. It's possible that this finding would be even more pronounced at the census tract, rather than county level. 
 
-This analysis also has important implications for environmental justice. As mentioned in the introduction, asthma is a disease that affects humans across the globe but more acutely in developing countries. Looking at the World Health Organization\'s data for the death rate per 100,000 due to asthma, Kiribati, New Guinea, and Lesotho have rates of 75.4, 47.6, and 45.3, respectively (compared to the US rate of 0.84) [\[15\]](https://www.zotero.org/google-docs/?D7gBTo). While much of this inequality can likely be attributed to a difference in access to medicine, it is worth exploring what other factors, including air pollution, could be causing such high rates of severe asthma in certain countries. Partnering with researchers in nations where asthma is particularly severe could help address the disparity in prevalence, hospitalization, and death rates across the globe. 
+This analysis also has important implications for environmental justice. As mentioned in the introduction, asthma is a disease that affects humans across the globe but more acutely in developing countries. Looking at the World Health Organization's data for the death rate per 100,000 due to asthma, Kiribati, New Guinea, and Lesotho have rates of 75.4, 47.6, and 45.3, respectively (compared to the US rate of 0.84) [\[15\]](https://www.zotero.org/google-docs/?D7gBTo). While much of this inequality can likely be attributed to a difference in access to medicine, it is worth exploring what other factors, including air pollution, could be causing such high rates of severe asthma in certain countries. Partnering with researchers in nations where asthma is particularly severe could help address the disparity in prevalence, hospitalization, and death rates across the globe. 
 
-To summarize, this research examines a number of factors that relate to hospitalizations from severe asthma. From this analysis, it\'s clear that clean air is pertinent to preventing severe asthma flare-ups. Given the potential severity of asthma and its prevalence in the US and across the globe, further research should examine this topic to better understand the primary factors that lead to the most severe cases of asthma.
+To summarize, this research examines a number of factors that relate to hospitalizations from severe asthma. From this analysis, it's clear that clean air is pertinent to preventing severe asthma flare-ups. Given the potential severity of asthma and its prevalence in the US and across the globe, further research should examine this topic to better understand the primary factors that lead to the most severe cases of asthma.
 
-### References 
+### References
 
-\[1\]	\"Asthma - Symptoms and causes,\" Mayo Clinic. https://www.mayoclinic.org/diseases-conditions/asthma/symptoms-causes/syc-20369653 (accessed Dec. 03, 2022).
+\[1\] "Asthma - Symptoms and causes," Mayo Clinic. https://www.mayoclinic.org/diseases-conditions/asthma/symptoms-causes/syc-20369653 (accessed Dec. 03, 2022).
 
-\[2\]	\"Asthma.\" https://www.who.int/news-room/fact-sheets/detail/asthma (accessed Dec. 02, 2022).
+\[2\] "Asthma." https://www.who.int/news-room/fact-sheets/detail/asthma (accessed Dec. 02, 2022).
 
-\[3\]	\"Most Recent National Asthma Data \| CDC,\" May 26, 2022. https://www.cdc.gov/asthma/most_recent_national_asthma_data.htm (accessed Dec. 02, 2022).
+\[3\] "Most Recent National Asthma Data \| CDC," May 26, 2022. https://www.cdc.gov/asthma/most_recent_national_asthma_data.htm (accessed Dec. 02, 2022).
 
-\[4\]	O. US EPA, \"The Links Between Air Pollution and Childhood Asthma,\" Oct. 22, 2018. https://www.epa.gov/sciencematters/links-between-air-pollution-and-childhood-asthma (accessed Dec. 04, 2022).
+\[4\] O. US EPA, "The Links Between Air Pollution and Childhood Asthma," Oct. 22, 2018. https://www.epa.gov/sciencematters/links-between-air-pollution-and-childhood-asthma (accessed Dec. 04, 2022).
 
-\[5\]	\"AirData website File Download page,\" United States Environmental Protection Agency. https://aqs.epa.gov/aqsweb/airdata/download_files.html (accessed Dec. 02, 2022).
+\[5\] "AirData website File Download page," United States Environmental Protection Agency. https://aqs.epa.gov/aqsweb/airdata/download_files.html (accessed Dec. 02, 2022).
 
-\[6\]	\"Asthma Prevalence - California Health and Human Services Open Data Portal,\" CHHS Open Data. https://data.chhs.ca.gov/dataset/asthma-prevalence (accessed Dec. 02, 2022).
+\[6\] "Asthma Prevalence - California Health and Human Services Open Data Portal," CHHS Open Data. https://data.chhs.ca.gov/dataset/asthma-prevalence (accessed Dec. 02, 2022).
 
-\[7\]	\"Asthma Hospitalization Rates by County - California Health and Human Services Open Data Portal,\" CHHS Open Data. https://data.chhs.ca.gov/dataset/asthma-hospitalization-rates-by-county (accessed Dec. 02, 2022).
+\[7\] "Asthma Hospitalization Rates by County - California Health and Human Services Open Data Portal," CHHS Open Data. https://data.chhs.ca.gov/dataset/asthma-hospitalization-rates-by-county (accessed Dec. 02, 2022).
 
-\[8\]	\"CA Geographic Boundaries - California Open Data,\" California Open Data Portal. https://data.ca.gov/dataset/ca-geographic-boundaries (accessed Dec. 02, 2022).
+\[8\] "CA Geographic Boundaries - California Open Data," California Open Data Portal. https://data.ca.gov/dataset/ca-geographic-boundaries (accessed Dec. 02, 2022).
 
-\[9\]	\"wildfire_smoke --- ECHO: Environmental Change and Human Outcomes Lab \| Stanford University,\" ECHO:  Environmental Change and Human Outcomes Lab    \|    Stanford University. https://www.stanfordecholab.com/wildfire_smoke (accessed Dec. 02, 2022).
+\[9\] "wildfire_smoke --- ECHO: Environmental Change and Human Outcomes Lab \| Stanford University," ECHO:  Environmental Change and Human Outcomes Lab    \|    Stanford University. https://www.stanfordecholab.com/wildfire_smoke (accessed Dec. 02, 2022).
 
-\[10\]	R. Whitcomb, J. M. Choi, and B. Guan, \"CORGIS Datasets Project,\" County Demographics CSV File. https://corgis-edu.github.io/corgis/csv/county_demographics/ (accessed Dec. 02, 2022).
+\[10\] R. Whitcomb, J. M. Choi, and B. Guan, "CORGIS Datasets Project," County Demographics CSV File. https://corgis-edu.github.io/corgis/csv/county_demographics/ (accessed Dec. 02, 2022).
 
-\[11\]	\"Data tidying.\" Accessed: Dec. 04, 2022. \[Online\]. Available: https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html
+\[11\] "Data tidying." Accessed: Dec. 04, 2022. \[Online\]. Available: https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html
 
-\[12\]	R. statistics for P. Science, \"Choose model variables by AIC in a stepwise algorithm with the MASS package in R,\" R Functions and Packages for Political Science Analysis, Oct. 22, 2020. https://rforpoliticalscience.com/2020/10/23/choose-model-variables-by-aic-in-a-stepwise-algorithm-with-the-mass-package-in-r/ (accessed Dec. 04, 2022).
+\[12\] R. statistics for P. Science, "Choose model variables by AIC in a stepwise algorithm with the MASS package in R," R Functions and Packages for Political Science Analysis, Oct. 22, 2020. https://rforpoliticalscience.com/2020/10/23/choose-model-variables-by-aic-in-a-stepwise-algorithm-with-the-mass-package-in-r/ (accessed Dec. 04, 2022).
 
-\[13\]	D. Kiser et al., \"Particulate matter and emergency visits for asthma: a time-series study of their association in the presence and absence of wildfire smoke in Reno, Nevada, 2013--2018,\" Environ. Health, vol. 19, no. 1, p. 92, Aug. 2020, doi: 10.1186/s12940-020-00646-2.
+\[13\] D. Kiser et al., "Particulate matter and emergency visits for asthma: a time-series study of their association in the presence and absence of wildfire smoke in Reno, Nevada, 2013--2018," Environ. Health, vol. 19, no. 1, p. 92, Aug. 2020, doi: 10.1186/s12940-020-00646-2.
 
-\[14\]	\"California Wildfires History & Statistics \| Frontline Wildfire Defense,\" Frontline, Sep. 30, 2020. https://www.frontlinewildfire.com/wildfire-news-and-resources/california-wildfires-history-statistics/ (accessed Dec. 04, 2022).
+\[14\] "California Wildfires History & Statistics \| Frontline Wildfire Defense," Frontline, Sep. 30, 2020. https://www.frontlinewildfire.com/wildfire-news-and-resources/california-wildfires-history-statistics/ (accessed Dec. 04, 2022).
 
-\[15\]	\"ASTHMA DEATH RATE BY COUNTRY,\" World Life Expectancy. https://www.worldlifeexpectancy.com/cause-of-death/asthma/by-country/ (accessed Dec. 05, 2022).
+\[15\] "ASTHMA DEATH RATE BY COUNTRY," World Life Expectancy. https://www.worldlifeexpectancy.com/cause-of-death/asthma/by-country/ (accessed Dec. 05, 2022).
 
 \
