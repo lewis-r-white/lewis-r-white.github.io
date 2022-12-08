@@ -9,7 +9,7 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
-      - href: posts.qmd
+      - href: Posts.qmd
         text: Blog Posts
 
 format:
