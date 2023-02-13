@@ -1,0 +1,30 @@
+---
+title: "Ethics of AI and Behavioral Nudging for the Environment"
+description: "A debate about how AI and nudge theory should or shouldn't be used to tackle environmental problems."
+author: 
+  - name: Lewis White, Elke Windschitl
+    url: https://lewis-r-white.github.io/
+    affiliation: Master of Environmental Data Science @ The Bren School of Environmental Science at UCSB
+date: 01-08-2023
+categories: [MEDS]
+citation:
+  url: https://lewis-r-white.github.io/posts/2023-01-08-ai-ethics-podcast/
+editor: visual
+format:
+  html:
+    toc: true
+image: ai-environment.jpg
+draft: false
+---
+
+In this podcast, Elke Windschitl and I discuss the ethics of using behavioral nudging tactics and artificial intelligence to help tackle climate issues. Positions were assigned at random. Elke argued in favor of using AI but against using nudging tactics while I argued the opposing positions.
+
+This podcast was created as a final project for *EDS 242: Ethics and Bias in Environmental Data Science,* an ethics course in UCSB's Master's of Environmental Data Science curriculum taught by Dena Montague.
+
+Intro music was created by [Bonfire Records](https://bonfirerecords.com/) and moderation was conducted by Jessica French.
+
+<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1411928449&color=%23ac7c60&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+
+</iframe>
+
+<div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/user-613180964" title="elkewind" target="_blank" style="color: #cccccc; text-decoration: none;">elkewind</a> · <a href="https://soundcloud.com/user-613180964/debating-nudging-and-ai-for-climate" title="Debating Nudging and AI for Climate" target="_blank" style="color: #cccccc; text-decoration: none;">Debating Nudging and AI for Climate</a></div>

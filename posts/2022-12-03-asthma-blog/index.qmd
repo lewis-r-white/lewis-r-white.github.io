@@ -168,7 +168,7 @@ prediction_plot <- ggplot(data = predictions, mapping = aes(x = .fitted, y = hos
   labs(x = "Predicted Hospitalizations (per 100k)",
        y = "True Hospitalizations (per 100k)",
        title = "Comparing our model predictions to the true value of hospitalizations",
-       subtitle = "The model trends in the right direction, but tends to over predict low hospitalization rates and underpredict low hospitalization rates. A perfect model would follow the line in red.") +
+       subtitle = "The model trends in the right direction, but tends to over predict low hospitalization rates \n and underpredict low hospitalization rates. A perfect model would follow the line in red.") +
   theme_classic()
 
 prediction_plot
@@ -273,7 +273,7 @@ To summarize, this research examines a number of factors that relate to hospital
 
 \[15\] "ASTHMA DEATH RATE BY COUNTRY," World Life Expectancy. https://www.worldlifeexpectancy.com/cause-of-death/asthma/by-country/ (accessed Dec. 05, 2022).
 
-### Supporting figures 
+### Supporting figures
 
 Github repository: <https://github.com/lewis-r-white/lewis-r-white.github.io>
 
