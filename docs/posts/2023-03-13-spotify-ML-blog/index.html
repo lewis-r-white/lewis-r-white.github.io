@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Lewis White">
+<meta name="dcterms.date" content="2022-12-03">
+<meta name="description" content="EVisualizing my Spotify data and creating a model to determine whether a song comes from my library or my friend Elke’s.">
+
+<title>lewis-r-white.github.io - Whose Song is it Anyway?</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">lewis-r-white.github.io</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">
+ <span class="menu-text">Bio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../Posts.html">
+ <span class="menu-text">Blog Posts</span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Whose Song is it Anyway?</h1>
+                  <div>
+        <div class="description">
+          EVisualizing my Spotify data and creating a model to determine whether a song comes from my library or my friend Elke’s.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">MEDS</div>
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">Machine Learning</div>
+              </div>
+                  </div>
+  </div>
+    
+  <div class="quarto-title-meta-author">
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      <a href="https://lewis-r-white.github.io/">Lewis White</a> 
+    </div>
+      <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              Master of Environmental Data Science @ The Bren School of Environmental Science at UCSB
+            </p>
+        </div>
+      </div>
+
+  <div class="quarto-title-meta">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 3, 2022</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><strong>Introduction:</strong></a></li>
+  <li><a href="#visualizing-spotify-data" id="toc-visualizing-spotify-data" class="nav-link" data-scroll-target="#visualizing-spotify-data"><strong>Visualizing Spotify Data</strong></a></li>
+  <li><a href="#statistical-tests-prelude-to-formal-classification" id="toc-statistical-tests-prelude-to-formal-classification" class="nav-link" data-scroll-target="#statistical-tests-prelude-to-formal-classification"><strong>Statistical Tests: Prelude to Formal Classification</strong></a></li>
+  <li><a href="#summarizing-the-classification-models" id="toc-summarizing-the-classification-models" class="nav-link" data-scroll-target="#summarizing-the-classification-models"><strong>Summarizing the classification models</strong></a></li>
+  <li><a href="#comparing-model-performance" id="toc-comparing-model-performance" class="nav-link" data-scroll-target="#comparing-model-performance"><strong>Comparing model performance</strong></a></li>
+  <li><a href="#final-thoughts" id="toc-final-thoughts" class="nav-link" data-scroll-target="#final-thoughts"><strong>Final thoughts</strong></a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction"><strong>Introduction:</strong></h2>
+<p>Have you ever wondered how your music taste compares to your friends’? Or perhaps you’re just curious about how your favorite songs and artists and genres stack up against your peers. As a music lover, I enjoy discussing these topics and was thrilled when an assignment for my machine learning course involved analyzing Spotify data. For the assignment, my friend Elke and I shared our library of liked songs on Spotify so we could visualize comparisons between our music tastes and then create a model to try and predict whose library a song is in.&nbsp;</p>
+<p>This blog post will have the following sections:</p>
+<ul>
+<li><p>Visualizing Spotify Data</p></li>
+<li><p>Statistical Tests: Prelude to Formal Classification</p></li>
+<li><p>Summarizing the classification models&nbsp;</p></li>
+<li><p>Comparing model performance&nbsp;</p></li>
+<li><p>Final thoughts&nbsp;</p></li>
+</ul>
+<p>Now, let’s dive into the fascinating world of music data analysis and discover whose song it is anyway!</p>
+</section>
+<section id="visualizing-spotify-data" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-spotify-data"><strong>Visualizing Spotify Data</strong></h2>
+<p>Before getting started with the modeling, I wanted to explore the patterns of our data visually. Looking at the variables I was able to pull in from the API, I found the following particularly interesting:</p>
+<ul>
+<li><p><strong>Accousticness (0–1):</strong> &nbsp;Whether the track primarily uses instruments that produce sound through acoustic means as opposed to electric or electronic means.</p></li>
+<li><p><strong>Danceability (0–1)</strong>: The ease with which someone can dance to a song based on a combination of musical elements like tempo, rhythm stability, beat strength, and overall regularity.</p></li>
+<li><p><strong>Energy (0–1):</strong> Represents a perceptual measure of intensity and activity. Song features that determine the energy score include dynamic range, perceived loudness, timbre, onset rate, and general entropy.</p></li>
+<li><p><strong>Speechiness (0–1):</strong> Speechiness detects the presence of spoken words in a track.</p></li>
+<li><p><strong>Valence (0–1):</strong> Describes whether a song’s vibe is positive or negative—tracks with high valence sound more positive (e.g.&nbsp;happy/cheerful), while tracks with low valence sound more negative (e.g.&nbsp;sad/angry).</p></li>
+</ul>
+<p>To explore which songs in my library have particularly high/low scores for the above metrics, I created an interactive table (and learned that my taste in music is fairly chaotic!).</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(DT)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># lewis_liked_tracks %&gt;%</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   select(track.name, primary_artist, danceability, acousticness, speechiness, energy, valence) %&gt;%</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   datatable()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>After exploring the songs in my library, I transitioned my focus to comparing my music to Elke’s.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># #Danceability comparison</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># dance_plot &lt;- ggplot(all_tracks, aes(x = danceability, fill = listener,</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#                     text = paste(listener))) +</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_density(alpha=0.6, color=NA) +</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   scale_fill_manual(values=c("#b0484f", "#4436d9"))+</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   labs(x="Danceability", y="Density") +</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   guides(fill=guide_legend(title="Listener"))+</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   theme_minimal() +</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#   ggtitle("Distribution of Danceability Data")</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># #speechiness comparison</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># speech_plot &lt;- ggplot(all_tracks, aes(x = speechiness, fill = listener,</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">#                     text = paste(listener))) +</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_density(alpha=0.6, color=NA) +</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">#   scale_fill_manual(values=c("#b0484f", "#4436d9"))+</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">#   labs(x="Speechiness", y="Density") +</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co">#   guides(fill=guide_legend(title="Listener"))+</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co">#   theme_minimal() +</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co">#   ggtitle("Distribution of Speechiness Data")</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co"># #acousticness comparison</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co"># acoustic_plot &lt;- ggplot(all_tracks, aes(x = acousticness, fill = listener,</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="co">#                     text = paste(listener))) +</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_density(alpha=0.6, color=NA) +</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="co">#   scale_fill_manual(values=c("#b0484f", "#4436d9"))+</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co">#   labs(x="Acousticness", y="Density") +</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co">#   guides(fill=guide_legend(title="Listener"))+</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co">#   theme_minimal() +</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="co">#   ggtitle("Distribution of Acousticness Data")</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="co"># #energy comparison </span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="co"># energy_plot &lt;- ggplot(all_tracks, aes(x = energy, fill = listener,</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="co">#                     text = paste(listener))) +</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_density(alpha=0.6, color=NA) +</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="co">#   scale_fill_manual(values=c("#b0484f", "#4436d9"))+</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="co">#   labs(x="Energy", y="Density") +</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="co">#   guides(fill=guide_legend(title="Listener"))+</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="co">#   theme_minimal() +</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="co">#   ggtitle("Distribution of Energy Data")</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="co"># ggarrange(dance_plot, speech_plot, acoustic_plot, energy_plot, ncol=2, nrow=2, common.legend = TRUE, legend="bottom")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>A few main takeaways:</p>
+<ul>
+<li><p>Both Elke and I tend to listen to fairly danceable music, but my library includes more songs that are rated as highly danceable.&nbsp;</p></li>
+<li><p>My library scored much higher in “speechiness” overall — I primarily listen to a mixture of rap and “sad girl” music, so I wasn’t surprised that my library contained more songs with spoken words than Elke’s.&nbsp;</p></li>
+<li><p>The energy in our songs is quite similar, but my library scored a little higher here.</p></li>
+<li><p>While both of our libraries spanned the full range of acousticness, Elke’s library had more highly acoustic songs while I had more that score very low on this metric.&nbsp;</p></li>
+</ul>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># #plotting valence and energy to get a sense for the moods of our liked songs </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(data = all_tracks, aes(x = valence, y = energy, color = listener)) +</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_point(alpha = 0.5) +</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_vline(xintercept = 0.5) +</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_hline(yintercept = 0.5) +</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   scale_x_continuous(expand = c(0, 0), limits = c(0, 1)) +</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   scale_y_continuous(expand = c(0, 0), limits = c(0, 1)) +</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   annotate('text', 0.25 / 2, 0.95, label = "Turbulent/Angry", fontface =</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#              "bold") +</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">#   annotate('text', 1.75 / 2, 0.95, label = "Happy/Joyful", fontface = "bold") +</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#   annotate('text', 1.75 / 2, 0.05, label = "Chill/Peaceful", fontface =</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">#              "bold") +</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">#   annotate('text', 0.25 / 2, 0.05, label = "Sad/Depressing", fontface =</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">#              "bold") +</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">#   theme_minimal() +</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">#   labs(x = "Valence", </span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">#        y = "Energy",</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">#        title = "Plotting songs based on their positivity and energy level",</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">#        subtitle = "Elke and I don't have many songs in the Chill/Peaceful quadrant.")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>This above visualization compares the energy and valence of songs. To interpret the plot, it’s important to think about how energy and valence interact.&nbsp;</p>
+<ul>
+<li><p>Low Energy + Low Valence =&nbsp; Sad / Depressing</p></li>
+<li><p>Low Energy + High Valence = Chill / Peaceful</p></li>
+<li><p>High Energy + High Valence = Happy / Upbeat</p></li>
+<li><p>High Energy + Low Valence = Turbulent / Angry&nbsp;&nbsp;</p></li>
+</ul>
+<p>Based on the plot, it looks like neither Elke nor I listen to much chill/peaceful music (which I found somewhat ironic as my most popular playlist on spotify is called “chill”). Aside from this, our music seems to span the graph fairly evenly, although we both listen to music that tends to be a little higher energy.&nbsp;</p>
+<p>To see which songs represent the various points on this graph, check out an interactive version of the plot below.</p>
+</section>
+<section id="statistical-tests-prelude-to-formal-classification" class="level2">
+<h2 class="anchored" data-anchor-id="statistical-tests-prelude-to-formal-classification"><strong>Statistical Tests: Prelude to Formal Classification</strong></h2>
+<p>To get an initial sense for whether my classification algorithms might be successful, I decided to run a few t-tests on my variables of interest to see whether my library is different from Elke’s on a statistical level. As can be seen from the tables below, all results were significant at the 0.001 alpha level, suggesting that prediction should be at least somewhat successful.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(sjPlot)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># dance_test_table &lt;- tab_model(t.test(lewis_liked_tracks$danceability, elke_liked_tracks$danceability, var.equal = FALSE),</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#           string.ci = c("Conf. Int (95%)"),</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#           string.p = "P-value",</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#           dv.labels = c("Danceability Score"),</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#           pred.labels = "Lewis – Elke",</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#           title = "Table 1: Comparing Danceability Scores: Welch Two Sample t-test")</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># dance_test_table</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># speech_test_table &lt;- tab_model(t.test(lewis_liked_tracks$speechiness, elke_liked_tracks$speechiness, var.equal = FALSE),</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">#           string.ci = c("Conf. Int (95%)"),</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">#           string.p = "P-value",</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">#           dv.labels = c("Speechiness Score"),</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">#           pred.labels = "Lewis – Elke",</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">#           title = "Table 2: Comparing Speechiness Scores: Welch Two Sample t-test")</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># speech_test_table</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co"># acoustic_test_table &lt;- tab_model(t.test(lewis_liked_tracks$acousticness, elke_liked_tracks$acousticness, var.equal = FALSE),</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co">#           string.ci = c("Conf. Int (95%)"),</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="co">#           string.p = "P-value",</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="co">#           dv.labels = c("Acousticness Score"),</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co">#           pred.labels = "Lewis – Elke",</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="co">#           title = "Table 2: Comparing Acousticness Scores: Welch Two Sample t-test")</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="co"># acoustic_test_table</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="co"># energy_test_table &lt;- tab_model(t.test(lewis_liked_tracks$energy, elke_liked_tracks$energy, var.equal = FALSE),</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="co">#           string.ci = c("Conf. Int (95%)"),</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="co">#           string.p = "P-value",</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="co">#           dv.labels = c("Energy Score"),</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="co">#           pred.labels = "Lewis – Elke",</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="co">#           title = "Table 2: Comparing Energy Scores: Welch Two Sample t-test")</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="co"># energy_test_table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="summarizing-the-classification-models" class="level2">
+<h2 class="anchored" data-anchor-id="summarizing-the-classification-models"><strong>Summarizing the classification models</strong></h2>
+<p>For this assignment, we were asked to try a number of different classification methods and compare their results. Here, I used the following methods:</p>
+<p><strong>K-Nearest Neighbors (KNN)</strong></p>
+<ul>
+<li>Each observation is predicted based on its ‘similarity’ to other observations. In summary, the algorithm identifies K observations that are “similar” (by some distance metric, often Euclidean or Manhattan) to the new observation being predicted and then uses the average response value (regression) or the most common class (classification) of those K observations as the predicted output.</li>
+</ul>
+<p><strong>Decision Tree</strong></p>
+<ul>
+<li>A decision support tool that uses a tree-like model of decisions and their possible consequences. Decision trees comprised three main parts: decision nodes (indicating a split), chance nodes (denoting probability), and end nodes (displaying outcomes). Nodes formed recursively using binary partitions by asking simple yes-or-no questions about each feature (e.g.&nbsp;is “acousticness” &lt; 0.4).</li>
+</ul>
+<p><strong>Bagged Decision Trees (Bagging)</strong></p>
+<ul>
+<li>Bootstrap aggregating (bagging) prediction models is a general method for fitting multiple versions of a prediction model (such as decision trees) and then combining them into an aggregated prediction. This helps prevent overfitting and reduces the variability in the model; however, when there are dominant predictors, many of the decision trees end up looking very similar (i.e.&nbsp;are highly correlated), which reduces the impact of bagging.&nbsp;</li>
+</ul>
+<p><strong>Random Forests</strong></p>
+<ul>
+<li>Random forests are a modification of bagged decision trees that build a large collection of de-correlated trees to further improve predictive performance. The trees are decorrelated by adding random selection to which predictors are included in individual trees.&nbsp;</li>
+</ul>
+</section>
+<section id="comparing-model-performance" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-model-performance"><strong>Comparing model performance</strong></h2>
+<p>When analyzing the performance of a classification model, it’s important to take class imbalance into consideration. On this occasion, 68% of the songs used in the model belong to my Spotify library, so a model that simply predicts “Lewis” as the listener will be correct roughly 68% of the time. Thus, for a model to be deemed at all successful, it would need to obtain an accuracy score above 68%.&nbsp;</p>
+<p>Along with accuracy, the area under the ROC curve (receiver operating characteristic curve) is commonly used to measure the performance of a classification model. The curve plots the true positive rate on the y axis and the false positive rate on the x axis, and shows the performance of the model at all classification thresholds. A high performing model will have an ROC AUC (area under the curve) score close to 1, indicating that the model is able to detect true positive results while keeping the false positive rate low.&nbsp;</p>
+<p>The below table and chart demonstrates how well the various models I used performed in terms of accuracy and ROC AUC scores.&nbsp;</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># #cleaning model metrics to create a table with each model's performance metrics </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># forest_results_table &lt;- final_forest_fit %&gt;% collect_metrics() %&gt;%</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   select(.metric, .estimate) %&gt;%</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   mutate(method = "Random Forest")</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># bagging_results_table &lt;- final_bag_fit %&gt;% collect_metrics() %&gt;%</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   select(.metric, .estimate) %&gt;%</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#   mutate(method = "Bagging")</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># decision_tree_results_table &lt;- final_tree_fit %&gt;% collect_metrics() %&gt;%</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">#   select(.metric, .estimate) %&gt;%</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">#   mutate(method = "Decision Tree")</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># knn_results_table &lt;- final_fit %&gt;% collect_metrics() %&gt;%</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co">#   select(.metric, .estimate) %&gt;%</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co">#   mutate(method = "KNN")</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co"># majority_class_results_table &lt;- data.frame (.metric  = c("accuracy", "roc_auc"),</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co">#                   .estimate = c(nrow(lewis_liked_tracks) / (nrow(lewis_liked_tracks) + nrow(elke_liked_tracks)), .5),</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co">#                   method = c("Dummy Classifier", "Dummy Classifier")</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co">#                   )</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co"># full_results &lt;- bind_rows(majority_class_results_table,</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co">#                           knn_results_table, </span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="co">#                           decision_tree_results_table,</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="co">#                           bagging_results_table,</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="co">#                           forest_results_table) %&gt;%</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="co">#   select(method, .estimate, .metric)</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="co"># #table of results </span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="co"># full_results %&gt;%</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="co">#   kbl(caption = "Table 5. Classification Methods and their Respective Accuracies") %&gt;%</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="co">#   kable_classic(full_width = T, html_font = "Cambria")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># #accuracy plot</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(data = full_results, aes(x = method, y = .estimate, fill = .metric)) +</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_bar(stat='identity', position='dodge') + </span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   theme_minimal() +</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   scale_fill_manual(values=c("#9fd182", "#7798c9")) +</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   labs(y = "Accuracy Estimate",</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#        x = "Classification Method",</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#        fill = "Accuracy Metric", </span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#        title = "Random Forest Classification Performed the Best Across Both Accuracy Metrics")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Thankfully, all of my machine learning models performed better than a dummy classifier (one that always predicts that a song is from my library).</p>
+<p>Across both performance metrics, the simple decision tree performed the worst out of the models. I believe this is likely due to the class imbalance in the data. Decision trees are “greedy” learners, which means that they don’t think ahead when deciding how to split at any given node.&nbsp; When one class has low representation, observations can get lost in the majority class nodes and the prediction of the minority class will be even less likely than it should. Essentially, nodes for this decision tree were more likely to contain my songs because my music library is twice as large. For instances where Elke and I listen to similar music, the fact that I have more songs could influence the prediction of the model.</p>
+<p>K-nearest neighbors is also sensitive to class imbalances, as predictions are based solely on the number of similar observations; however, my KNN model outperformed the decision tree model quite substantially with a higher accuracy and much higher ROC AUC.&nbsp;</p>
+<p>The two ensemble algorithms, bagged decision trees and random forests, performed best on my test data. Random forests outperformed bagging across both accuracy and ROC AUC, making it the best performing model. Due to the class imbalance, it’s likely that many decision trees in the bagging ensemble were highly correlated, so utilizing the random forest approach to decorrelate each individual tree likely helped improve the model efficiency.&nbsp;</p>
+<p>While all of the models performed better than a dummy classifier, none were truly exceptional in distinguishing Elke’s liked tracks from mine. When looking at the predictions for each model, I was able to see the percent confidence rate for each prediction—it looked like the models were highly confident when predicting some songs (mainly rap, hip-hop and R&amp;B) from my library, but were much less confident when predicting the alternative/indie music that both Elke and I enjoy.</p>
+</section>
+<section id="final-thoughts" class="level2">
+<h2 class="anchored" data-anchor-id="final-thoughts"><strong>Final thoughts</strong></h2>
+<p>Overall, this project was a great opportunity to explore the world of music data analysis and machine learning. It was cool to see the patterns in our music libraries and to compare our tastes on a statistical level. While the results of our classification models were not perfect, they were still quite accurate, and they suggest that there are meaningful differences in the types of songs that Elke and I tend to listen to.</p>
+<p>If you’re interested in conducting a similar analysis in R, I highly recommend checking out <a href="https://github.com/lewis-r-white/Machine-Learning">my github repository</a> for <a href="https://github.com/lewis-r-white/Machine-Learning/blob/main/lab_5.Rmd">this assignment</a>, exploring the Spotify API, and experimenting with the various features and methods available. It’s a great way to gain insight into your own music tastes and to see how they compare to those of your friends and peers.</p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{white2022,
+  author = {Lewis White},
+  title = {Whose {Song} Is It {Anyway?}},
+  date = {2022-12-03},
+  url = {https://lewis-r-white.github.io/posts/2023-03-13-spotify-ML-blog/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-white2022" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
+Lewis White. 2022. <span>“Whose Song Is It Anyway?”</span> December 3,
+2022. <a href="https://lewis-r-white.github.io/posts/2023-03-13-spotify-ML-blog/">https://lewis-r-white.github.io/posts/2023-03-13-spotify-ML-blog/</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
