@@ -400,6 +400,27 @@ Based on the plot, it looks like neither Elke nor I listen to much chill/peacefu
 
 To see which songs represent the various points on this graph, check out an interactive version of the plot below.
 
+```{r}
+## this plotly allows you to hover over points to see the track and the corresponding artist
+plot_ly(data = all_tracks,
+        x = ~valence, 
+        y = ~energy, 
+        color = ~listener, 
+        colors = c("#D1999C", "#9C8CEC"),
+        type = "scatter", 
+        mode = "markers",
+        text = paste("Track Name:", all_tracks$track.name, "<br>",
+                     "Primary Artist:", all_tracks$primary_artist, "<br>",
+                     "Valence:", all_tracks$valence, "<br>", 
+                     "Energy:", all_tracks$energy, "<br>",
+                     "Listener:", all_tracks$listener)) %>%
+  layout(xaxis = list(title = "Valence"),
+         yaxis = list(title = "Energy"),
+         hovermode = "closest",
+         title = "Track Valence vs Energy")
+```
+
+
 ## **Statistical Tests: Prelude to Formal Classification**
 
 To get an initial sense for whether my classification algorithms might be successful, I decided to run a few t-tests on my variables of interest to see whether my library is different from Elke's on a statistical level. As can be seen from the tables below, all results were significant at the 0.001 alpha level, suggesting that prediction should be at least somewhat successful.
