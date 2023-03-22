@@ -5,7 +5,7 @@ author:
   - name: Lewis White
     url: https://lewis-r-white.github.io/
     affiliation: Master of Environmental Data Science @ The Bren School of Environmental Science at UCSB
-date: 12-03-2022
+date: 03-12-2022
 categories: [MEDS, R, Machine Learning]
 citation:
   url: https://lewis-r-white.github.io/posts/2023-03-13-spotify-ML-blog/
@@ -17,12 +17,251 @@ format:
     code-fold: true
 ---
 
-```{r, include=FALSE}
-#source my spotify token
-source("/Users/lewiswhite/MEDS/lewis-r-white.github.io/posts/2023-03-13-spotify-ML-blog/token.R")
+```{r label = "Spotify Token", include=FALSE}
+library(dplyr)
 
-#source my lab
-source("/Users/lewiswhite/MEDS/eds-232-ML/Machine-Learning/spotify_script.R")
+source("/Users/lewiswhite/MEDS/lewis-r-white.github.io/Spotify_token.R")
+```
+
+```{r label = "Load Packages", include=FALSE}
+library(spotifyr) #API interaction
+library(tidyverse) #cleaning data, ggplot, etc 
+library(tidymodels) #for modeling/statistical analysis
+library(rsample) #for splitting data into train / test
+library(recipes) #for creating the recipe for ML
+library(kknn) #for KNN modeling
+library(plotly) #for data viz
+library(ggpubr) #for data viz
+library(here) #for simplifying file path navigation
+library(baguette) #for bagging decision trees
+library(ranger) # engine for random forests
+library(kableExtra) #for creating a formatted table
+library(DT)
+```
+
+```{r label = "Load Data", include=FALSE}
+# reading in Elke's liked tracks. Add a column to make it clear which tracks are Elke's  
+elke_liked_tracks <- read_csv("/Users/lewiswhite/MEDS/eds-232-ML/Machine-Learning/elke_liked_tracks.csv") %>%
+  mutate(listener = "Elke")
+
+#add a column named "listener" to make it clear that these are my tracks 
+lewis_liked_tracks <- read_csv("/Users/lewiswhite/MEDS/eds-232-ML/Machine-Learning/lewis_liked_tracks.csv") %>%
+  mutate(listener = "Lewis")
+
+# Combine all of our liked tracks into one data frame 
+all_tracks <- rbind(lewis_liked_tracks, elke_liked_tracks) %>%
+  select(-(type:analysis_url))
+```
+
+```{r label = "ML Set Up", include=FALSE}
+#prepare all_tracks for modeling by removing songs with duplicate values (tough to predict if both Elke and I liked a song), making nominal data a factor, and removing variables that don't make sense to include in the model
+all_tracks_modeling <- all_tracks[!duplicated(all_tracks$track.name, fromLast = TRUE) & !duplicated(all_tracks$track.name), ] %>%  
+  mutate_if(is.ordered, .funs = factor, ordered = F) %>%
+  select(-track.name, -primary_artist) %>%
+  mutate(listener = as.factor(listener))
+
+#splitting the data
+set.seed(123)
+#initial split of data ~ we're going with 70/30 because the sample size isn't super large for testing
+tracks_split <- initial_split(all_tracks_modeling, prop = .7)
+tracks_train <- training(tracks_split)
+tracks_test <- testing(tracks_split)
+
+#pre-processing
+# We need to create a recipe and do the pre-processing by converting dummy coding the nominal variables and normalizing the numeric variables.
+tracks_recipe <- recipe(listener ~ ., data = tracks_train) %>%
+  #step_dummy(all_nominal(), -all_outcomes(), one_hot = TRUE) %>%
+  step_normalize(all_numeric(), -all_outcomes()) %>% #normalize numeric to make sure scale is okay
+  prep()
+```
+
+```{r label = "KNN", include=FALSE}
+# Define our KNN model with tuning
+knn_spec_tune <- nearest_neighbor(neighbor = tune()) %>%
+  set_mode("classification") %>%
+  set_engine("kknn")
+
+# Define a new workflow
+wf_knn_tune <- workflow() %>%
+  add_model(knn_spec_tune) %>%
+  add_recipe(tracks_recipe)
+
+# 10-fold CV on the training dataset
+set.seed(123)
+cv_folds <- tracks_train %>%
+  vfold_cv(v = 10)
+
+# Fit the workflow on our predefined folds and hyperparameters
+fit_knn_cv <- wf_knn_tune %>%
+  tune_grid(
+    cv_folds, 
+    grid = data.frame(neighbors = c(1, 5, seq(10, 150, 10))) # try with 1 nearest neighbor, try with 5, 10, 20, 30, ..., 100
+  )
+
+final_wf <-
+  wf_knn_tune %>%
+  finalize_workflow(select_best(fit_knn_cv))
+
+# Fitting our final workflow
+final_fit <- final_wf %>%
+  fit(data = tracks_train)
+
+#generating predictions using the model on the test data
+tracks_pred <- final_fit %>% predict(new_data = tracks_test)
+
+
+# Write over 'final_fit' with this last_fit() approach
+final_fit <- final_wf %>% last_fit(tracks_split)
+```
+
+```{r label = "Decision Tree", include=FALSE}
+#new spec, tell the model that we are tuning hyperparams
+tree_spec_tune <- decision_tree(
+  cost_complexity = tune(),   #tune() asks R to try a bunch of different parameters. 
+  tree_depth = tune(),
+  min_n = tune()) %>%
+  set_engine("rpart") %>%
+  set_mode("classification")
+
+#create a grid of options for tuning purposes so we can identify the optimal value of hyperparameters 
+
+tree_grid <- grid_regular(cost_complexity(), tree_depth(), min_n(), levels = 5) #grid_regular shows grid of different input tuning options while levels says how many combinations we should try. 
+
+wf_tree_tune <- workflow() %>%
+  add_recipe(tracks_recipe) %>%
+  add_model(tree_spec_tune)
+
+#when you add recipe into workflow, it automatically will prep and bake when necessary. 
+
+#workflow pulls together the specification. and then we can fit on the workflow. you could fit the wf_tree_tune 
+
+#set up k-fold cv. This can be used for all the algorithms. I switch to 5 fold CV instead of 10 (used in KNN above) for computation speed. 
+listener_cv <- tracks_train %>% vfold_cv(v=5) #creating 5 folds cross validation 
+
+doParallel::registerDoParallel() #build trees in parallel
+#200s
+
+#get the results of the tuning 
+tree_rs <- tune_grid(
+  wf_tree_tune,
+  listener ~ ., #function 
+  resamples = listener_cv, #resamples to use
+  grid = tree_grid, #grid to try
+  metrics = metric_set(accuracy) #how to assess which combinations are best 
+)
+
+
+#picking the best model for the final model
+final_tree <- finalize_model(tree_spec_tune, select_best(tree_rs))
+
+
+#Fit the model on the test data 
+final_tree_fit <- last_fit(final_tree, listener ~., tracks_split)
+```
+
+```{r label = "Bagging", include=FALSE}
+set.seed(123)
+bag_spec_tune <- bag_tree(cost_complexity = tune(),
+                          tree_depth = tune(),
+                          min_n = tune()) %>%
+  set_mode("classification") %>%
+  set_engine("rpart", times = 50) #50 trees in a bag
+
+#create tuning grid for hyperparamters 
+bag_grid <- grid_regular(cost_complexity(), tree_depth(), min_n(), levels = 5)
+
+#make workflow for bagging
+wf_bag_tune <- workflow() %>% 
+  add_recipe(tracks_recipe) %>%
+  add_model(bag_spec_tune)
+
+doParallel::registerDoParallel() #build trees in parallel
+#200s
+
+#find results of the tuning process 
+bag_rs <- tune_grid(
+  bag_spec_tune,
+  listener ~ ., #function 
+  resamples = listener_cv, #resamples to use
+  grid = bag_grid,
+  metrics = metric_set(accuracy)) #how to assess which combinations are best 
+  
+#picking the best model for the final model
+final_bag <- finalize_model(bag_spec_tune, select_best(bag_rs))
+
+#fitting the best model on the test data
+final_bag_fit <- last_fit(final_bag, listener ~., tracks_split)
+```
+
+```{r label = "Random Forests", include=FALSE}
+set.seed(123)
+
+#setting up the random forest specification
+forest_spec_tune <- 
+  rand_forest(min_n = tune(),
+              mtry = tune(),
+              trees =  140) %>% # 14 predictors * 10, as suggested by "Hands on Machine Learning in R" by Bradley Boehmke & Brandon Greenwell. Tuning this value led to an extremely long computation time.
+  set_engine("ranger") %>%
+  set_mode("classification")
+
+#create grid for tuning min_n and the mtry value
+forest_grid <- grid_regular(mtry(c(1,13)), min_n(), levels = 5)
+
+#create a workflow for the random forests
+wf_forest_tune <- workflow() %>% 
+  add_recipe(tracks_recipe) %>%
+  add_model(forest_spec_tune)
+
+doParallel::registerDoParallel() #build forest in parallel
+
+#get results of the tuning to try and find optimal model
+forest_rs <- tune_grid(
+  forest_spec_tune,
+  listener ~ ., 
+  resamples = listener_cv, #resamples to use
+  grid = forest_grid,
+  metrics = metric_set(accuracy) #how to assess which combinations are best 
+)
+
+
+#picking the best model for the final model
+final_forest <- finalize_model(forest_spec_tune, select_best(forest_rs))
+
+#fitting the optimal model on the test data
+final_forest_fit <- last_fit(final_forest, listener ~., tracks_split)
+```
+
+```{r label = "Comparing Models", include=FALSE}
+#cleaning model metrics to create a table with each model's performance metrics 
+
+forest_results_table <- final_forest_fit %>% collect_metrics() %>%
+  select(.metric, .estimate) %>%
+  mutate(method = "Random Forest")
+
+bagging_results_table <- final_bag_fit %>% collect_metrics() %>%
+  select(.metric, .estimate) %>%
+  mutate(method = "Bagging")
+
+decision_tree_results_table <- final_tree_fit %>% collect_metrics() %>%
+  select(.metric, .estimate) %>%
+  mutate(method = "Decision Tree")
+
+knn_results_table <- final_fit %>% collect_metrics() %>%
+  select(.metric, .estimate) %>%
+  mutate(method = "KNN")
+
+majority_class_results_table <- data.frame (.metric  = c("accuracy", "roc_auc"),
+                                            .estimate = c(nrow(lewis_liked_tracks) / (nrow(lewis_liked_tracks) + nrow(elke_liked_tracks)), .5),
+                                            method = c("Dummy Classifier", "Dummy Classifier")
+)
+
+full_results <- bind_rows(majority_class_results_table,
+                          knn_results_table, 
+                          decision_tree_results_table,
+                          bagging_results_table,
+                          forest_results_table) %>%
+  select(method, .estimate, .metric)
+
 ```
 
 ## **Introduction:**
@@ -63,7 +302,7 @@ To explore which songs in my library have particularly high/low scores for the a
 library(DT)
 
 lewis_liked_tracks %>%
-  select(track.name, primary_artist, danceability, acousticness, speechiness, energy, valence) %>%
+  dplyr::select(track.name, primary_artist, danceability, acousticness, speechiness, energy, valence) %>%
   datatable()
 ```
 
@@ -165,7 +404,7 @@ To see which songs represent the various points on this graph, check out an inte
 
 To get an initial sense for whether my classification algorithms might be successful, I decided to run a few t-tests on my variables of interest to see whether my library is different from Elke's on a statistical level. As can be seen from the tables below, all results were significant at the 0.001 alpha level, suggesting that prediction should be at least somewhat successful.
 
-```{r}
+```{r, message = FALSE, warning = FALSE}
 library(sjPlot)
 
 dance_test_table <- tab_model(t.test(lewis_liked_tracks$danceability, elke_liked_tracks$danceability, var.equal = FALSE),
@@ -239,19 +478,19 @@ The below table and chart demonstrates how well the various models I used perfor
 #cleaning model metrics to create a table with each model's performance metrics
 
 forest_results_table <- final_forest_fit %>% collect_metrics() %>%
-  select(.metric, .estimate) %>%
+  dplyr::select(.metric, .estimate) %>%
   mutate(method = "Random Forest")
 
 bagging_results_table <- final_bag_fit %>% collect_metrics() %>%
-  select(.metric, .estimate) %>%
+  dplyr::select(.metric, .estimate) %>%
   mutate(method = "Bagging")
 
 decision_tree_results_table <- final_tree_fit %>% collect_metrics() %>%
-  select(.metric, .estimate) %>%
+  dplyr::select(.metric, .estimate) %>%
   mutate(method = "Decision Tree")
 
 knn_results_table <- final_fit %>% collect_metrics() %>%
-  select(.metric, .estimate) %>%
+  dplyr::select(.metric, .estimate) %>%
   mutate(method = "KNN")
 
 majority_class_results_table <- data.frame (.metric  = c("accuracy", "roc_auc"),
@@ -264,7 +503,7 @@ full_results <- bind_rows(majority_class_results_table,
                           decision_tree_results_table,
                           bagging_results_table,
                           forest_results_table) %>%
-  select(method, .estimate, .metric)
+  dplyr::select(method, .estimate, .metric)
 
 #table of results
 full_results %>%
