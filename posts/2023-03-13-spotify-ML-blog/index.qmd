@@ -1,6 +1,6 @@
 ---
 title: "Whose Song is it Anyway?"
-description: "EVisualizing my Spotify data and creating a model to determine whether a song comes from my library or my friend Elke’s."
+description: "Visualizing my Spotify data and creating a model to determine whether a song comes from my library or my friend Elke’s."
 author: 
   - name: Lewis White
     url: https://lewis-r-white.github.io/
@@ -41,11 +41,11 @@ library(DT)
 
 ```{r label = "Load Data", include=FALSE}
 # reading in Elke's liked tracks. Add a column to make it clear which tracks are Elke's  
-elke_liked_tracks <- read_csv("/Users/lewiswhite/MEDS/eds-232-ML/Machine-Learning/elke_liked_tracks.csv") %>%
+elke_liked_tracks <- read_csv("/Users/lewiswhite/MEDS/eds-232-ML/Machine-Learning/data/elke_liked_tracks.csv") %>%
   mutate(listener = "Elke")
 
 #add a column named "listener" to make it clear that these are my tracks 
-lewis_liked_tracks <- read_csv("/Users/lewiswhite/MEDS/eds-232-ML/Machine-Learning/lewis_liked_tracks.csv") %>%
+lewis_liked_tracks <- read_csv("/Users/lewiswhite/MEDS/eds-232-ML/Machine-Learning/data/lewis_liked_tracks.csv") %>%
   mutate(listener = "Lewis")
 
 # Combine all of our liked tracks into one data frame 
@@ -419,7 +419,6 @@ plot_ly(data = all_tracks,
          hovermode = "closest",
          title = "Track Valence vs Energy")
 ```
-
 
 ## **Statistical Tests: Prelude to Formal Classification**
 
