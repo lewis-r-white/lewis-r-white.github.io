@@ -19,10 +19,12 @@ format:
 
 ```{r, include = FALSE}
 #source the asthma script
-source("/Users/lewiswhite/MEDS/eds_222/asthma_environment_project/R/asthma_script.R")
+source("/Users/lewiswhite/MEDS/fall_courses/eds_222/asthma_environment_project/R/asthma_script.R")
+```
 
-#source asthma spatial 
-source("/Users/lewiswhite/MEDS/eds_222/asthma_environment_project/R/asthma_spatial.R")
+```{r, include = FALSE}
+#source asthma spatial
+source("/Users/lewiswhite/MEDS/fall_courses/eds_222/asthma_environment_project/R/asthma_spatial.R")
 ```
 
 ## Introduction
