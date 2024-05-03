@@ -2,13 +2,13 @@
 title: "Bio"
 ---
 
-> Lewis is a recent graduate from the Bren School of Science & Management at UC Santa Barbara, where he received a Master\'s Degree in Environmental Data Science, following his undergraduate degree in Statistics and Psychology from Carleton College.
+> Lewis is a recent graduate from the Bren School of Science & Management at UC Santa Barbara, where he received a Master's Degree in Environmental Data Science, following his undergraduate degree in Statistics and Psychology from Carleton College.
 >
 > \
 > With a background in statistics and a strong desire to address the many problems that climate change is bringing to our world, Lewis is excited to utilize his expertise to develop innovative approaches for mitigating the impact of climate change on ecosystems and human populations.
 >
 > \
-> At Bren, Lewis completed a capstone project in which his team automated the process of constructing niche climate scenarios for wildfire modeling. Prior to starting his master\'s, Lewis worked in the UX space as a research advisor at dscout, a software company with a remote research platform. Through this work, he gained expertise in qualitative research techniques, providing valuable guidance to clients from innovative companies such as Nike, Microsoft, and Sonos.  Between his experience and education, Lewis is well-prepared for a role that may require a blend of quantitative and qualitative research techniques. 
+> At Bren, Lewis completed a capstone project in which his team automated the process of constructing niche climate scenarios for wildfire modeling. Prior to starting his master's, Lewis worked in the UX space as a research advisor at dscout, a software company with a remote research platform. Through this work, he gained expertise in qualitative research techniques, providing valuable guidance to clients from innovative companies such as Nike, Microsoft, and Sonos.  Between his experience and education, Lewis is well-prepared for a role that may require a blend of quantitative and qualitative research techniques. 
 >
 > \
 > Lewis hopes to use environmental modeling, machine learning, data visualization, and scientific communication to tackle aspects of the many complex problems that climate change is bringing to our world, and is particularly interested in the effect of climate change on human health.
