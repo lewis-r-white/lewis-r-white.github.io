@@ -603,7 +603,7 @@ rake4 <- calculate_survey_stats(rake4_design, "rake4")
 
 The effectiveness of each raking model was evaluated by comparing survey results against GSS census data for included variables. Highlighted cells indicate a difference of at least 5 % between the given cell value and the GSS-2021 value. Raking generally enhanced the alignment with GSS values, particularly for variables directly adjusted in the models. The table below outlines the performance metrics across different models.
 
-```{r label = "Make table of results", include=FALSE}
+```{r label = "Make table of results", warning=FALSE, message=FALSE}
 high_level_results <- left_join(GSS_stats, unweighted) %>%
   left_join(GL_FM) %>%
   left_join(rake1) %>%
