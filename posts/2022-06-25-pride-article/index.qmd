@@ -5,7 +5,7 @@ author:
   - name: Lewis White
     url: https://lewis-r-white.github.io/
     affiliation: dscout
-date: 05-01-2022
+date: 06-25-2022
 categories: [dscout, UX]
 citation:
   url: https://lewis-r-white.github.io/posts/2022-06-25-pride-article/
