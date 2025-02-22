@@ -5,7 +5,7 @@ author:
   - name: Lewis White
     url: https://lewis-r-white.github.io/
     affiliation: Master of Environmental Data Science @ The Bren School of Environmental Science at UCSB
-date: 03-12-2022
+date: 03-12-2023
 categories: [MEDS, R, Machine Learning]
 citation:
   url: https://lewis-r-white.github.io/posts/2023-03-13-spotify-ML-blog/

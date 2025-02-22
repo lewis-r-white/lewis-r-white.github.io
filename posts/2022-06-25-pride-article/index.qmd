@@ -1,0 +1,58 @@
+---
+title: "Behind the Scenes of Our LGBTQIA+ Pride Research"
+description: "An inside look at the methodology behind our qualitative research on LGBTQIA+ experiences with Pride—covering survey design, participant recruiting, thematic analysis, and key takeaways."
+author: 
+  - name: Lewis White
+    url: https://lewis-r-white.github.io/
+    affiliation: dscout
+date: 05-01-2022
+categories: [dscout, UX]
+citation:
+  url: https://lewis-r-white.github.io/posts/2022-06-25-pride-article/
+editor: visual
+image: pride.jpg
+draft: false 
+format:
+  html:
+    code-fold: true
+---
+
+### Introduction
+
+From March to June 2022, I had the privilege of working on a research project exploring the thoughts, experiences, and hopes of LGBTQIA+ individuals during Pride month and beyond. While our [marketing team’s blog post](https://dscout.com/people-nerds/pride-insights-lgbtqia-community) provides a wonderful overview of the findings, I wanted to share more about the research process we followed and my contributions. Here’s how we drafted our research plan, gathered and analyzed data, and ultimately translated those insights into a meaningful narrative.
+
+### Research Goals, Planning, and Survey Drafting
+
+Before launching any research project, it’s crucial to clarify our objectives and plan how best to meet them. In this stage, I collaborated with my team to define the project’s key objectives. We focused on understanding the wide range of perspectives from LGBTQIA+ participants about Pride—its current state, its meaning to them, and ways to extend support beyond June—to highlight barriers, intersectional perspectives, and actionable ways for the community and allies to stay engaged year-round.
+
+With our research objectives in mind, I drafted the initial set of questions for the unmoderated diary-style research study, then worked with my teammates to refine the surveys into their final version. I also helped ensure that each prompt was open-ended, inclusive, and aligned with our goal of capturing authentic participant stories.
+
+### Participant Recruiting
+
+Once our objectives were set and our surveys drafted, the next step was finding the right people willing to share their stories. Because we wanted a wide range of experiences, we crafted a screener and selected participants of diverse identities before launching our unmoderated diary study. To ensure we heard from a diverse set of voices, we aimed for participants from various regions, age groups, gender identities, and sexual orientations. We used a screener to recruit self-identified LGBTQIA+ individuals who felt comfortable sharing their experiences and did our best to ensure representation across different subgroups (trans, non-binary, BIPOC, disabled, etc.) to the extent possible. During this phase, I helped finalize the screener questions to ensure we captured the broadest spectrum of identities and perspectives.
+
+### Data Collection
+
+Once the participants were selected, we launched our study. The study was broken down into three main sections: identity and expression as a member of the community, how they celebrate Pride and view Pride as an event, and how they would like to see Pride evolve in the future, with each section including its own questionnaire. The research was exploratory so we mostly included open-ended questions and a video question in each section.
+
+Throughout data collection, I monitored participant engagement, sent deadline reminders, and offered suggestions to improve response quality as needed. This helped the study run smoothly and ensured we received thoughtful, in-depth responses.
+
+### Thematic Tagging and Identifying Representative Quotes
+
+After collecting responses—both text and video—we needed a way to organize and interpret our wealth of qualitative data into coherent themes. This phase involved breaking down each participant entry into representative categories (“tags”) and highlighting standout quotes. To accomplish this, we divided the analysis by section and employed a bottom-up thematic tagging approach, classifying responses to each question into individual themes. For example, for a video question asking respondents to describe what success would look and feel like regarding the future for LGBTQIA+ Americans, the themes “Accept/Normalize Queerness”, “Equal Rights/Opportunities”, and “More Representation” stood out as the most tagged themes.
+
+After each of us tagged our assigned sets of responses, we met to compare our results, refine our themes, and discuss what main takeaways should be included in the article. We then shared our findings with the wonderful Karen Eisenhauer from dscout’s marketing team, who wrote up the final piece shared on dscout’s blog.
+
+### My takeaways
+
+Completing this project gave me valuable insights into the research process as well as the LGBTQIA+ community’s experiences of Pride. Below are some notes that stuck with me:
+
+1.  Inclusive Research Design: Even small changes in question-wording can lead to richer, more genuine participant responses.
+2.  Team Collaboration: Iterating on questionnaires and tags with my teammates ensured we captured the full breadth of stories.
+3.  Ongoing Advocacy: While sharing these insights during Pride Month was wonderful, there’s a need for year-round conversation, visibility, and action.
+
+### References
+
+For the complete write-up of our findings, including powerful participant quotes and actionable ways to support the LGBTQIA+ community, check out the marketing team’s [blog post here](https://dscout.com/people-nerds/pride-insights-lgbtqia-community).
+
+Cover art taken from [OpenUp](https://openup.com/self-guided-care/blog/celebrating-pride-and-mental-well-being/).
