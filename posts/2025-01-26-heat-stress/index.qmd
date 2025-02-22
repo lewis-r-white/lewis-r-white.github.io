@@ -1,0 +1,18 @@
+---
+title: "Heat Stress"
+description: "Heat Stress Description"
+author: 
+  - name: Lewis White
+    url: https://lewis-r-white.github.io/
+    affiliation: dscout
+date: 05-01-2022
+categories: [dscout, R, UX]
+citation:
+  url: https://lewis-r-white.github.io/posts/2022-05-01-video-quality-dscout/
+editor: visual
+image: ux_video_selfie.jpg
+draft: false 
+format:
+  html:
+    code-fold: true
+---
