@@ -774,10 +774,8 @@ Battaglia, M. P., Hoaglin, D. C., & Frankel, M. R. (2009). Practical Considerati
 
 Brick, J. M., Montaquila, J., Roth, S., & Brick, J. M. (2003). IDENTIFYING PROBLEMS WITH RAKING ESTIMATORS.
 
-Calibrating Survey Data using Iterative Proportional Fitting (Raking). (n.d.).
-https://doi.org/10.1177/1536867X1401400104
+Calibrating Survey Data using Iterative Proportional Fitting (Raking). (n.d.). https://doi.org/10.1177/1536867X1401400104
 
 DeBell, M., & Krosnick, J. A. (n.d.). Computing Weights for American National Election Study Survey Data.
 
 Kennedy, A. M., Arnold Lau and Courtney. (2018, January 26). 1. How different weighting methods work. Pew Research Center. https://www.pewresearch.org/methods/2018/01/26/how-different-weighting-methods-work/
-

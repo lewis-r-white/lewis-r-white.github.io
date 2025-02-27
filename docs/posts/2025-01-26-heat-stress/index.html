@@ -1,0 +1,2042 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.553">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Lewis White">
+<meta name="dcterms.date" content="2025-01-26">
+<meta name="description" content="This analysis was included in a grant proposal that aims to further explore the impacts of temperature on mental health and test whether an intervention related to heat warning education could improve health outcomes.">
+
+<title>lewis-r-white.github.io - Preliminary Analysis of Heat’s Impact on Mental Health Among Pregnancy Cohort</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">lewis-r-white.github.io</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Bio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../Posts.html"> 
+<span class="menu-text">Blog Posts</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resume.pdf"> 
+<span class="menu-text">Resume</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Preliminary Analysis of Heat’s Impact on Mental Health Among Pregnancy Cohort</h1>
+                  <div>
+        <div class="description">
+          This analysis was included in a grant proposal that aims to further explore the impacts of temperature on mental health and test whether an intervention related to heat warning education could improve health outcomes.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Columbia University</div>
+                <div class="quarto-category">Stats</div>
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">Health</div>
+              </div>
+                  </div>
+  </div>
+    
+  <div class="quarto-title-meta-author">
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author"><a href="https://lewis-r-white.github.io/">Lewis White</a> </p>
+    </div>
+    <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              Columbia University
+            </p>
+        </div>
+    </div>
+
+  <div class="quarto-title-meta">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 26, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a></li>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives"><strong>Objectives</strong></a></li>
+  <li><a href="#data-used-in-analysis" id="toc-data-used-in-analysis" class="nav-link" data-scroll-target="#data-used-in-analysis"><strong>Data Used In Analysis</strong></a>
+  <ul class="collapse">
+  <li><a href="#pregnancy-cohort-data" id="toc-pregnancy-cohort-data" class="nav-link" data-scroll-target="#pregnancy-cohort-data">Pregnancy Cohort Data</a></li>
+  <li><a href="#temperature-data" id="toc-temperature-data" class="nav-link" data-scroll-target="#temperature-data">Temperature Data</a></li>
+  </ul></li>
+  <li><a href="#methods-of-analysis" id="toc-methods-of-analysis" class="nav-link" data-scroll-target="#methods-of-analysis">Methods of Analysis</a></li>
+  <li><a href="#exploring-the-relationship-between-temperature-and-perceived-stress-pss" id="toc-exploring-the-relationship-between-temperature-and-perceived-stress-pss" class="nav-link" data-scroll-target="#exploring-the-relationship-between-temperature-and-perceived-stress-pss">Exploring the relationship between temperature and perceived stress (PSS)</a>
+  <ul class="collapse">
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  </ul></li>
+  <li><a href="#exploring-the-relationship-between-temperature-and-sum-nds-category" id="toc-exploring-the-relationship-between-temperature-and-sum-nds-category" class="nav-link" data-scroll-target="#exploring-the-relationship-between-temperature-and-sum-nds-category">Exploring the relationship between temperature and sum NDS category</a></li>
+  <li><a href="#exploring-the-relationship-between-temperature-and-sleep-quantity" id="toc-exploring-the-relationship-between-temperature-and-sleep-quantity" class="nav-link" data-scroll-target="#exploring-the-relationship-between-temperature-and-sleep-quantity">Exploring the relationship between temperature and sleep quantity</a></li>
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways</a></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next Steps</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#appendix" id="toc-appendix" class="nav-link" data-scroll-target="#appendix">Appendix</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<p>Pregnancy and the postpartum period can be an especially challenging time for women’s mental health—no matter where they live or what their circumstances are. In the U.S., around 13% of women experience perinatal depression [1]. However, in many lower-income settings, these numbers are much higher. In Ghana, for instance, perinatal depression has been reported in up to 50% of pregnancies, with 13–17% of women experiencing suicidal thoughts [2].</p>
+<p>Rural areas, where healthcare services are often harder to access, seem to face the highest risks. Compounding the issue, Ghana (like much of sub-Saharan Africa) doesn’t have a routine screening protocol for perinatal depression and anxiety, leaving many cases undetected and untreated [3].</p>
+<p>Meanwhile, research in climate and health has increasingly shown that extreme temperatures can impact mental health [4]. Evidence suggests that heat exposure may trigger inflammation in the hypothalamic-pituitary-adrenal (HPA) axis—which plays a key role in managing the body’s response to stress—and that activation contributes to anxiety [5].</p>
+</section>
+<section id="objectives" class="level2">
+<h2 class="anchored" data-anchor-id="objectives"><strong>Objectives</strong></h2>
+<p>The analysis described below was originally prepared for a grant proposal aiming to build on existing research that links heat exposure to mental health challenges. If this grant is funded, the project will investigate the causal impact of high temperatures on maternal mental health in Ghana, explore the underlying mechanisms (e.g.&nbsp;physiological or social), and pilot a heat warning system to assess whether targeted interventions can mitigate these risks.</p>
+<p>As a starting point, I used data from an ongoing pregnancy cohort in rural Ghana to highlight existing associations between heat and mental health in our target population. My preliminary analysis emphasizes the need for further research in this area and sets the stage for a larger-scale project should the proposal move forward.</p>
+</section>
+<section id="data-used-in-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="data-used-in-analysis"><strong>Data Used In Analysis</strong></h2>
+<section id="pregnancy-cohort-data" class="level3">
+<h3 class="anchored" data-anchor-id="pregnancy-cohort-data">Pregnancy Cohort Data</h3>
+<p>For this analysis, I used data from the Ghana Randomized Air Pollution and Health Study (GRAPHS)—a pregnancy cohort from rural, agrarian communities that began recruitment in 2014 and includes years of follow-up data collection. Among its many measures, GRAPHS includes mental health assessments, as well as possible biological and social mechanisms contributing to mental health, such as sleep, comorbid diseases, and various health and demographic data.</p>
+<p>Of these measures, 3 stood out to my team as particularly well-suited for the grant proposal:</p>
+<ol type="1">
+<li><p><strong>Perceived Stress Scale (PSS)<br>
+</strong>A holistic, self-reported measure of how much control individuals feel they have over their lives. In the GRAPHS cohort, this survey consists of four questions about the frequency of certain feelings or situations, and a total score is calculated based on the responses.</p></li>
+<li><p><strong>Sum Negative Domain Score (NDS)<br>
+</strong>A measure centered on specific, stress-inducing life events (e.g., financial troubles, medical issues, etc.). Respondents self-reported which events they experienced and rated them as positive, negative, or neutral. Negative events were then summed across domains—financial, medical, and so on—to create the NDS. This approach allowed us to categorize pregnant women into three groups: low stress (NDS = 0–1), moderate stress (NDS = 3–5), and high stress (NDS &gt; 5).</p></li>
+<li><p><strong>Actigraphy for Sleep<br>
+</strong>Objective sleep measurements were collected from participants wearing watch-like devices (actigraphs) to estimate rest/activity cycles. Data were gathered from 156 participants during both single-night and multi-night recordings at two follow-up periods (4 and 8 years postpartum).</p></li>
+</ol>
+<p>We decided to focus on all three measures to gain a well-rounded perspective on maternal stress—looking at how women feel in general, what real-life stressors they face, and how well they’re sleeping. By combining these different angles, we can be more confident in our overall findings.</p>
+</section>
+<section id="temperature-data" class="level3">
+<h3 class="anchored" data-anchor-id="temperature-data">Temperature Data</h3>
+<p>I initially looked at four different heat metrics—Sea Surface Temperature, Heat Index, Wet Bulb Temperature, and Wet Bulb Globe Temperature (WBGT). I ultimately chose WBGT because it’s well-known for capturing not just temperature, but also humidity, wind speed, and solar radiation. Military agencies, OSHA, and other groups rely on WBGT for guidelines on safe activity levels.</p>
+<p>Since the grant zeroes in on high-heat events, I used daily maximum WBGT (derived from hourly readings) as the key measurement for this analysis.</p>
+</section>
+</section>
+<section id="methods-of-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="methods-of-analysis">Methods of Analysis</h2>
+<p>For this preliminary analysis, I used a few different modeling approaches—distributed lag models (DLMs) and two types of regression—to explore how temperature exposure over time may impact mental health outcomes.</p>
+<ul>
+<li><p><strong>Distributed Lag Models (DLMs):</strong> DLMs provide a flexible way to assess how temperature exposure at different points in time might influence stress levels. Instead of focusing on a single time window (e.g., just the day before the survey), DLMs capture both delayed and cumulative effects over the full 270-day pregnancy period. I started with this approach to get a clearer picture of how far back high temperatures might impact later mental health outcomes.<br>
+<br>
+The sections below focus on the regression results, but for those interested, I’ve included the full DLM results and interpretations in the appendix.</p></li>
+<li><p><strong>Linear Regression:</strong> Linear regression examines the relationship between a continuous predictor (like average WBGT) and a continuous outcome (such as the PSS-4 score). Based on initial results from the DLM, I looked at whether higher average WBGT in each trimester—or over the entire pregnancy—was linked to changes in stress levels or total sleep duration.</p></li>
+<li><p><strong>Ordered Logistic Regression:</strong> Since the sample was divided into ordered stress categories (low, moderate, and high) based on the NDS score, ordered logistic regression helps estimate the odds of being in a higher stress category given temperature exposure.</p></li>
+</ul>
+</section>
+<section id="exploring-the-relationship-between-temperature-and-perceived-stress-pss" class="level2">
+<h2 class="anchored" data-anchor-id="exploring-the-relationship-between-temperature-and-perceived-stress-pss">Exploring the relationship between temperature and perceived stress (PSS)</h2>
+<section id="linear-regression" class="level4">
+<h4 class="anchored" data-anchor-id="linear-regression">Linear Regression</h4>
+<p>To investigate the relationship between heat exposure (WBGT) and perceived stress scores (PSS-4) during pregnancy, I calculated trimester-specific daily maximum WBGT averages as well as the overall average of daily maximum WBGT for the entire pregnancy. For the third trimester and full pregnancy period, I restricted the WBGT averages to temperatures recorded up to the survey date to ensure alignment with the stress assessment period.</p>
+<p>As described earlier, I used a linear regression model to assess the association between PSS-4 and WBGT for each time period. Initially, I included covariates such as demographic, socioeconomic, and physical health data, but these variables did not significantly contribute to the model or improve its overall quality. For simplicity, I excluded them from the final results presented in the grant proposal and this blog.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## SET UP THE DATA -- find temps over custom periods of interest</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to process temperature data for the selected metric</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>process_temperature_data <span class="ot">&lt;-</span> <span class="cf">function</span>(era5_data, metric) {</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  era5_data <span class="sc">%&gt;%</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(community, date, <span class="sc">!!</span><span class="fu">sym</span>(metric)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">temp_metric =</span> <span class="sc">!!</span><span class="fu">sym</span>(metric)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">distinct</span>()</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Process temp data</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>temp_data_clean <span class="ot">&lt;-</span> <span class="fu">process_temperature_data</span>(<span class="at">era5_data =</span> era5, <span class="at">metric =</span> <span class="st">"max_wbgt"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>calc_custom_temp_avg <span class="ot">&lt;-</span> <span class="cf">function</span>(stress_data, temp_data) {</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  stress_data <span class="sc">%&gt;%</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span>  <span class="co"># Perform operations for each row (unique survey observation)</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Temperature on the day of the survey</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">avg_temp_day_of_survey =</span> temp_data <span class="sc">%&gt;%</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(community <span class="sc">==</span> vname, date <span class="sc">==</span> survey_date) <span class="sc">%&gt;%</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">mean_temp =</span> <span class="fu">mean</span>(temp_metric, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(mean_temp),</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Temperature the day before the survey</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">avg_temp_day_before_survey =</span> temp_data <span class="sc">%&gt;%</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(community <span class="sc">==</span> vname, date <span class="sc">==</span> survey_date <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">mean_temp =</span> <span class="fu">mean</span>(temp_metric, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(mean_temp),</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Average temperature for the week before the survey</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>      <span class="at">avg_temp_week_before_survey =</span> temp_data <span class="sc">%&gt;%</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(community <span class="sc">==</span> vname, date <span class="sc">&gt;=</span> survey_date <span class="sc">-</span> <span class="dv">7</span> <span class="sc">&amp;</span> date <span class="sc">&lt;</span> survey_date) <span class="sc">%&gt;%</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">mean_temp =</span> <span class="fu">mean</span>(temp_metric, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(mean_temp),</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Average temperature for the 3 months before the survey</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>      <span class="at">avg_temp_3_months_before =</span> temp_data <span class="sc">%&gt;%</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(community <span class="sc">==</span> vname, date <span class="sc">&gt;=</span> survey_date <span class="sc">-</span> <span class="dv">90</span> <span class="sc">&amp;</span> date <span class="sc">&lt;</span> survey_date) <span class="sc">%&gt;%</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">mean_temp =</span> <span class="fu">mean</span>(temp_metric, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(mean_temp),</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Average temperature for the 6 months before the survey</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>      <span class="at">avg_temp_6_months_before =</span> temp_data <span class="sc">%&gt;%</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(community <span class="sc">==</span> vname, date <span class="sc">&gt;=</span> survey_date <span class="sc">-</span> <span class="dv">180</span> <span class="sc">&amp;</span> date <span class="sc">&lt;</span> survey_date) <span class="sc">%&gt;%</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">mean_temp =</span> <span class="fu">mean</span>(temp_metric, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(mean_temp),</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>      <span class="do">## TRIMESTER TEMP CALCULATIONS</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Estimate conception date (280 days before delivery)</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Use gestational age if available, otherwise default to 280 - medical average (not our average) gestation period </span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>      <span class="at">gestage_days =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(gestage_days), <span class="dv">280</span>, gestage_days),</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Calculate conception date based on gestational age</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>      <span class="at">conception_date =</span> datdeliv <span class="sc">-</span> gestage_days,</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Pre-conception temperature average (60 days before conception)</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>      <span class="at">avg_temp_pre_conception =</span> temp_data <span class="sc">%&gt;%</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>          community <span class="sc">==</span> vname,</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>          date <span class="sc">&gt;=</span> conception_date <span class="sc">-</span> <span class="dv">60</span> <span class="sc">&amp;</span> date <span class="sc">&lt;</span> conception_date</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">%&gt;%</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">mean_temp =</span> <span class="fu">mean</span>(temp_metric, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(mean_temp),</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>      <span class="co"># First trimester temperature average</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>      <span class="at">avg_temp_first_trimester =</span> temp_data <span class="sc">%&gt;%</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>          community <span class="sc">==</span> vname,</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>          date <span class="sc">&gt;=</span> conception_date <span class="sc">&amp;</span> date <span class="sc">&lt;</span> conception_date <span class="sc">+</span> <span class="dv">90</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">%&gt;%</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">mean_temp =</span> <span class="fu">mean</span>(temp_metric, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(mean_temp),</span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Second trimester temperature average</span></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>      <span class="at">avg_temp_second_trimester =</span> temp_data <span class="sc">%&gt;%</span></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>          community <span class="sc">==</span> vname,</span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>          date <span class="sc">&gt;=</span> conception_date <span class="sc">+</span> <span class="dv">91</span> <span class="sc">&amp;</span> date <span class="sc">&lt;</span> conception_date <span class="sc">+</span> <span class="dv">180</span></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">%&gt;%</span></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">mean_temp =</span> <span class="fu">mean</span>(temp_metric, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(mean_temp),</span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Third trimester temperature average</span></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>      <span class="at">avg_temp_third_trimester =</span> temp_data <span class="sc">%&gt;%</span></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(</span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>          community <span class="sc">==</span> vname,</span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>          date <span class="sc">&gt;=</span> conception_date <span class="sc">+</span> <span class="dv">181</span> <span class="sc">&amp;</span> date <span class="sc">&lt;=</span> survey_date <span class="co"># only include up until the survey date</span></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">%&gt;%</span></span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">mean_temp =</span> <span class="fu">mean</span>(temp_metric, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(mean_temp),</span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>       <span class="co"># Average temperature across the entire pregnancy</span></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>      <span class="at">avg_temp_entire_pregnancy =</span> temp_data <span class="sc">%&gt;%</span></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(</span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>          community <span class="sc">==</span> vname,  </span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>          date <span class="sc">&gt;=</span> conception_date <span class="sc">&amp;</span> date <span class="sc">&lt;=</span> survey_date  <span class="co"># Filter pregnancy period estimated as 280 days before delivery. Only include up until the survey date. </span></span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">%&gt;%</span></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">mean_temp =</span> <span class="fu">mean</span>(temp_metric, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(mean_temp)  </span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()  <span class="co"># Remove row-wise grouping</span></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a><span class="co"># Add custom periods</span></span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>pss_simple_custom_lags <span class="ot">&lt;-</span> <span class="fu">calc_custom_temp_avg</span>(<span class="at">stress_data =</span> pss_simple, <span class="at">temp_data =</span> temp_data_clean)</span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename variables in the dataset</span></span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a>pss_simple_custom_lags_renamed <span class="ot">&lt;-</span> pss_simple_custom_lags <span class="sc">%&gt;%</span></span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Average Temp Entire Pregnancy</span><span class="st">`</span> <span class="ot">=</span> avg_temp_entire_pregnancy,</span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Average Temp Pre-Conception</span><span class="st">`</span> <span class="ot">=</span> avg_temp_pre_conception,</span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Average Temp First Trimester</span><span class="st">`</span> <span class="ot">=</span> avg_temp_first_trimester,</span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Average Temp Second Trimester</span><span class="st">`</span> <span class="ot">=</span> avg_temp_second_trimester,</span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Average Temp Third Trimester</span><span class="st">`</span> <span class="ot">=</span> avg_temp_third_trimester</span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">Number of Lifetime Pregnancies</span><span class="st">`</span> <span class="ot">=</span> pregchn)</span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a><span class="co"># Define models for PSS4</span></span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a>WBGT_daily_max_models_pss_renamed <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(PSS4 <span class="sc">~</span> <span class="st">`</span><span class="at">Average Temp Entire Pregnancy</span><span class="st">`</span>, <span class="at">data =</span> pss_simple_custom_lags_renamed),</span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(PSS4 <span class="sc">~</span> <span class="st">`</span><span class="at">Average Temp Pre-Conception</span><span class="st">`</span>, <span class="at">data =</span> pss_simple_custom_lags_renamed),</span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(PSS4 <span class="sc">~</span> <span class="st">`</span><span class="at">Average Temp First Trimester</span><span class="st">`</span>, <span class="at">data =</span> pss_simple_custom_lags_renamed),</span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(PSS4 <span class="sc">~</span> <span class="st">`</span><span class="at">Average Temp Second Trimester</span><span class="st">`</span>, <span class="at">data =</span> pss_simple_custom_lags_renamed),</span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(PSS4 <span class="sc">~</span> <span class="st">`</span><span class="at">Average Temp Third Trimester</span><span class="st">`</span>, <span class="at">data =</span> pss_simple_custom_lags_renamed)</span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a><span class="co"># Display model summaries for PSS4</span></span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(WBGT_daily_max_models_pss_renamed, <span class="at">type =</span> <span class="st">"text"</span>, <span class="at">title =</span> <span class="st">"Regression Results: PSS vs. WBGT Temperatures"</span>,</span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a>          <span class="at">column.labels =</span> <span class="fu">c</span>(<span class="st">"Entire Pregnancy"</span>, </span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"Pre-Conception"</span>, </span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"First Trimester"</span>, </span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"Second Trimester"</span>, </span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"Third Trimester"</span>),</span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a>          <span class="at">dep.var.labels =</span> <span class="st">"Perceived Stress Score"</span>, </span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a>          <span class="at">omit.stat =</span> <span class="fu">c</span>(<span class="st">"f"</span>, <span class="st">"ser"</span>), </span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a>          <span class="at">no.space =</span> <span class="cn">TRUE</span>, <span class="at">digits =</span> <span class="dv">2</span>,</span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a>          <span class="at">star.cutoffs =</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.01</span>, <span class="fl">0.001</span>)) <span class="co"># Custom significance levels)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Regression Results: PSS vs. WBGT Temperatures
+================================================================================================================
+                                                              Dependent variable:                               
+                                --------------------------------------------------------------------------------
+                                                             Perceived Stress Score                             
+                                Entire Pregnancy Pre-Conception First Trimester Second Trimester Third Trimester
+                                      (1)             (2)             (3)             (4)              (5)      
+----------------------------------------------------------------------------------------------------------------
+`Average Temp Entire Pregnancy`      0.87**                                                                     
+                                     (0.28)                                                                     
+`Average Temp Pre-Conception`                        -0.13                                                      
+                                                     (0.15)                                                     
+`Average Temp First Trimester`                                      0.47**                                      
+                                                                    (0.15)                                      
+`Average Temp Second Trimester`                                                     0.59***                     
+                                                                                     (0.17)                     
+`Average Temp Third Trimester`                                                                        -0.02     
+                                                                                                     (0.21)     
+Constant                            -17.20*          10.15*          -6.48           -9.43*           6.90      
+                                     (7.50)          (3.99)         (4.11)           (4.52)          (5.59)     
+----------------------------------------------------------------------------------------------------------------
+Observations                          428             428             428             428              428      
+R2                                    0.02           0.002           0.02             0.03           0.0000     
+Adjusted R2                           0.02          -0.0004          0.02             0.03           -0.002     
+================================================================================================================
+Note:                                                                              *p&lt;0.05; **p&lt;0.01; ***p&lt;0.001</code></pre>
+</div>
+</div>
+<p>The results indicate that:</p>
+<ul>
+<li><p>Elevated heat exposure during the entire pregnancy is significantly associated with elevated perceived stress levels. For every 1°C increase in the average daily maximum WBGT, our model predicts that the perceived stress score would increase on average by 0.87 (p &lt; 0.01).</p></li>
+<li><p>Higher average daily maximum WBGT during the first trimester (β = 0.47, p &lt; 0.01) and second trimester (β = 0.59, p &lt; 0.001) are both significantly associated with increased PSS-4 scores.&nbsp;</p></li>
+<li><p>The third trimester average showed no significant effect, suggesting that elevated temperatures closer to the survey date are less strongly linked to stress levels.</p></li>
+<li><p>Higher WBGT during the preconception period is associated with a slight, insignificant reduction in PSS-4 scores.</p></li>
+</ul>
+</section>
+<section id="section" class="level3">
+<h3 class="anchored" data-anchor-id="section"></h3>
+</section>
+</section>
+<section id="exploring-the-relationship-between-temperature-and-sum-nds-category" class="level2">
+<h2 class="anchored" data-anchor-id="exploring-the-relationship-between-temperature-and-sum-nds-category">Exploring the relationship between temperature and sum NDS category</h2>
+<section id="ordered-logistic-regression" class="level4">
+<h4 class="anchored" data-anchor-id="ordered-logistic-regression">Ordered Logistic Regression</h4>
+<p>To further explore the link between heat stress and mental health during pregnancy, I calculated trimester-specific averages of daily maximum WBGT as well as the overall average of daily maximum WBGT for the full pregnancy period. As mentioned earlier, I used ordered logistic regression to assess the association between Sum NDS Category and WBGT averages, since Sum NDS is a categorical variable with a natural order (low, moderate, and high stress).</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>calc_custom_temp_avg <span class="ot">&lt;-</span> <span class="cf">function</span>(stress_data, temp_data, metric) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  stress_data <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Temperature on the day of the survey</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">avg_temp_day_of_survey =</span> temp_data <span class="sc">%&gt;%</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(community <span class="sc">==</span> vname, date <span class="sc">==</span> survey_date) <span class="sc">%&gt;%</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">mean_temp =</span> <span class="fu">mean</span>(<span class="sc">!!</span><span class="fu">sym</span>(metric), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(mean_temp),</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Temperature the day before the survey</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">avg_temp_day_before_survey =</span> temp_data <span class="sc">%&gt;%</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(community <span class="sc">==</span> vname, date <span class="sc">==</span> survey_date <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">mean_temp =</span> <span class="fu">mean</span>(<span class="sc">!!</span><span class="fu">sym</span>(metric), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(mean_temp),</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Average temperature for the week before the survey</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">avg_temp_week_before_survey =</span> temp_data <span class="sc">%&gt;%</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(community <span class="sc">==</span> vname, date <span class="sc">&gt;=</span> survey_date <span class="sc">-</span> <span class="dv">7</span> <span class="sc">&amp;</span> date <span class="sc">&lt;</span> survey_date) <span class="sc">%&gt;%</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">mean_temp =</span> <span class="fu">mean</span>(<span class="sc">!!</span><span class="fu">sym</span>(metric), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(mean_temp),</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>       <span class="co"># Average temperature for the month before the survey</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">avg_temp_month_before_survey =</span> temp_data <span class="sc">%&gt;%</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(community <span class="sc">==</span> vname, date <span class="sc">&gt;=</span> survey_date <span class="sc">-</span> <span class="dv">30</span> <span class="sc">&amp;</span> date <span class="sc">&lt;</span> survey_date) <span class="sc">%&gt;%</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">mean_temp =</span> <span class="fu">mean</span>(<span class="sc">!!</span><span class="fu">sym</span>(metric), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(mean_temp),</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Average temperature for the 3 months before the survey</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">avg_temp_3_months_before =</span> temp_data <span class="sc">%&gt;%</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(community <span class="sc">==</span> vname, date <span class="sc">&gt;=</span> survey_date <span class="sc">-</span> <span class="dv">90</span> <span class="sc">&amp;</span> date <span class="sc">&lt;</span> survey_date) <span class="sc">%&gt;%</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">mean_temp =</span> <span class="fu">mean</span>(<span class="sc">!!</span><span class="fu">sym</span>(metric), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(mean_temp),</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Average temperature for the 6 months before the survey</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">avg_temp_6_months_before =</span> temp_data <span class="sc">%&gt;%</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(community <span class="sc">==</span> vname, date <span class="sc">&gt;=</span> survey_date <span class="sc">-</span> <span class="dv">180</span> <span class="sc">&amp;</span> date <span class="sc">&lt;</span> survey_date) <span class="sc">%&gt;%</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">mean_temp =</span> <span class="fu">mean</span>(<span class="sc">!!</span><span class="fu">sym</span>(metric), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(mean_temp),</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>      <span class="do">## TRIMESTER TEMP CALCULATIONS</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Estimate conception date (280 days before delivery)</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Use gestational age if available, otherwise default to 280 - medical average (not our average) gestation period </span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>      <span class="at">gestage_days =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(gestage_days), <span class="dv">280</span>, gestage_days),</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Calculate conception date based on gestational age</span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>      <span class="at">conception_date =</span> datdeliv <span class="sc">-</span> gestage_days,</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Pre-conception temperature average (60 days before conception)</span></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>      <span class="at">avg_temp_pre_conception =</span> temp_data <span class="sc">%&gt;%</span></span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>          community <span class="sc">==</span> vname,</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>          date <span class="sc">&gt;=</span> conception_date <span class="sc">-</span> <span class="dv">60</span> <span class="sc">&amp;</span> date <span class="sc">&lt;</span> conception_date</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">mean_temp =</span> <span class="fu">mean</span>(<span class="sc">!!</span><span class="fu">sym</span>(metric), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(mean_temp),</span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>      <span class="co"># First trimester temperature average</span></span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>      <span class="at">avg_temp_first_trimester =</span> temp_data <span class="sc">%&gt;%</span></span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(</span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>          community <span class="sc">==</span> vname,</span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>          date <span class="sc">&gt;=</span> conception_date <span class="sc">&amp;</span> date <span class="sc">&lt;</span> conception_date <span class="sc">+</span> <span class="dv">90</span></span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">mean_temp =</span> <span class="fu">mean</span>(<span class="sc">!!</span><span class="fu">sym</span>(metric), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(mean_temp),</span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Second trimester temperature average</span></span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>      <span class="at">avg_temp_second_trimester =</span> temp_data <span class="sc">%&gt;%</span></span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(</span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>          community <span class="sc">==</span> vname,</span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>          date <span class="sc">&gt;=</span> conception_date <span class="sc">+</span> <span class="dv">91</span> <span class="sc">&amp;</span> date <span class="sc">&lt;</span> conception_date <span class="sc">+</span> <span class="dv">180</span></span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">mean_temp =</span> <span class="fu">mean</span>(<span class="sc">!!</span><span class="fu">sym</span>(metric), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(mean_temp),</span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Third trimester temperature average</span></span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>      <span class="at">avg_temp_third_trimester =</span> temp_data <span class="sc">%&gt;%</span></span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(</span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>          community <span class="sc">==</span> vname,</span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>          date <span class="sc">&gt;=</span> conception_date <span class="sc">+</span> <span class="dv">181</span> <span class="sc">&amp;</span> date <span class="sc">&lt;=</span> survey_date</span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">mean_temp =</span> <span class="fu">mean</span>(<span class="sc">!!</span><span class="fu">sym</span>(metric), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(mean_temp),</span>
+<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Average temperature across the entire pregnancy</span></span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>      <span class="at">avg_temp_entire_pregnancy =</span> temp_data <span class="sc">%&gt;%</span></span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(</span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>          community <span class="sc">==</span> vname,</span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>          date <span class="sc">&gt;=</span> conception_date <span class="sc">&amp;</span> date <span class="sc">&lt;=</span> survey_date</span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">mean_temp =</span> <span class="fu">mean</span>(<span class="sc">!!</span><span class="fu">sym</span>(metric), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(mean_temp)</span>
+<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
+<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a>metrics <span class="ot">&lt;-</span> <span class="st">"max_wbgt"</span></span>
+<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize an empty list to store results</span></span>
+<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a>regression_results_polr <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through each metric</span></span>
+<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (metric <span class="cf">in</span> metrics) {</span>
+<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate custom temperature averages</span></span>
+<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a>  stress_data_with_temp <span class="ot">&lt;-</span> <span class="fu">calc_custom_temp_avg</span>(crisis_simple, era5, metric)</span>
+<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fit ordered logistic regressions for the metric</span></span>
+<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a>  models <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a>    <span class="fu">polr</span>(<span class="at">formula =</span> sum_nds_category <span class="sc">~</span> avg_temp_day_of_survey, <span class="at">data =</span> stress_data_with_temp, <span class="at">method =</span> <span class="st">"logistic"</span>),</span>
+<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a>    <span class="fu">polr</span>(<span class="at">formula =</span> sum_nds_category <span class="sc">~</span> avg_temp_day_before_survey, <span class="at">data =</span> stress_data_with_temp, <span class="at">method =</span> <span class="st">"logistic"</span>),</span>
+<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a>    <span class="fu">polr</span>(<span class="at">formula =</span> sum_nds_category <span class="sc">~</span> avg_temp_week_before_survey, <span class="at">data =</span> stress_data_with_temp, <span class="at">method =</span> <span class="st">"logistic"</span>),</span>
+<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a>    <span class="fu">polr</span>(<span class="at">formula =</span> sum_nds_category <span class="sc">~</span> avg_temp_month_before_survey, <span class="at">data =</span> stress_data_with_temp, <span class="at">method =</span> <span class="st">"logistic"</span>),</span>
+<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a>    <span class="fu">polr</span>(<span class="at">formula =</span> sum_nds_category <span class="sc">~</span> avg_temp_3_months_before, <span class="at">data =</span> stress_data_with_temp, <span class="at">method =</span> <span class="st">"logistic"</span>),</span>
+<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a>    <span class="fu">polr</span>(<span class="at">formula =</span> sum_nds_category <span class="sc">~</span> avg_temp_6_months_before, <span class="at">data =</span> stress_data_with_temp, <span class="at">method =</span> <span class="st">"logistic"</span>)</span>
+<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Save results for the current metric</span></span>
+<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a>  regression_results_polr[[metric]] <span class="ot">&lt;-</span> models</span>
+<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a><span class="co"># List to store regression results and p-values</span></span>
+<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a>regression_results <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through each metric</span></span>
+<span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (metric <span class="cf">in</span> metrics) {</span>
+<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate custom temperature averages</span></span>
+<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a>  stress_data_with_temp <span class="ot">&lt;-</span> <span class="fu">calc_custom_temp_avg</span>(crisis_simple, era5, metric)</span>
+<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fit models (6 regressions for survey date, 5 for pregnancy period)</span></span>
+<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a>  models <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a>    <span class="co"># polr(formula = sum_nds_category ~ avg_temp_day_of_survey, data = stress_data_with_temp, method = "logistic"),</span></span>
+<span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a>    <span class="co"># polr(formula = sum_nds_category ~ avg_temp_day_before_survey, data = stress_data_with_temp, method = "logistic"),</span></span>
+<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a>    <span class="co"># polr(formula = sum_nds_category ~ avg_temp_week_before_survey, data = stress_data_with_temp, method = "logistic"),</span></span>
+<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a>    <span class="co"># polr(formula = sum_nds_category ~ avg_temp_month_before_survey, data = stress_data_with_temp, method = "logistic"),</span></span>
+<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a>    <span class="co"># polr(formula = sum_nds_category ~ avg_temp_3_months_before, data = stress_data_with_temp, method = "logistic"),</span></span>
+<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a>    <span class="co"># polr(formula = sum_nds_category ~ avg_temp_6_months_before, data = stress_data_with_temp, method = "logistic"),</span></span>
+<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a>    <span class="fu">polr</span>(<span class="at">formula =</span> sum_nds_category <span class="sc">~</span> avg_temp_pre_conception, <span class="at">data =</span> stress_data_with_temp, <span class="at">method =</span> <span class="st">"logistic"</span>),</span>
+<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a>    <span class="fu">polr</span>(<span class="at">formula =</span> sum_nds_category <span class="sc">~</span> avg_temp_first_trimester, <span class="at">data =</span> stress_data_with_temp, <span class="at">method =</span> <span class="st">"logistic"</span>),</span>
+<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a>    <span class="fu">polr</span>(<span class="at">formula =</span> sum_nds_category <span class="sc">~</span> avg_temp_second_trimester, <span class="at">data =</span> stress_data_with_temp, <span class="at">method =</span> <span class="st">"logistic"</span>),</span>
+<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a>    <span class="fu">polr</span>(<span class="at">formula =</span> sum_nds_category <span class="sc">~</span> avg_temp_third_trimester, <span class="at">data =</span> stress_data_with_temp, <span class="at">method =</span> <span class="st">"logistic"</span>),</span>
+<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a>    <span class="fu">polr</span>(<span class="at">formula =</span> sum_nds_category <span class="sc">~</span> avg_temp_entire_pregnancy, <span class="at">data =</span> stress_data_with_temp, <span class="at">method =</span> <span class="st">"logistic"</span>)</span>
+<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extract coefficients and p-values for each model</span></span>
+<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a>  model_results <span class="ot">&lt;-</span> <span class="fu">lapply</span>(models, <span class="cf">function</span>(model) {</span>
+<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a>    ctable <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">summary</span>(model))  <span class="co"># Extract coefficients and standard errors</span></span>
+<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a>    p_values <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="fu">abs</span>(ctable[, <span class="st">"t value"</span>]), <span class="at">lower.tail =</span> <span class="cn">FALSE</span>) <span class="sc">*</span> <span class="dv">2</span>  <span class="co"># Calculate p-values</span></span>
+<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a>    result <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Coefficient =</span> ctable[, <span class="st">"Value"</span>], <span class="st">`</span><span class="at">Std. Error</span><span class="st">`</span> <span class="ot">=</span> ctable[, <span class="st">"Std. Error"</span>], </span>
+<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a>                         <span class="st">`</span><span class="at">t Value</span><span class="st">`</span> <span class="ot">=</span> ctable[, <span class="st">"t value"</span>], <span class="st">`</span><span class="at">p Value</span><span class="st">`</span> <span class="ot">=</span> p_values)</span>
+<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(result)</span>
+<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Store results for the current metric</span></span>
+<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a>  regression_results[[metric]] <span class="ot">&lt;-</span> model_results</span>
+<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine results into a single data frame for easier reporting</span></span>
+<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a>formatted_results <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="fu">names</span>(regression_results), <span class="cf">function</span>(metric) {</span>
+<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> regression_results[[metric]]</span>
+<span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a>  model_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="co">#"Day of Survey", </span></span>
+<span id="cb3-169"><a href="#cb3-169" aria-hidden="true" tabindex="-1"></a>                   <span class="co"># "Day Before Survey", </span></span>
+<span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a>                   <span class="co"># "Week Before Survey", </span></span>
+<span id="cb3-171"><a href="#cb3-171" aria-hidden="true" tabindex="-1"></a>                   <span class="co"># "Month Before Survey", </span></span>
+<span id="cb3-172"><a href="#cb3-172" aria-hidden="true" tabindex="-1"></a>                   <span class="co"># "3 Months Before", </span></span>
+<span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a>                   <span class="co"># "6 Months Before", </span></span>
+<span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"Pre-Conception"</span>, </span>
+<span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"First Trimester"</span>, </span>
+<span id="cb3-176"><a href="#cb3-176" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"Second Trimester"</span>, </span>
+<span id="cb3-177"><a href="#cb3-177" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"Third Trimester"</span>, </span>
+<span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"Entire Pregnancy"</span>)</span>
+<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="fu">seq_along</span>(data), <span class="cf">function</span>(i) <span class="fu">cbind</span>(<span class="at">Model =</span> model_names[i], data[[i]]))</span>
+<span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, data)</span>
+<span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cbind</span>(<span class="at">Metric =</span> metric, data)</span>
+<span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine all metrics into a single data frame</span></span>
+<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a>final_results <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, formatted_results)</span>
+<span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-187"><a href="#cb3-187" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert row names to a column</span></span>
+<span id="cb3-188"><a href="#cb3-188" aria-hidden="true" tabindex="-1"></a>final_results <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">rownames_to_column</span>(final_results, <span class="at">var =</span> <span class="st">"regression_part"</span>)</span>
+<span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span>
+<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out rows with "low|moderate" or "moderate|high1"</span></span>
+<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a>filtered_results <span class="ot">&lt;-</span> final_results <span class="sc">%&gt;%</span></span>
+<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">"low</span><span class="sc">\\</span><span class="st">|moderate"</span>, regression_part)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">"moderate</span><span class="sc">\\</span><span class="st">|high"</span>, regression_part)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(regression_part, <span class="st">"avg_temp"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-198"><a href="#cb3-198" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add exponentiated coefficient for intepretation of 1 degree increase in temp</span></span>
+<span id="cb3-199"><a href="#cb3-199" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">odds_ratio =</span> <span class="fu">exp</span>(Coefficient)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-200"><a href="#cb3-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-201"><a href="#cb3-201" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add significant indicator</span></span>
+<span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">significant =</span> <span class="fu">ifelse</span>(p.Value <span class="sc">&lt;</span> <span class="fl">0.05</span>, <span class="dv">1</span>, <span class="dv">0</span>)) </span>
+<span id="cb3-203"><a href="#cb3-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-205"><a href="#cb3-205" aria-hidden="true" tabindex="-1"></a>filtered_results <span class="sc">%&gt;%</span> </span>
+<span id="cb3-206"><a href="#cb3-206" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Model, Coefficient, Std..Error, odds_ratio, p.Value) <span class="sc">%&gt;%</span></span>
+<span id="cb3-207"><a href="#cb3-207" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Model</span><span class="st">`</span> <span class="ot">=</span> Model,</span>
+<span id="cb3-209"><a href="#cb3-209" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Coefficient</span><span class="st">`</span> <span class="ot">=</span> Coefficient,</span>
+<span id="cb3-210"><a href="#cb3-210" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Std. Error</span><span class="st">`</span> <span class="ot">=</span> Std..Error,</span>
+<span id="cb3-211"><a href="#cb3-211" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Odds Ratio</span><span class="st">`</span> <span class="ot">=</span> odds_ratio,</span>
+<span id="cb3-212"><a href="#cb3-212" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">P-Value</span><span class="st">`</span> <span class="ot">=</span> p.Value</span>
+<span id="cb3-213"><a href="#cb3-213" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-214"><a href="#cb3-214" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-215"><a href="#cb3-215" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(</span>
+<span id="cb3-216"><a href="#cb3-216" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">Coefficient</span><span class="st">`</span>, <span class="st">`</span><span class="at">Std. Error</span><span class="st">`</span>, <span class="st">`</span><span class="at">Odds Ratio</span><span class="st">`</span>, <span class="st">`</span><span class="at">P-Value</span><span class="st">`</span>),</span>
+<span id="cb3-217"><a href="#cb3-217" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals =</span> <span class="dv">3</span></span>
+<span id="cb3-218"><a href="#cb3-218" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-219"><a href="#cb3-219" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb3-220"><a href="#cb3-220" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Ordered Logistic Regression Results"</span>,</span>
+<span id="cb3-221"><a href="#cb3-221" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Higher WBGT during pre-conception, the first trimester, and the entire pregnancy period as a whole associated with increased likelihood of belonging to a higher stress group."</span></span>
+<span id="cb3-222"><a href="#cb3-222" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-223"><a href="#cb3-223" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_align</span>(</span>
+<span id="cb3-224"><a href="#cb3-224" aria-hidden="true" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">"center"</span></span>
+<span id="cb3-225"><a href="#cb3-225" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<div id="ogotcepucj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ogotcepucj table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ogotcepucj thead, #ogotcepucj tbody, #ogotcepucj tfoot, #ogotcepucj tr, #ogotcepucj td, #ogotcepucj th {
+  border-style: none;
+}
+
+#ogotcepucj p {
+  margin: 0;
+  padding: 0;
+}
+
+#ogotcepucj .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ogotcepucj .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ogotcepucj .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ogotcepucj .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ogotcepucj .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ogotcepucj .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ogotcepucj .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ogotcepucj .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ogotcepucj .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ogotcepucj .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ogotcepucj .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ogotcepucj .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ogotcepucj .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ogotcepucj .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ogotcepucj .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ogotcepucj .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ogotcepucj .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ogotcepucj .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ogotcepucj .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ogotcepucj .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ogotcepucj .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ogotcepucj .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ogotcepucj .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ogotcepucj .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ogotcepucj .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ogotcepucj .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ogotcepucj .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ogotcepucj .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ogotcepucj .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ogotcepucj .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ogotcepucj .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ogotcepucj .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ogotcepucj .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ogotcepucj .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ogotcepucj .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ogotcepucj .gt_left {
+  text-align: left;
+}
+
+#ogotcepucj .gt_center {
+  text-align: center;
+}
+
+#ogotcepucj .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ogotcepucj .gt_font_normal {
+  font-weight: normal;
+}
+
+#ogotcepucj .gt_font_bold {
+  font-weight: bold;
+}
+
+#ogotcepucj .gt_font_italic {
+  font-style: italic;
+}
+
+#ogotcepucj .gt_super {
+  font-size: 65%;
+}
+
+#ogotcepucj .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ogotcepucj .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ogotcepucj .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ogotcepucj .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ogotcepucj .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ogotcepucj .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ogotcepucj .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_heading">
+<th colspan="5" class="gt_heading gt_title gt_font_normal">Ordered Logistic Regression Results</th>
+</tr>
+<tr class="odd gt_heading">
+<th colspan="5" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Higher WBGT during pre-conception, the first trimester, and the entire pregnancy period as a whole associated with increased likelihood of belonging to a higher stress group.</th>
+</tr>
+<tr class="header gt_col_headings">
+<th id="Model" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Model</th>
+<th id="Coefficient" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Coefficient</th>
+<th id="Std. Error" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Std. Error</th>
+<th id="Odds Ratio" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Odds Ratio</th>
+<th id="P-Value" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">P-Value</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_center" headers="Model">Pre-Conception</td>
+<td class="gt_row gt_center" headers="Coefficient">0.176</td>
+<td class="gt_row gt_center" headers="Std. Error">0.085</td>
+<td class="gt_row gt_center" headers="Odds Ratio">1.193</td>
+<td class="gt_row gt_center" headers="P-Value">0.038</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Model">First Trimester</td>
+<td class="gt_row gt_center" headers="Coefficient">0.301</td>
+<td class="gt_row gt_center" headers="Std. Error">0.096</td>
+<td class="gt_row gt_center" headers="Odds Ratio">1.351</td>
+<td class="gt_row gt_center" headers="P-Value">0.002</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Model">Second Trimester</td>
+<td class="gt_row gt_center" headers="Coefficient">0.165</td>
+<td class="gt_row gt_center" headers="Std. Error">0.092</td>
+<td class="gt_row gt_center" headers="Odds Ratio">1.179</td>
+<td class="gt_row gt_center" headers="P-Value">0.072</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Model">Third Trimester</td>
+<td class="gt_row gt_center" headers="Coefficient">−0.003</td>
+<td class="gt_row gt_center" headers="Std. Error">0.086</td>
+<td class="gt_row gt_center" headers="Odds Ratio">0.997</td>
+<td class="gt_row gt_center" headers="P-Value">0.976</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Model">Entire Pregnancy</td>
+<td class="gt_row gt_center" headers="Coefficient">0.443</td>
+<td class="gt_row gt_center" headers="Std. Error">0.153</td>
+<td class="gt_row gt_center" headers="Odds Ratio">1.557</td>
+<td class="gt_row gt_center" headers="P-Value">0.004</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<p>The results indicate that:</p>
+<ul>
+<li><p>Again, heat stress during the entire pregnancy is significantly associated with belonging to a higher stress group. A °1C increase in WBGT is associated with a 55.7% increase in the odds of belonging to a higher stress group (p = 0.004).</p></li>
+<li><p>Higher daily maximum WBGT during the preconception period and first trimester is significantly associated with an increased likelihood of belonging to a higher stress group. A 1°C increase in WBGT is linked to a 19.3% increase in the odds of higher stress during pre-conception (p = 0.038) and a 35.1% increase during the first trimester (p = 0.002).</p></li>
+<li><p>The second trimester showed a positive association between WBGT and Sum NDS Category, but the effect was not statistically significant.</p></li>
+<li><p>The third trimester showed no association between WBGT and Sum NDS Category, suggesting that temperatures closer to the survey date are less strongly linked to stress levels.</p></li>
+</ul>
+</section>
+</section>
+<section id="exploring-the-relationship-between-temperature-and-sleep-quantity" class="level2">
+<h2 class="anchored" data-anchor-id="exploring-the-relationship-between-temperature-and-sleep-quantity">Exploring the relationship between temperature and sleep quantity</h2>
+<p>A linear regression model was employed to examine the association between average WBGT and total sleep time (TST), providing insights into the impact of heat on sleep quantity.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>actigraphy_with_temp <span class="ot">&lt;-</span> actigraphy_simple_full <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span>  <span class="co"># Process each row individually</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_temp =</span> WBGT_daily_max <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        community <span class="sc">==</span> vname,  <span class="co"># Match the community</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        date <span class="sc">&gt;=</span> Start.Date <span class="sc">&amp;</span> date <span class="sc">&lt;=</span> End.Date  <span class="co"># Filter by date range</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">summarise</span>(<span class="at">mean_temp =</span> <span class="fu">mean</span>(max_wbgt, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span>  <span class="co"># Calculate mean temperature between the start date and end date (for just one night study, this would be a two day average)</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">pull</span>(mean_temp)  <span class="co"># Extract the mean value</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> <span class="co"># Remove row-wise grouping </span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(avg_temp)) <span class="co"># remove NA community or participants where no temp data for community</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># After removing 7 participants who did not have a community that matches the communities in the temperature data, we are left with 177 participants. </span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>actigraphy_with_temp_no_outlier <span class="ot">&lt;-</span> actigraphy_with_temp <span class="sc">%&gt;%</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(avg_temp <span class="sc">&gt;</span> <span class="dv">20</span>) <span class="co"># One temperature recording (18.7) is over 4 degrees colder than the next coolest temperature (22.9) -- this point was found to be extremely high leverage as well as an outlier. There is not evidence that this is an erroneous reading, but for the purposes of creating a reliable model, the value was removed. </span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit a linear model</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>sleep_time_model_no_outlier <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sleep.Time..mins. <span class="sc">~</span> avg_temp, <span class="at">data =</span> actigraphy_with_temp_no_outlier)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract model summary statistics</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>summary_sleep_time <span class="ot">&lt;-</span> <span class="fu">summary</span>(sleep_time_model_no_outlier)</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>slope <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">coef</span>(summary_sleep_time)[<span class="st">"avg_temp"</span>, <span class="st">"Estimate"</span>], <span class="dv">2</span>)</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="fu">signif</span>(<span class="fu">coef</span>(summary_sleep_time)[<span class="st">"avg_temp"</span>, <span class="st">"Pr(&gt;|t|)"</span>], <span class="dv">2</span>)</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>r_squared <span class="ot">&lt;-</span> <span class="fu">round</span>(summary_sleep_time<span class="sc">$</span>r.squared, <span class="dv">2</span>)</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(actigraphy_with_temp_no_outlier)</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the plot</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>actigraphy_with_temp_no_outlier <span class="sc">%&gt;%</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> avg_temp, <span class="at">y =</span> Sleep.Time..mins.)) <span class="sc">+</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span> </span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">15</span>) <span class="sc">+</span> <span class="co"># Increase base text size</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Average Daily Maximum WBGT Over Study Period"</span>,</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Total Sleep Time (mins)"</span>,</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Higher Temperatures Associated with Reduced </span><span class="sc">\n</span><span class="st">Total Sleep Time"</span> <span class="co"># </span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">16</span>), <span class="co"># Adjust title size and style</span></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>), <span class="co"># Adjust x-axis label size</span></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>), <span class="co"># Adjust y-axis label size</span></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>) <span class="co"># Adjust axis text size</span></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>    <span class="st">"text"</span>,</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">min</span>(actigraphy_with_temp_no_outlier<span class="sc">$</span>avg_temp) <span class="sc">+</span> <span class="fl">0.5</span>, </span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="dv">220</span>, </span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">paste</span>(</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Slope ="</span>, slope, </span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>      <span class="st">"</span><span class="sc">\n</span><span class="st">P ="</span>, p_value,</span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>      <span class="st">"</span><span class="sc">\n</span><span class="st">R² ="</span>, r_squared, </span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>      <span class="st">"</span><span class="sc">\n</span><span class="st">N ="</span>, n</span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">hjust =</span> <span class="fl">0.4</span>, </span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="fl">0.5</span>, </span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">4</span></span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A highly significant negative association is observed, with a slope of -13.75 (p &lt; 0.001), indicating that for each degree increase in the average maximum WBGT, our model predicts that total sleep time decreases by approximately 14 minutes. These findings suggest that higher temperatures during the study period are associated with reduced total sleep duration, which may reflect the challenges of maintaining optimal sleep in warmer conditions.</p>
+</section>
+<section id="key-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h2>
+<p>It’s important to note these findings are from early-stage analyses using observational data. While the results strongly hint at an association between heat exposure and mental health outcomes, further work is needed to definitively establish causality. That said, here are a few takeaways I’d like to highlight.</p>
+<ul>
+<li><p><strong>Heat Stress and Mental Health:<br>
+</strong>Across multiple modeling approaches (Distributed Lag Models, Linear Regression, and Ordered Logistic Regression), the findings consistently point toward higher heat exposures (measured via WBGT) being associated with elevated stress levels among pregnant women in rural Ghana.</p></li>
+<li><p><strong>Critical Windows During Pregnancy:<br>
+</strong>Exposure to high temperatures early in pregnancy—especially during the first trimester—had the strongest association with negative mental health outcomes. This suggests that heat stress may have a greater impact in the early stages of gestation, with its effects diminishing later in pregnancy. If these findings hold, interventions like cooling strategies may be most valuable during the first trimester, when the risk appears to be highest.</p></li>
+<li><p><strong>Sleep Disruption:<br>
+</strong>Preliminary linear regressions on actigraphy data suggest a significant negative relationship between temperature and total sleep time, with about 14 fewer minutes of sleep predicted for each 1°C increase in average maximum WBGT. This aligns with existing literature on heat-related sleep disturbances and may partially explain how temperature influences stress pathways.</p></li>
+</ul>
+</section>
+<section id="next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="next-steps">Next Steps</h2>
+<p>I am now starting to work on diving deeper into the causal framework through mediation analysis in R. This analysis aims to tease out how various mechanisms—such as changes in sleep, underlying physiological processes, and additional environmental factors (e.g.&nbsp;air pollution)—may mediate the relationship between temperature and maternal mental health.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>[1] Dagher, R. K., Bruckheim, H. E., Colpe, L. J., Edwards, E., &amp; White, D. B. (2021). Perinatal Depression: Challenges and Opportunities. Journal of Women’s Health, 30(2), 154–159. <a href="https://doi.org/10.1089/jwh.2020.8862" class="uri">https://doi.org/10.1089/jwh.2020.8862</a></p>
+<p>[2] WHO-Ghana. Strengthening Maternal Mental Health in Ghana - Policy Brief [Internet]. 2024. Available from: <a href="https://www.afro.who.int/sites/default/files/2024-02/Policy%20brief%20-%20Strengthening%20Maternal%20Mental%20Health%20in%20Ghana.pdf" class="uri">https://www.afro.who.int/sites/default/files/2024-02/Policy%20brief%20-%20Strengthening%20Maternal%20Mental%20Health%20in%20Ghana.pdf</a></p>
+<p>[3] McCauley, M., Brown, A., Ofosu, B., &amp; van den Broek, N. (2019). “I just wish it becomes part of routine care”: Healthcare providers’ knowledge, attitudes and perceptions of screening for maternal mental health during and after pregnancy: a qualitative study. BMC Psychiatry, 19(1), 279. https://doi.org/10.1186/s12888-019-2261-x</p>
+<p>[4] Thompson, R., Hornigold, R., Page, L., &amp; Waite, T. (2018). Associations between high ambient temperatures and heat waves with mental health outcomes: A systematic review. Public Health, 161, 171–191. https://doi.org/10.1016/j.puhe.2018.06.008</p>
+<p>[5] Fang, W., Liu, L., Yin, B., Ke, L., Su, Y., Liu, F., Ma, X., &amp; Di, Q. (2023). Heat exposure intervention, anxiety level, and multi-omic profiles: A randomized crossover study. Environment International, 181, 108247. https://doi.org/10.1016/j.envint.2023.108247</p>
+</section>
+<section id="appendix" class="level2">
+<h2 class="anchored" data-anchor-id="appendix">Appendix</h2>
+<section id="distributed-lag-model-for-pss" class="level4">
+<h4 class="anchored" data-anchor-id="distributed-lag-model-for-pss"><strong>Distributed Lag Model for PSS</strong></h4>
+<p>Predictions were generated relative to the median temperature (27.3°C) to evaluate how temperature and lagged exposure impact perceived stress levels. Due to the limited number of recordings below 24°C, and given the grant’s focus on heat exposure, I restricted the analysis to higher temperature ranges.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># DLMs</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="do">## SET UP THE DATA FOR DLNM</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to process temperature data for the selected metric</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>process_temperature_data <span class="ot">&lt;-</span> <span class="cf">function</span>(era5_data, metric) {</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  era5_data <span class="sc">%&gt;%</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(community, date, <span class="sc">!!</span><span class="fu">sym</span>(metric)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">temp_metric =</span> <span class="sc">!!</span><span class="fu">sym</span>(metric)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">distinct</span>()</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to create temperature lags</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>create_temperature_lags <span class="ot">&lt;-</span> <span class="cf">function</span>(stress_data, temp_data) {</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  stress_data <span class="sc">%&gt;%</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(mstudyid, vname, survey_date) <span class="sc">%&gt;%</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">start_date =</span> survey_date <span class="sc">-</span> <span class="dv">270</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">lag_dates =</span> <span class="fu">list</span>(<span class="fu">seq.Date</span>(start_date, survey_date, <span class="at">by =</span> <span class="st">"day"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unnest</span>(lag_dates) <span class="sc">%&gt;%</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">date =</span> lag_dates) <span class="sc">%&gt;%</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(temp_data, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"vname"</span> <span class="ot">=</span> <span class="st">"community"</span>, <span class="st">"date"</span> <span class="ot">=</span> <span class="st">"date"</span>))</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Process temp data</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>temp_data_clean <span class="ot">&lt;-</span> <span class="fu">process_temperature_data</span>(<span class="at">era5_data =</span> era5, <span class="at">metric =</span> <span class="st">"max_wbgt"</span>)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="co"># created lagged data set</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>temperature_lags <span class="ot">&lt;-</span> <span class="fu">create_temperature_lags</span>(<span class="at">stress_data =</span> pss_simple, <span class="at">temp_data =</span> temp_data_clean)</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="co"># create wide-format lagged data</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>temperature_lags_wide <span class="ot">&lt;-</span> temperature_lags <span class="sc">%&gt;%</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lag =</span> <span class="fu">as.numeric</span>(survey_date <span class="sc">-</span> date)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> lag, <span class="at">values_from =</span> temp_metric, <span class="at">names_prefix =</span> <span class="st">"temp_lag_"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(mstudyid, survey_date, <span class="fu">starts_with</span>(<span class="st">"temp_lag_"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(mstudyid, survey_date) <span class="sc">%&gt;%</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reframe</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">"temp_lag_"</span>), <span class="sc">~</span> <span class="fu">first</span>(<span class="fu">na.omit</span>(.)), <span class="at">.names =</span> <span class="st">"{col}"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(pss_simple <span class="sc">%&gt;%</span> <span class="fu">select</span>(mstudyid, survey_date, PSS4), <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"mstudyid"</span>, <span class="st">"survey_date"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(temp_lag_0)) <span class="co"># Remove rows without lag 0 data</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a><span class="co"># create temperature matrix for cross basis</span></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>temp_data_matrix <span class="ot">&lt;-</span> temperature_lags_wide <span class="sc">%&gt;%</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"temp_lag_"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>()</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="do">## SET UP PARAMS</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="co"># predictor DLNM model parameters -- captures the relationship between the predictor variable (temp) and the outcome</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>var_arg <span class="ot">=</span> <span class="fu">list</span>(<span class="at">fun =</span> <span class="st">"bs"</span>, <span class="at">df =</span> <span class="dv">4</span>, <span class="at">degree =</span> <span class="dv">3</span>) <span class="co"># smooth cubic polynomial (degree = 3) between the boundary knots (no internal knots)</span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="co"># lag DLNM model parameters -- captures the lagged effects of the predictor variable (temp) over time.</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>lag_arg <span class="ot">=</span> <span class="fu">list</span>(<span class="at">fun =</span> <span class="st">"bs"</span>, <span class="at">df =</span> <span class="dv">4</span>, <span class="at">degree =</span> <span class="dv">3</span>) <span class="co"># smooth cubic polynomial (degree = 3) between the boundary knots (no internal knots)</span></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a><span class="co"># cross-basis matrix for DLNM</span></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>cb <span class="ot">=</span> <span class="fu">crossbasis</span>(temp_data_matrix, <span class="at">lag =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fu">ncol</span>(temp_data_matrix)), <span class="at">argvar =</span> var_arg, <span class="at">arglag =</span> lag_arg) <span class="co"># basis for the predictor and lag </span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a><span class="do">## FIT MODEL</span></span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>model <span class="ot">=</span> <span class="fu">glm</span>(<span class="at">formula =</span> PSS4 <span class="sc">~</span> cb, <span class="at">data =</span> temperature_lags_wide, <span class="at">family =</span> <span class="st">"gaussian"</span>) <span class="co"># stress scores continuous and normally dist, so gaussian family appropriate</span></span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a><span class="co"># GET PREDICTIONS (in reference to median temp)</span></span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>temp_median <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">median</span>(<span class="fu">as.vector</span>(temp_data_matrix)), <span class="dv">1</span>) <span class="co"># centering value (median). </span></span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a>pss_temp_median <span class="ot">&lt;-</span> temp_median</span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a><span class="co"># generate predictions for a DLNM, set centering value as the median of all temperatures</span></span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>cpred <span class="ot">=</span> <span class="fu">crosspred</span>(cb, </span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>                  model, </span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>                  <span class="at">ci.level =</span> <span class="fl">0.95</span>, <span class="co"># 95% confidence intervals calculated around predicted values</span></span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>                  <span class="at">cen =</span> temp_median, <span class="co"># predictions are relative to this baseline temperature.</span></span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>                  <span class="at">by =</span> <span class="fl">0.1</span>) <span class="co"># predictions are generated at intervals of 0.1 units of temperature</span></span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a><span class="co"># plot contour map of 3d plot</span></span>
+<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a>  cpred, </span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>  <span class="st">"contour"</span>, </span>
+<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="fu">paste0</span>(<span class="st">"Effects of Temperature and Lag on PSS Relative to </span><span class="sc">\n</span><span class="st">Median Temperature ("</span>, pss_temp_median, <span class="st">"\u00B0 C)"</span>), </span>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Temperature (°C)"</span>, </span>
+<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Lag (days)"</span>, </span>
+<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a>  <span class="at">key.title =</span> <span class="fu">title</span>(<span class="at">main =</span> <span class="st">"Change </span><span class="sc">\n</span><span class="st">in PSS"</span>, <span class="at">cex.main =</span> <span class="fl">0.8</span>)</span>
+<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Examine lag effect at top percentile </span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>temp_99<span class="fl">.9</span>pct <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">quantile</span>(<span class="fu">as.vector</span>(temp_data_matrix), <span class="fl">0.999</span>), <span class="dv">1</span>) <span class="co"># third quartile of temperature</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>temp_99<span class="fl">.9</span>pct <span class="ot">=</span> <span class="fu">as.numeric</span>(temp_99<span class="fl">.9</span>pct)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>pss_temp_99<span class="fl">.9</span>pct <span class="ot">&lt;-</span> temp_99<span class="fl">.9</span>pct</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Customized plot of effect at top percentile </span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>plot_var <span class="ot">=</span> temp_99<span class="fl">.9</span>pct</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>plot_var_matfit <span class="ot">=</span> cpred<span class="sc">$</span>matfit[<span class="fu">rownames</span>(cpred<span class="sc">$</span>matfit) <span class="sc">==</span> plot_var, ]</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(plot_var_matfit) <span class="ot">=</span> <span class="fu">sub</span>(<span class="st">"lag"</span>, <span class="st">""</span>, <span class="fu">names</span>(plot_var_matfit))</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>plot_var_matlow <span class="ot">=</span> cpred<span class="sc">$</span>matlow[<span class="fu">rownames</span>(cpred<span class="sc">$</span>matlow) <span class="sc">==</span> plot_var, ]</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(plot_var_matlow) <span class="ot">=</span> <span class="fu">sub</span>(<span class="st">"lag"</span>, <span class="st">""</span>, <span class="fu">names</span>(plot_var_matlow))</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>plot_var_mathigh <span class="ot">=</span> cpred<span class="sc">$</span>mathigh[<span class="fu">rownames</span>(cpred<span class="sc">$</span>mathigh) <span class="sc">==</span> plot_var, ]</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(plot_var_mathigh) <span class="ot">=</span> <span class="fu">sub</span>(<span class="st">"lag"</span>, <span class="st">""</span>, <span class="fu">names</span>(plot_var_mathigh))</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="fu">names</span>(plot_var_matfit),</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> plot_var_matfit,</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">"Lag (days)"</span>, <span class="at">ylab =</span> <span class="st">"Effect on Perceived Stress Score (PSS)"</span>,</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="fu">paste0</span>(<span class="st">"At the 99.9th Temperature Percentile ("</span>, temp_99<span class="fl">.9</span>pct,<span class="st">"\u00B0 C), </span><span class="sc">\n</span><span class="st">the Effect of Temperature is Signficant for Lags 110-158"</span>),</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fu">min</span>(plot_var_matlow), <span class="fu">max</span>(plot_var_mathigh)))  <span class="co"># plot of effect size at exposure/variable relative to median 26</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="fu">names</span>(plot_var_mathigh),</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>              <span class="fu">rev</span>(<span class="fu">names</span>(plot_var_matlow))),</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="fu">c</span>(plot_var_mathigh,</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>                <span class="fu">rev</span>(plot_var_matlow)),</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>), <span class="at">border =</span> <span class="cn">NA</span>)  <span class="co"># add confidence interval of OR at exposure/variable = 27.8</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>) <span class="co"># add line at effect size = 0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The plots above illustrate the association between temperature and PSS across various lag periods. Compared to the median temperature (27.3°C), extreme heat exposure (above 31°C) is associated with higher stress scores, particularly 4–5 months before the survey date. However, at both longer (9 months before) and shorter lag periods (a few weeks before the survey), these extremely high temperatures show a slight but non-significant mitigating effect, with stress scores decreasing relative to the median temperature.<br>
+</p>
+</section>
+<section id="distributed-lag-model-for-sum-nds" class="level4">
+<h4 class="anchored" data-anchor-id="distributed-lag-model-for-sum-nds"><strong>Distributed Lag Model for Sum NDS</strong></h4>
+<p>Predictions were generated relative to the median temperature (27.4°C) to assess how temperature and lagged exposure impact resilience, as measured by Sum NDS Category. As with the PSS analysis, the small number of recordings below 24°C and the grant’s focus on heat exposure led me to concentrate exclusively on higher temperatures.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to process temperature data for the selected metric</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>process_temperature_data <span class="ot">&lt;-</span> <span class="cf">function</span>(era5_data, metric) {</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  era5_data <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(community, date, <span class="sc">!!</span><span class="fu">sym</span>(metric)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">temp_metric =</span> <span class="sc">!!</span><span class="fu">sym</span>(metric)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">distinct</span>()</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to create temperature lags</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>create_temperature_lags <span class="ot">&lt;-</span> <span class="cf">function</span>(stress_data, temp_data) {</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  stress_data <span class="sc">%&gt;%</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(mstudyid, vname, survey_date) <span class="sc">%&gt;%</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">start_date =</span> survey_date <span class="sc">-</span> <span class="dv">270</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">lag_dates =</span> <span class="fu">list</span>(<span class="fu">seq.Date</span>(start_date, survey_date, <span class="at">by =</span> <span class="st">"day"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unnest</span>(lag_dates) <span class="sc">%&gt;%</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">date =</span> lag_dates) <span class="sc">%&gt;%</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(temp_data, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"vname"</span> <span class="ot">=</span> <span class="st">"community"</span>, <span class="st">"date"</span> <span class="ot">=</span> <span class="st">"date"</span>))</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Process temp data</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>temp_data_clean <span class="ot">&lt;-</span> <span class="fu">process_temperature_data</span>(<span class="at">era5_data =</span> era5, <span class="at">metric =</span> <span class="st">"max_wbgt"</span>)</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co"># created lagged data set</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>temperature_lags <span class="ot">&lt;-</span> <span class="fu">create_temperature_lags</span>(<span class="at">stress_data =</span> crisis_simple, <span class="at">temp_data =</span> temp_data_clean)</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="co"># create wide-format lagged data</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>temperature_lags_wide <span class="ot">&lt;-</span> temperature_lags <span class="sc">%&gt;%</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lag =</span> <span class="fu">as.numeric</span>(survey_date <span class="sc">-</span> date)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> lag, <span class="at">values_from =</span> temp_metric, <span class="at">names_prefix =</span> <span class="st">"temp_lag_"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(mstudyid, survey_date, <span class="fu">starts_with</span>(<span class="st">"temp_lag_"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(mstudyid, survey_date) <span class="sc">%&gt;%</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reframe</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">"temp_lag_"</span>), <span class="sc">~</span> <span class="fu">first</span>(<span class="fu">na.omit</span>(.)), <span class="at">.names =</span> <span class="st">"{col}"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(crisis_simple <span class="sc">%&gt;%</span> <span class="fu">select</span>(mstudyid, survey_date, sum_nds_category), <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"mstudyid"</span>, <span class="st">"survey_date"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(temp_lag_0)) <span class="co"># Remove rows without lag 0 data</span></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="co"># create temperature matrix for cross basis</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>temp_data_matrix <span class="ot">&lt;-</span> temperature_lags_wide <span class="sc">%&gt;%</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"temp_lag_"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>()</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a><span class="co"># set up DLNM model parameters, fit model, and get predictions</span></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a><span class="do">## SET UP PARAMS</span></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a><span class="co"># predictor DLNM model parameters -- captures the relationship between the predictor variable (temp) and the outcome</span></span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>var_arg <span class="ot">=</span> <span class="fu">list</span>(<span class="at">fun =</span> <span class="st">"bs"</span>, <span class="at">df =</span> <span class="dv">4</span>, <span class="at">degree =</span> <span class="dv">3</span>) <span class="co"># smooth cubic polynomial (degree = 3) between the boundary knots (no internal knots)</span></span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a><span class="co"># lag DLNM model parameters -- captures the lagged effects of the predictor variable (temp) over time.</span></span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>lag_arg <span class="ot">=</span> <span class="fu">list</span>(<span class="at">fun =</span> <span class="st">"bs"</span>, <span class="at">df =</span> <span class="dv">4</span>, <span class="at">degree =</span> <span class="dv">3</span>) <span class="co"># smooth cubic polynomial (degree = 3) between the boundary knots (no internal knots)</span></span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a><span class="co"># cross-basis matrix for DLNM</span></span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>cb <span class="ot">=</span> <span class="fu">crossbasis</span>(temp_data_matrix, <span class="at">lag =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fu">ncol</span>(temp_data_matrix)), <span class="at">argvar =</span> var_arg, <span class="at">arglag =</span> lag_arg) <span class="co"># basis for the predictor and lag </span></span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a><span class="co"># ordered logistic regression model</span></span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>model_polr <span class="ot">&lt;-</span> <span class="fu">polr</span>(</span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> sum_nds_category <span class="sc">~</span> cb,</span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> temperature_lags_wide,</span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"logistic"</span> </span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a><span class="co"># GET PREDICTIONS (in reference to median temp)</span></span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a>temp_median <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">median</span>(<span class="fu">as.vector</span>(temp_data_matrix)), <span class="dv">1</span>) <span class="co"># centering value (median). </span></span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a>crysis_temp_median <span class="ot">&lt;-</span> temp_median</span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a><span class="co"># generate predictions for a DLNM, set centering value as the median of all temperatures</span></span>
+<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a>cpred <span class="ot">=</span> <span class="fu">crosspred</span>(cb, </span>
+<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a>                  model_polr, </span>
+<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a>                  <span class="at">ci.level =</span> <span class="fl">0.95</span>, <span class="co"># 95% confidence intervals calculated around predicted values</span></span>
+<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a>                  <span class="at">cen =</span> temp_median, <span class="co"># predictions are relative to this baseline temperature.</span></span>
+<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a>                  <span class="at">by =</span> <span class="fl">0.1</span>) <span class="co"># predictions are generated at intervals of 0.1 units of temperature</span></span>
+<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a><span class="co"># plot contour map of 3d plot</span></span>
+<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a>  cpred, </span>
+<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a>  <span class="st">"contour"</span>, </span>
+<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="fu">paste0</span>(<span class="st">"Effects of Temperature and Lag on Log Odds </span><span class="sc">\n</span><span class="st">of Higher Stress Category Relative </span><span class="sc">\n</span><span class="st">to Median Temperature ("</span>,temp_median, <span class="st">"°C)"</span>), </span>
+<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Temperature (°C)"</span>, </span>
+<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Lag (days)"</span>, </span>
+<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a>  <span class="at">key.title =</span> <span class="fu">title</span>(<span class="at">main =</span> <span class="st">"Change in </span><span class="sc">\n</span><span class="st">Log Odds"</span>, <span class="at">cex.main =</span> <span class="fl">0.8</span>)</span>
+<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Examine lag effect at top percentile </span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>temp_top_pct <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">quantile</span>(<span class="fu">as.vector</span>(temp_data_matrix), <span class="fl">0.99</span>), <span class="dv">1</span>) <span class="co"># third quartile of temperature</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>temp_top_pct <span class="ot">=</span> <span class="fu">as.numeric</span>(temp_top_pct)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>crysis_temp_top_pct <span class="ot">=</span> temp_top_pct</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Customized plot of effect at top percentile </span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>plot_var <span class="ot">=</span> temp_top_pct</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>plot_var_matfit <span class="ot">=</span> cpred<span class="sc">$</span>matfit[<span class="fu">rownames</span>(cpred<span class="sc">$</span>matfit) <span class="sc">==</span> plot_var, ]</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(plot_var_matfit) <span class="ot">=</span> <span class="fu">sub</span>(<span class="st">"lag"</span>, <span class="st">""</span>, <span class="fu">names</span>(plot_var_matfit))</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>plot_var_matlow <span class="ot">=</span> cpred<span class="sc">$</span>matlow[<span class="fu">rownames</span>(cpred<span class="sc">$</span>matlow) <span class="sc">==</span> plot_var, ]</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(plot_var_matlow) <span class="ot">=</span> <span class="fu">sub</span>(<span class="st">"lag"</span>, <span class="st">""</span>, <span class="fu">names</span>(plot_var_matlow))</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>plot_var_mathigh <span class="ot">=</span> cpred<span class="sc">$</span>mathigh[<span class="fu">rownames</span>(cpred<span class="sc">$</span>mathigh) <span class="sc">==</span> plot_var, ]</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(plot_var_mathigh) <span class="ot">=</span> <span class="fu">sub</span>(<span class="st">"lag"</span>, <span class="st">""</span>, <span class="fu">names</span>(plot_var_mathigh))</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">names</span>(plot_var_matfit),</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> plot_var_matfit,</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Lag (days)"</span>, </span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Change in Log Odds of Higher Stress Category"</span>,</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="fu">paste0</span>(<span class="st">"Compared to the Median ("</span>, temp_median, <span class="st">"\u00B0 C), the Effect of Temperature </span><span class="sc">\n</span><span class="st">at the 99th Percentile ("</span>, temp_top_pct,<span class="st">"\u00B0 C) is Signficant for Lags 134-247"</span>),</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"l"</span>, </span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">lwd =</span> <span class="dv">2</span>, </span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fu">min</span>(plot_var_matlow), <span class="fu">max</span>(plot_var_mathigh))</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Add shaded confidence intervals</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="fu">names</span>(plot_var_mathigh), <span class="fu">rev</span>(<span class="fu">names</span>(plot_var_matlow))),</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(plot_var_mathigh, <span class="fu">rev</span>(plot_var_matlow)),</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>), </span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">border =</span> <span class="cn">NA</span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Add horizontal line at 0</span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The plots above illustrate the relationship between temperature and Sum NDS Category over various lag periods. Compared to the median temperature (27.4°C), extreme heat exposure (above 30°C) is associated with higher stress scores, particularly 5–8 months before the survey date.</p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{white2025,
+  author = {White, Lewis},
+  title = {Preliminary {Analysis} of {Heat’s} {Impact} on {Mental}
+    {Health} {Among} {Pregnancy} {Cohort}},
+  date = {2025-01-26},
+  url = {https://lewis-r-white.github.io/posts/2025-01-26-heat-stress/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-white2025" class="csl-entry quarto-appendix-citeas" role="listitem">
+White, Lewis. 2025. <span>“Preliminary Analysis of Heat’s Impact on
+Mental Health Among Pregnancy Cohort.”</span> January 26, 2025. <a href="https://lewis-r-white.github.io/posts/2025-01-26-heat-stress/">https://lewis-r-white.github.io/posts/2025-01-26-heat-stress/</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
