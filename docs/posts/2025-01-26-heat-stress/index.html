@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -25,7 +25,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -82,13 +82,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -97,7 +91,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -110,10 +103,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">lewis-r-white.github.io</span>
     </a>
@@ -125,25 +118,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html"> 
-<span class="menu-text">Bio</span></a>
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">Bio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../Posts.html"> 
-<span class="menu-text">Blog Posts</span></a>
+    <a class="nav-link" href="../../Posts.html" rel="" target="">
+ <span class="menu-text">Blog Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../resume.pdf"> 
-<span class="menu-text">Resume</span></a>
+    <a class="nav-link" href="../../lewis_white_resume_2025027.pdf" rel="" target="">
+ <span class="menu-text">Resume</span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools ms-auto">
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -173,12 +166,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="quarto-title-meta-contents">
       <p class="author"><a href="https://lewis-r-white.github.io/">Lewis White</a> </p>
     </div>
-    <div class="quarto-title-meta-contents">
+      <div class="quarto-title-meta-contents">
           <p class="affiliation">
               Columbia University
             </p>
         </div>
-    </div>
+      </div>
 
   <div class="quarto-title-meta">
 
@@ -225,7 +218,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
-
 
 
 
@@ -281,7 +273,7 @@ The sections below focus on the regression results, but for those interested, I�
 <p>To investigate the relationship between heat exposure (WBGT) and perceived stress scores (PSS-4) during pregnancy, I calculated trimester-specific daily maximum WBGT averages as well as the overall average of daily maximum WBGT for the entire pregnancy. For the third trimester and full pregnancy period, I restricted the WBGT averages to temperatures recorded up to the survey date to ensure alignment with the stress assessment period.</p>
 <p>As described earlier, I used a linear regression model to assess the association between PSS-4 and WBGT for each time period. Initially, I included covariates such as demographic, socioeconomic, and physical health data, but these variables did not significantly contribute to the model or improve its overall quality. For simplicity, I excluded them from the final results presented in the grant proposal and this blog.</p>
 <div class="cell">
-<details class="code-fold">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## SET UP THE DATA -- find temps over custom periods of interest</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -474,7 +466,7 @@ Note:                                                                           
 <h4 class="anchored" data-anchor-id="ordered-logistic-regression">Ordered Logistic Regression</h4>
 <p>To further explore the link between heat stress and mental health during pregnancy, I calculated trimester-specific averages of daily maximum WBGT as well as the overall average of daily maximum WBGT for the full pregnancy period. As mentioned earlier, I used ordered logistic regression to assess the association between Sum NDS Category and WBGT averages, since Sum NDS is a categorical variable with a natural order (low, moderate, and high stress).</p>
 <div class="cell">
-<details class="code-fold">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>calc_custom_temp_avg <span class="ot">&lt;-</span> <span class="cf">function</span>(stress_data, temp_data, metric) {</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  stress_data <span class="sc">%&gt;%</span></span>
@@ -703,7 +695,7 @@ Note:                                                                           
 <span id="cb3-225"><a href="#cb3-225" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div>
+
 <div id="ogotcepucj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#ogotcepucj table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -1144,63 +1136,52 @@ Note:                                                                           
   text-indent: 25px;
 }
 </style>
-
-<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead>
-<tr class="header gt_heading">
-<th colspan="5" class="gt_heading gt_title gt_font_normal">Ordered Logistic Regression Results</th>
-</tr>
-<tr class="odd gt_heading">
-<th colspan="5" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Higher WBGT during pre-conception, the first trimester, and the entire pregnancy period as a whole associated with increased likelihood of belonging to a higher stress group.</th>
-</tr>
-<tr class="header gt_col_headings">
-<th id="Model" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Model</th>
-<th id="Coefficient" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Coefficient</th>
-<th id="Std. Error" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Std. Error</th>
-<th id="Odds Ratio" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Odds Ratio</th>
-<th id="P-Value" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">P-Value</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_center" headers="Model">Pre-Conception</td>
-<td class="gt_row gt_center" headers="Coefficient">0.176</td>
-<td class="gt_row gt_center" headers="Std. Error">0.085</td>
-<td class="gt_row gt_center" headers="Odds Ratio">1.193</td>
-<td class="gt_row gt_center" headers="P-Value">0.038</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_center" headers="Model">First Trimester</td>
-<td class="gt_row gt_center" headers="Coefficient">0.301</td>
-<td class="gt_row gt_center" headers="Std. Error">0.096</td>
-<td class="gt_row gt_center" headers="Odds Ratio">1.351</td>
-<td class="gt_row gt_center" headers="P-Value">0.002</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_center" headers="Model">Second Trimester</td>
-<td class="gt_row gt_center" headers="Coefficient">0.165</td>
-<td class="gt_row gt_center" headers="Std. Error">0.092</td>
-<td class="gt_row gt_center" headers="Odds Ratio">1.179</td>
-<td class="gt_row gt_center" headers="P-Value">0.072</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_center" headers="Model">Third Trimester</td>
-<td class="gt_row gt_center" headers="Coefficient">−0.003</td>
-<td class="gt_row gt_center" headers="Std. Error">0.086</td>
-<td class="gt_row gt_center" headers="Odds Ratio">0.997</td>
-<td class="gt_row gt_center" headers="P-Value">0.976</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_center" headers="Model">Entire Pregnancy</td>
-<td class="gt_row gt_center" headers="Coefficient">0.443</td>
-<td class="gt_row gt_center" headers="Std. Error">0.153</td>
-<td class="gt_row gt_center" headers="Odds Ratio">1.557</td>
-<td class="gt_row gt_center" headers="P-Value">0.004</td>
-</tr>
-</tbody>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="5" class="gt_heading gt_title gt_font_normal" style="">Ordered Logistic Regression Results</td>
+    </tr>
+    <tr class="gt_heading">
+      <td colspan="5" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">Higher WBGT during pre-conception, the first trimester, and the entire pregnancy period as a whole associated with increased likelihood of belonging to a higher stress group.</td>
+    </tr>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Model">Model</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Coefficient">Coefficient</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Std. Error">Std. Error</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Odds Ratio">Odds Ratio</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="P-Value">P-Value</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="Model" class="gt_row gt_center">Pre-Conception</td>
+<td headers="Coefficient" class="gt_row gt_center">0.176</td>
+<td headers="Std. Error" class="gt_row gt_center">0.085</td>
+<td headers="Odds Ratio" class="gt_row gt_center">1.193</td>
+<td headers="P-Value" class="gt_row gt_center">0.038</td></tr>
+    <tr><td headers="Model" class="gt_row gt_center">First Trimester</td>
+<td headers="Coefficient" class="gt_row gt_center">0.301</td>
+<td headers="Std. Error" class="gt_row gt_center">0.096</td>
+<td headers="Odds Ratio" class="gt_row gt_center">1.351</td>
+<td headers="P-Value" class="gt_row gt_center">0.002</td></tr>
+    <tr><td headers="Model" class="gt_row gt_center">Second Trimester</td>
+<td headers="Coefficient" class="gt_row gt_center">0.165</td>
+<td headers="Std. Error" class="gt_row gt_center">0.092</td>
+<td headers="Odds Ratio" class="gt_row gt_center">1.179</td>
+<td headers="P-Value" class="gt_row gt_center">0.072</td></tr>
+    <tr><td headers="Model" class="gt_row gt_center">Third Trimester</td>
+<td headers="Coefficient" class="gt_row gt_center">−0.003</td>
+<td headers="Std. Error" class="gt_row gt_center">0.086</td>
+<td headers="Odds Ratio" class="gt_row gt_center">0.997</td>
+<td headers="P-Value" class="gt_row gt_center">0.976</td></tr>
+    <tr><td headers="Model" class="gt_row gt_center">Entire Pregnancy</td>
+<td headers="Coefficient" class="gt_row gt_center">0.443</td>
+<td headers="Std. Error" class="gt_row gt_center">0.153</td>
+<td headers="Odds Ratio" class="gt_row gt_center">1.557</td>
+<td headers="P-Value" class="gt_row gt_center">0.004</td></tr>
+  </tbody>
+  
+  
 </table>
-
-</div>
 </div>
 </div>
 </div>
@@ -1217,7 +1198,7 @@ Note:                                                                           
 <h2 class="anchored" data-anchor-id="exploring-the-relationship-between-temperature-and-sleep-quantity">Exploring the relationship between temperature and sleep quantity</h2>
 <p>A linear regression model was employed to examine the association between average WBGT and total sleep time (TST), providing insights into the impact of heat on sleep quantity.</p>
 <div class="cell">
-<details class="code-fold">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>actigraphy_with_temp <span class="ot">&lt;-</span> actigraphy_simple_full <span class="sc">%&gt;%</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span>  <span class="co"># Process each row individually</span></span>
@@ -1285,11 +1266,7 @@ Note:                                                                           
 <span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>A highly significant negative association is observed, with a slope of -13.75 (p &lt; 0.001), indicating that for each degree increase in the average maximum WBGT, our model predicts that total sleep time decreases by approximately 14 minutes. These findings suggest that higher temperatures during the study period are associated with reduced total sleep duration, which may reflect the challenges of maintaining optimal sleep in warmer conditions.</p>
@@ -1324,7 +1301,7 @@ Note:                                                                           
 <h4 class="anchored" data-anchor-id="distributed-lag-model-for-pss"><strong>Distributed Lag Model for PSS</strong></h4>
 <p>Predictions were generated relative to the median temperature (27.3°C) to evaluate how temperature and lagged exposure impact perceived stress levels. Due to the limited number of recordings below 24°C, and given the grant’s focus on heat exposure, I restricted the analysis to higher temperature ranges.</p>
 <div class="cell">
-<details class="code-fold">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># DLMs</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1412,13 +1389,9 @@ Note:                                                                           
 <span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
-</div>
-<details class="code-fold">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Examine lag effect at top percentile </span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>temp_99<span class="fl">.9</span>pct <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">quantile</span>(<span class="fu">as.vector</span>(temp_data_matrix), <span class="fl">0.999</span>), <span class="dv">1</span>) <span class="co"># third quartile of temperature</span></span>
@@ -1450,11 +1423,7 @@ Note:                                                                           
 <span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>) <span class="co"># add line at effect size = 0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<p><img src="index_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>The plots above illustrate the association between temperature and PSS across various lag periods. Compared to the median temperature (27.3°C), extreme heat exposure (above 31°C) is associated with higher stress scores, particularly 4–5 months before the survey date. However, at both longer (9 months before) and shorter lag periods (a few weeks before the survey), these extremely high temperatures show a slight but non-significant mitigating effect, with stress scores decreasing relative to the median temperature.<br>
@@ -1464,7 +1433,7 @@ Note:                                                                           
 <h4 class="anchored" data-anchor-id="distributed-lag-model-for-sum-nds"><strong>Distributed Lag Model for Sum NDS</strong></h4>
 <p>Predictions were generated relative to the median temperature (27.4°C) to assess how temperature and lagged exposure impact resilience, as measured by Sum NDS Category. As with the PSS analysis, the small number of recordings below 24°C and the grant’s focus on heat exposure led me to concentrate exclusively on higher temperatures.</p>
 <div class="cell">
-<details class="code-fold">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to process temperature data for the selected metric</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>process_temperature_data <span class="ot">&lt;-</span> <span class="cf">function</span>(era5_data, metric) {</span>
@@ -1554,13 +1523,9 @@ Note:                                                                           
 <span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
-</div>
-<details class="code-fold">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Examine lag effect at top percentile </span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>temp_top_pct <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">quantile</span>(<span class="fu">as.vector</span>(temp_data_matrix), <span class="fl">0.99</span>), <span class="dv">1</span>) <span class="co"># third quartile of temperature</span></span>
@@ -1600,11 +1565,7 @@ Note:                                                                           
 <span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<p><img src="index_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>The plots above illustrate the relationship between temperature and Sum NDS Category over various lag periods. Compared to the median temperature (27.4°C), extreme heat exposure (above 30°C) is associated with higher stress scores, particularly 5–8 months before the survey date.</p>
@@ -1613,7 +1574,7 @@ Note:                                                                           
 </section>
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{white2025,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{white2025,
   author = {White, Lewis},
   title = {Preliminary {Analysis} of {Heat’s} {Impact} on {Mental}
     {Health} {Among} {Pregnancy} {Cohort}},
@@ -1704,27 +1665,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1734,17 +1678,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1756,130 +1691,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
+      return note.innerHTML;
     });
   }
       let selectedAnnoteEl;
@@ -1923,7 +1735,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1949,32 +1760,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2035,7 +1820,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-
 
 
 

@@ -16,32 +16,14 @@ about:
 
 ## Hello!
 
-I'm Lewis \~ welcome to my website!
+**I’m Lewis—welcome to my website!**
 
-I recently graduated from the Bren School of Science & Management at UC Santa Barbara, where I received a Master's Degree in Environmental Data Science.
+I’m a multidisciplinary researcher and data analyst with a passion for environmental issues, human behavior, health, sports, music, art, and technology. Here, you can explore my work, follow my latest research, and see how I combine qualitative and quantitative methods to uncover actionable insights.
 
-In my spare time, you can find me hiking in the beautiful Santa Barbara hills, painting watercolor animals, or practicing my dinks on the pickleball court.
+-   **Bio:** Learn more about my professional background, interests, and the journey that led me here.
 
-------------------------------------------------------------------------
+-   **Blog Posts:** Dive into a variety of recent projects I’ve been working on—from exploring how Pride resonates with LGBTQIA+ communities, to examining heat’s effect on mental health in pregnancy cohorts, to analyzing air quality trends in Ghana, and even testing ways to improve video response quality for remote research. Each post offers a closer look at my methods, findings, and lessons learned.
 
-## Education
+-   **Resume:** Get an overview of my professional experience, skills and education.
 
-**Master of Environmental Data Science, 3.97 GPA (June 2023)**
-
--   *Bren School of Environmental Science & Management -- University of California, Santa Barbara (UCSB)*
-
-**Bachelor of Arts in Statistics and Psychology (Cum Laude), 3.71 GPA (June 2020)**
-
--   *Carleton College, Northfield, MN*
-
-------------------------------------------------------------------------
-
-## Experience
-
-**Qualitative Research Advisor \|** dscout **\|** 07/2020 - 07/2022
-
-**Account Management Intern \|** BBDO Worldwide **\|** 06/2019 - 08/2019
-
-**Statistical Consultant \|** Northfield City Council **\|** 01/2018 - 03/2018
-
-------------------------------------------------------------------------
+If you’re interested in collaboration, have questions, or just want to say hi, don’t hesitate to reach out. I hope you find something here that sparks your curiosity—thanks for stopping by!

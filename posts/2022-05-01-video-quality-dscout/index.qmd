@@ -28,7 +28,7 @@ One of the best aspects of dscout’s remote research platform is the ability to
     • What do you notice about the texture?\
     • After trying it, would you purchase it again—and why or why not?”\
 
-2.  **For a project about a workplace productivity tool to help a major technology corporation improve the accessibility of its product. Scouts with certain disabilities were recruited for this study, and at least three entries were required for this question.** \
+2.  **For a project about a workplace productivity tool to help a major technology corporation improve the accessibility of its product. Scouts with certain disabilities were recruited for this study, and at least three entries were required for this question.**\
     \
     "Show us how you use {tool} in your daily workflow. In a 2-3 minute video (for each task or use case), please screen share or capture your screen as you walk us through:\
     • The Task: What are you trying to accomplish with {tool}?\
@@ -36,7 +36,7 @@ One of the best aspects of dscout’s remote research platform is the ability to
     • Your Feedback: What do you love about this process? Where do you get stuck or feel frustrated?\
     • Your Wishlist: If you could improve one thing about {tool} for this specific task, what would it be?"
 
-3.  **For a project about scout’s fitness journey to help an online exercise app design a better experience for their users. \
+3.  **For a project about scout’s fitness journey to help an online exercise app design a better experience for their users.\
     **\
     “In a short video (1–2 minutes), please describe why fitness is or is not important to you. Then, reflect on how fitness fits into (or clashes with) your daily routine, habits, and priorities.”
 
@@ -212,8 +212,6 @@ I presented these results to the team at an all-company meeting, and many other 
 
 Along with the video findings, the scouts’ awesome videos allowed me to create a fun compilation of the scouts sharing their love for dscout that was shared in the holiday party.
 
-
-
 ```{r, warning=FALSE, message=FALSE, include = FALSE}
 ### Appendix ----
 
@@ -273,5 +271,3 @@ print(levene_verbal)
 
 # There is unequal variance for the shakiness metric, which indicates that we need to specify unequal variances in the ANOVA and t-test for this metric.
 ```
-
-
