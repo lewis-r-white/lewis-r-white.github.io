@@ -11,7 +11,7 @@ website:
       - about.qmd
       - href: Posts.qmd
         text: Blog Posts
-      - href: lewis_white_resume_20250323.pdf
+      - href: lewis_white_resume.pdf
         text: Resume
 
 format:
