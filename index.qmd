@@ -14,16 +14,21 @@ about:
       href: https://www.linkedin.com/in/lewis-white-382269146/
 ---
 
-## Hello!
+## Hello! I’m Lewis.
 
-**I’m Lewis—welcome to my website!**
+I’m a mixed-methods researcher and data analyst working across environmental data science, public health, and UX research. I use quantitative and qualitative methods to investigate complex questions, understand human behavior, and translate evidence into useful insights for policy, programs, products, and practice.
 
-I’m a multidisciplinary researcher and data analyst with a passion for environmental issues, human behavior, health, sports, music, art, and technology. Here, you can explore my work, follow my latest research, and see how I combine qualitative and quantitative methods to uncover actionable insights.
+My work has explored topics including climate and environmental health, mental health, household energy, technology adoption, and user experience. I’m especially interested in research that connects data analysis with clear communication and real world decision making.
 
--   **Bio:** Learn more about my professional background, interests, and the journey that led me here.
+## Explore my work
 
--   **Blog Posts:** Dive into a variety of recent projects I’ve been working on—from exploring how Pride resonates with LGBTQIA+ communities, to examining heat’s effect on mental health in pregnancy cohorts, to analyzing air quality trends in Ghana, and even testing ways to improve video response quality for remote research. Each post offers a closer look at my methods, findings, and lessons learned.
+**About**\
+Learn more about my professional background and research interests.
 
--   **Resume:** Get an overview of my professional experience, skills and education.
+**Projects and Writing**\
+Explore blog posts about my work, from studying heat and maternal stress and analyzing air-quality patterns in Ghana to investigating LGBTQIA+ experiences and improving remote research methods.
 
-If you’re interested in collaboration, have questions, or just want to say hi, don’t hesitate to reach out. I hope you find something here that sparks your curiosity—thanks for stopping by!
+**Resume**\
+View my professional experience, education, and technical skills.
+
+Thanks for visiting. Feel free to reach out if you would like to discuss my work, potential collaborations, or shared research interests.

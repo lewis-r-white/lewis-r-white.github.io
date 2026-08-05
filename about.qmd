@@ -2,10 +2,10 @@
 title: "Bio"
 ---
 
-> Lewis is a multidisciplinary researcher and data analyst with a background in UX research and environmental data science.\
-> \
-> With over five years of experience in research and data analysis, he specializes in combining qualitative and quantitative methods to uncover insights into human behavior, decision-making, and technology adoption. At dscout, he focused on survey design and qualitative research, supporting clients across industries like healthcare, fitness, and technology. In his current role at Columbia University, he applies quantitative and statistical analysis to research questions at the intersection of environmental health and behavior.\
-> \
-> Passionate about employing various research methods to drive meaningful change, Lewis is particularly interested in improving health outcomes, promoting environmental sustainability, and/or enhancing inclusivity in technology and consumer experiences. More broadly, he enjoys exploring the complexities of human decision-making through diverse forms of data—blending statistical analysis with behavioral insights—and collaborating with teammates to uncover meaningful patterns and drive actionable outcomes.\
-> \
-> Outside of work, you can find him perfecting his dinks on the pickleball court, experimenting with watercolors, playing strategy board games with friends, and enjoying the great outdoors.
+> Lewis is a mixed-methods researcher and data analyst with a background spanning environmental data science, public health, and UX research. He uses quantitative and qualitative methods to understand human behavior, investigate complex environmental and social challenges, and generate evidence that informs policy, programs, products, and practice.
+>
+> His work has examined climate and environmental health, mental health, technology-enabled interventions, and the ways people interact with products and services. At Columbia University, he analyzed heat exposure, air pollution, household energy use, and health outcomes in Ghana. Previously, at dscout, he advised clients on survey design and qualitative research and contributed to research aimed at improving digital products and participant experiences.
+>
+> Across these areas, Lewis is especially interested in what shapes people’s decisions, what barriers they face, and how research can help organizations develop more effective, equitable, and accessible solutions. He enjoys working across methods, translating complex findings for different audiences, and collaborating with interdisciplinary teams.
+>
+> Outside of work, you can find him perfecting his dinks on the pickleball court, experimenting with watercolor and oil painting, playing strategy board games with friends, and hiking in the great outdoors.

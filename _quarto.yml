@@ -11,9 +11,11 @@ website:
       - about.qmd
       - href: Posts.qmd
         text: Blog Posts
-      - href: lewis_white_resume.pdf
+      - href: lewis_white_general_website.pdf
         text: Resume
-
+      - href: publications.qmd
+        text: Publications
+        
 format:
   html:
     theme:
